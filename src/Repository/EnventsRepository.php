@@ -14,6 +14,13 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EnventsRepository extends ServiceEntityRepository
 {
+
+    public function findAllVisibleQuery(): Query {
+
+        return $this->findVisibleQuery()
+            ->getQuery();
+    }
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Envents::class);

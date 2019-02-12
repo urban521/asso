@@ -28,6 +28,7 @@
       <parameter key="SonataBlockBundle">Sonata\BlockBundle\SonataBlockBundle</parameter>
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="SonataAdminBundle">Sonata\AdminBundle\SonataAdminBundle</parameter>
+      <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -86,8 +87,6 @@
         <parameter key="path">/var/www/asso/vendor/symfony/webpack-encore-bundle/src</parameter>
         <parameter key="namespace">Symfony\WebpackEncoreBundle</parameter>
       </parameter>
-<<<<<<< HEAD
-=======
       <parameter key="SonataDatagridBundle" type="collection">
         <parameter key="path">/var/www/asso/vendor/sonata-project/datagrid-bundle/src</parameter>
         <parameter key="namespace">Sonata\DatagridBundle</parameter>
@@ -108,7 +107,10 @@
         <parameter key="path">/var/www/asso/vendor/sonata-project/admin-bundle/src</parameter>
         <parameter key="namespace">Sonata\AdminBundle</parameter>
       </parameter>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
+      <parameter key="DoctrineFixturesBundle" type="collection">
+        <parameter key="path">/var/www/asso/vendor/doctrine/doctrine-fixtures-bundle</parameter>
+        <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
@@ -573,6 +575,7 @@
       </parameter>
     </parameter>
     <parameter key="sonata.core.form.types" type="collection">
+      <parameter>App\Form\EventsType</parameter>
       <parameter>form.type.form</parameter>
       <parameter>form.type.choice</parameter>
       <parameter>form.type.entity</parameter>
@@ -661,14 +664,26 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/asso/var/log/dev.log</argument>
     </service>
-<<<<<<< HEAD
     <service id="App\Controller\AssosController" class="App\Controller\AssosController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.KTVqfp6.App\Controller\AssosController"/>
       </call>
-=======
+    </service>
+    <service id="App\Controller\EventsController" class="App\Controller\EventsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\EventsController"/>
+      </call>
+    </service>
+    <service id="App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
+    </service>
+    <service id="App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -704,7 +719,6 @@
     <service id="App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
     </service>
     <service id="controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -959,6 +973,7 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
         <argument>Sonata\CoreBundle\Form\Type</argument>
         <argument>Sonata\Form\Type</argument>
@@ -967,6 +982,7 @@
         <argument>Sonata\AdminBundle\Form\Type\Filter</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\EventsType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -1253,7 +1269,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.IrMVqqb"/>
+      <argument type="service" id=".service_locator.LAN.fF1"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1479,11 +1495,8 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ar.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.ar.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ar.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ar.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ar.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="az" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.az.xlf</argument>
@@ -1494,34 +1507,25 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.bg.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.bg.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.bg.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.bg.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.bg.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.bg.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="ca" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ca.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.ca.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ca.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ca.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ca.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ca.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="cs" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.cs.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.cs.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.cs.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.cs.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.cs.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.cs.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="cy" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.cy.xlf</argument>
@@ -1535,14 +1539,11 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.de.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.de.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.de.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.de.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="el" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.el.xlf</argument>
@@ -1553,25 +1554,19 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.en.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.en.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.en.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.en.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="es" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.es.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.es.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.es.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.es.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.es.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.es.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="et" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.et.xlf</argument>
@@ -1580,44 +1575,32 @@
           <argument key="eu" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.eu.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.eu.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.eu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.eu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.eu.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="fa" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fa.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.fa.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.fa.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.fa.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.fa.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.fa.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="fi" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fi.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.fi.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.fi.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="fr" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.fr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.fr.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.fr.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="gl" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.gl.xlf</argument>
@@ -1633,24 +1616,18 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.hr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.hr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.hr.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.hr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.hr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.hr.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="hu" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.hu.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.hu.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.hu.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.hu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.hu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.hu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.hu.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="hy" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.hy.xlf</argument>
@@ -1665,55 +1642,40 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.it.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.it.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.it.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.it.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.it.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.it.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.it.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="ja" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ja.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.ja.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ja.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ja.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ja.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ja.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="lb" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.lb.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.lb.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.lb.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.lb.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.lb.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.lb.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="lt" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.lt.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.lt.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.lt.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.lt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.lt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.lt.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="lv" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.lv.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.lv.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.lv.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.lv.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="mn" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.mn.xlf</argument>
@@ -1728,12 +1690,9 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.nl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.nl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.nl.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.nl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.nl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.nl.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="nn" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.nn.xlf</argument>
@@ -1744,87 +1703,63 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.no.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.no.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.no.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.no.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="pl" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.pl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.pl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.pl.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.pl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.pl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.pl.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="pt" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.pt.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.pt.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.pt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.pt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.pt.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.pt_BR.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.pt_BR.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.pt_BR.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.pt_BR.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.pt_BR.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.pt_BR.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="ro" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ro.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.ro.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ro.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ro.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ro.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ro.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="ru" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ru.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.ru.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ru.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ru.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ru.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.ru.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ru.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="sk" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sk.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.sk.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.sk.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.sk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.sk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.sk.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="sl" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.sl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.sl.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.sl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.sl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.sl.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="sq" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sq.xlf</argument>
@@ -1856,20 +1791,14 @@
           <argument key="tr" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.tr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.tr.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.tr.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="uk" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.uk.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.uk.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.uk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.uk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.uk.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="vi" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.vi.xlf</argument>
@@ -1880,12 +1809,9 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.zh_CN.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.zh_CN.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.zh_CN.xlf</argument>
-<<<<<<< HEAD
-=======
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.zh_CN.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.zh_CN.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.zh_CN.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.zh_TW.xlf</argument>
@@ -1895,15 +1821,12 @@
           </argument>
           <argument key="ua" type="collection">
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ua.xlf</argument>
-<<<<<<< HEAD
-=======
           </argument>
           <argument key="sv_SE" type="collection">
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.sv_SE.xliff</argument>
           </argument>
           <argument key="zh_HK" type="collection">
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.zh_HK.xliff</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
           </argument>
         </argument>
       </argument>
@@ -4182,12 +4105,9 @@
     <service id="twig" class="Twig\Environment" public="true">
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
-<<<<<<< HEAD
-=======
         <argument key="paths" type="collection">
           <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
         </argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
         <argument key="default_path">/var/www/asso/templates</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -4266,8 +4186,6 @@
       <call method="addExtension">
         <argument type="service" id="webpack_encore.twig_entry_files_extension"/>
       </call>
-<<<<<<< HEAD
-=======
       <call method="addExtension">
         <argument type="service" id="sonata.core.flashmessage.twig.extension"/>
       </call>
@@ -4298,7 +4216,6 @@
       <call method="addExtension">
         <argument type="service" id="sonata.templates.twig.extension"/>
       </call>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -4336,10 +4253,7 @@
       <argument type="service" id=".service_locator.lSIKWsr.twig.cache_warmer"/>
       <argument>null</argument>
       <argument type="collection">
-<<<<<<< HEAD
-=======
         <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
     </service>
@@ -4347,10 +4261,7 @@
       <argument type="service" id="kernel"/>
       <argument>/var/www/asso/src</argument>
       <argument type="collection">
-<<<<<<< HEAD
-=======
         <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
       <argument>/var/www/asso/templates</argument>
@@ -4366,12 +4277,9 @@
       <argument type="collection"/>
       <argument>/var/www/asso</argument>
       <call method="addPath">
-<<<<<<< HEAD
-=======
         <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
       </call>
       <call method="addPath">
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
@@ -4428,11 +4336,6 @@
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
-<<<<<<< HEAD
-        <argument>/var/www/asso/templates</argument>
-      </call>
-      <call method="addPath">
-=======
         <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/views</argument>
         <argument>SonataDatagrid</argument>
       </call>
@@ -4476,7 +4379,6 @@
         <argument>/var/www/asso/templates</argument>
       </call>
       <call method="addPath">
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
         <argument>/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form</argument>
       </call>
     </service>
@@ -4967,11 +4869,6 @@
         <argument key="_default" type="service" id="webpack_encore.entrypoint_lookup[_default]"/>
       </argument>
     </service>
-<<<<<<< HEAD
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" autoconfigure="true" abstract="true"/>
-=======
     <service id="sonata.core.date.moment_format_converter" class="Sonata\CoreBundle\Date\MomentFormatConverter"/>
     <service id="sonata.core.flashmessage.manager" class="Sonata\CoreBundle\FlashMessage\FlashManager" public="true">
       <tag name="sonata.status.renderer"/>
@@ -5930,6 +5827,34 @@
       <argument type="service" id="form.factory"/>
       <argument>Sonata\AdminBundle\Security\Acl\Permission\MaskBuilder</argument>
     </service>
+    <service id="doctrine.fixtures_load_command" class="Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand">
+      <tag name="console.command" command="doctrine:fixtures:load"/>
+      <argument type="service" id="doctrine.fixtures.loader"/>
+      <call method="setName">
+        <argument>doctrine:fixtures:load</argument>
+      </call>
+    </service>
+    <service id="doctrine.fixtures.loader" class="Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader" public="false">
+      <argument type="service" id="service_container"/>
+      <call method="addFixtures">
+        <argument type="collection">
+          <argument type="collection">
+            <argument key="fixture" type="service" id="App\DataFixtures\EventsFixtures"/>
+            <argument key="groups" type="collection"/>
+          </argument>
+        </argument>
+      </call>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventsType" class="App\Form\EventsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AgassoRepository" class="App\Repository\AgassoRepository" autowire="true" abstract="true"/>
@@ -5948,7 +5873,6 @@
     <service id=".abstract.instanceof.App\Repository\PublicsRepository" class="App\Repository\PublicsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true" abstract="true"/>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
     <service id="maker.auto_command.make_auth" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false">
       <tag name="console.command" command="make:auth"/>
       <argument type="service" id="maker.maker.make_authenticator"/>
@@ -6181,9 +6105,10 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.IrMVqqb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.LAN.fF1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\EventsType" type="service" id="App\Form\EventsType"/>
         <argument key="Sonata\AdminBundle\Form\Type\AdminType" type="service" id="sonata.admin.form.type.admin"/>
         <argument key="Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType" type="service" id="sonata.admin.doctrine_orm.form.type.choice_field_mask"/>
         <argument key="Sonata\AdminBundle\Form\Type\CollectionType" type="service" id="sonata.admin.form.type.collection"/>
@@ -6434,6 +6359,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\EventsController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\EventsController"/>
+      <argument>App\Controller\EventsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator._pu.0Tb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6546,7 +6477,7 @@
       </argument>
     </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
-      <argument type="service" id=".service_locator.oa9P1R0"/>
+      <argument type="service" id=".service_locator.c0c9Ebx"/>
       <argument type="collection">
         <argument key="about">console.command.about</argument>
         <argument key="assets:install">console.command.assets_install</argument>
@@ -6599,6 +6530,7 @@
         <argument key="server:stop">web_server.command.server_stop</argument>
         <argument key="server:status">web_server.command.server_status</argument>
         <argument key="server:log">web_server.command.server_log</argument>
+        <argument key="doctrine:fixtures:load">doctrine.fixtures_load_command</argument>
         <argument key="make:auth">maker.auto_command.make_auth</argument>
         <argument key="make:command">maker.auto_command.make_command</argument>
         <argument key="make:controller">maker.auto_command.make_controller</argument>
@@ -6620,7 +6552,7 @@
         <argument key="make:sonata:admin">maker.auto_command.make_sonata_admin</argument>
       </argument>
     </service>
-    <service id=".service_locator.oa9P1R0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.c0c9Ebx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="console.command.about" type="service" id="console.command.about"/>
@@ -6652,6 +6584,7 @@
         <argument key="doctrine.database_drop_command" type="service" id="doctrine.database_drop_command"/>
         <argument key="doctrine.database_import_command" type="service" id="doctrine.database_import_command"/>
         <argument key="doctrine.ensure_production_settings_command" type="service" id="doctrine.ensure_production_settings_command"/>
+        <argument key="doctrine.fixtures_load_command" type="service" id="doctrine.fixtures_load_command"/>
         <argument key="doctrine.generate_entities_command" type="service" id="doctrine.generate_entities_command"/>
         <argument key="doctrine.mapping_convert_command" type="service" id="doctrine.mapping_convert_command"/>
         <argument key="doctrine.mapping_import_command" type="service" id="doctrine.mapping_import_command"/>
@@ -6887,10 +6820,7 @@
     <service id="argument_resolver.controller_locator" alias=".service_locator.9_yeNH1"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
-<<<<<<< HEAD
-=======
     <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>
->>>>>>> aaa08579efdd845b1939a90f2cd7da2ed28d9d83
     <service id=".service_locator.4zihvow" alias=".1_ServiceLocator~zv1ozqR" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
