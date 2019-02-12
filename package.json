@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.7.1",
+    "@symfony/webpack-encore": "^0.22.0",
+    "webpack-notifier": "^1.6.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "dependencies": {
+    "animate.css": "^3.7.0"
+  }
+}

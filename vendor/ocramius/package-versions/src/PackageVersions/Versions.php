@@ -10,7 +10,7 @@ namespace PackageVersions;
  */
 final class Versions
 {
-    const ROOT_PACKAGE_NAME = 'symfony/website-skeleton';
+    const ROOT_PACKAGE_NAME = '__root__';
     const VERSIONS = array (
   'doctrine/annotations' => 'v1.6.0@c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5',
   'doctrine/cache' => 'v1.8.0@d768d58baee9a4862ca783840eca1b9add7a7f57',
@@ -89,6 +89,7 @@ final class Versions
   'symfony/validator' => 'v4.2.3@f051f6bdc89b414a899c4652570352a4cdf5a868',
   'symfony/var-exporter' => 'v4.2.3@d8bf4424c232b55f4c1816037d3077a89258557e',
   'symfony/web-link' => 'v4.2.3@47b8188b4bb8d24eef0bb287b0737d5b84a6cab8',
+  'symfony/webpack-encore-bundle' => 'v1.1.0@9c89795a4577c522101206a1a88272660735257c',
   'symfony/yaml' => 'v4.2.3@d461670ee145092b7e2a56c1da7118f19cadadb0',
   'twig/twig' => 'v2.6.2@7d7342c8a4059fefb9b8d07db0cc14007021f9b7',
   'webmozart/assert' => '1.4.0@83e253c8e0be5b0257b881e1827274667c5c17a9',
@@ -111,13 +112,13 @@ final class Versions
   'symfony/var-dumper' => 'v4.2.3@223bda89f9be41cf7033eeaf11bc61a280489c17',
   'symfony/web-profiler-bundle' => 'v4.2.3@b00d56bb927ebae8fec9a2ab12b168e52107c92f',
   'symfony/web-server-bundle' => 'v4.2.3@8f7afc85c27cf53b77a3ae8d2a3d86f537c323a3',
-  'paragonie/random_compat' => '2.*@',
-  'symfony/polyfill-ctype' => '*@',
-  'symfony/polyfill-iconv' => '*@',
-  'symfony/polyfill-php71' => '*@',
-  'symfony/polyfill-php70' => '*@',
-  'symfony/polyfill-php56' => '*@',
-  'symfony/website-skeleton' => 'v4.2.3.2@',
+  'paragonie/random_compat' => '2.*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  'symfony/polyfill-ctype' => '*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  'symfony/polyfill-iconv' => '*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  'symfony/polyfill-php71' => '*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  'symfony/polyfill-php70' => '*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  'symfony/polyfill-php56' => '*@a72fac9f0722847ec39d5f456023590264d65fe6',
+  '__root__' => 'dev-master@a72fac9f0722847ec39d5f456023590264d65fe6',
 );
 
     private function __construct()
