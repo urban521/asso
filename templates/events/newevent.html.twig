@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>creation d'un article!</h1>
+
+    <div class="contact-form">
+        {{ form_start(form) }}
+        {{ form_widget(form.title,{'attr':{'placeholder':'titre'}}) }}
+        {{ form_widget(form.lieu,{'attr':{'placeholder':'lieu'}}) }}
+        <button type="submit" class="btn btn-primary">ajouter</button>
+        {{ form_end(form) }}
+        
+    </div>
+{% endblock %}

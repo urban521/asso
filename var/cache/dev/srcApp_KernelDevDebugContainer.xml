@@ -696,10 +696,6 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Repository\EnventsRepository" class="App\Repository\EnventsRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
     <service id="App\Repository\EventsRepository" class="App\Repository\EventsRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -2432,14 +2428,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -3210,7 +3198,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.4voVq29"/>
+      <argument type="service" id=".service_locator.EYGw1Cp"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5861,8 +5849,6 @@
     <service id=".abstract.instanceof.App\Repository\AgassoRepository" class="App\Repository\AgassoRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AssociationRepository" class="App\Repository\AssociationRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AssociationRepository" class="App\Repository\AssociationRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EnventsRepository" class="App\Repository\EnventsRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\EnventsRepository" class="App\Repository\EnventsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\EventsRepository" class="App\Repository\EventsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\EventsRepository" class="App\Repository\EventsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\HorairesRepository" class="App\Repository\HorairesRepository" autowire="true" abstract="true"/>
@@ -6044,9 +6030,20 @@
         <argument>make:sonata:admin</argument>
       </call>
     </service>
-    <service id=".service_locator.9_yeNH1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.NIoOI3Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.bL2d6.A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
+      </argument>
     </service>
     <service id=".service_locator.yQVjGlt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -6160,13 +6157,12 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.4voVq29" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.EYGw1Cp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActivitesRepository" type="service" id="App\Repository\ActivitesRepository"/>
         <argument key="App\Repository\AgassoRepository" type="service" id="App\Repository\AgassoRepository"/>
         <argument key="App\Repository\AssociationRepository" type="service" id="App\Repository\AssociationRepository"/>
-        <argument key="App\Repository\EnventsRepository" type="service" id="App\Repository\EnventsRepository"/>
         <argument key="App\Repository\EventsRepository" type="service" id="App\Repository\EventsRepository"/>
         <argument key="App\Repository\HorairesRepository" type="service" id="App\Repository\HorairesRepository"/>
         <argument key="App\Repository\InscriptionRepository" type="service" id="App\Repository\InscriptionRepository"/>
@@ -6457,7 +6453,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.9_yeNH1"/>
+      <argument type="service" id=".service_locator.bL2d6.A"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -6817,7 +6813,7 @@
     <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
     <service id="Sonata\AdminBundle\Admin\Pool" alias="sonata.admin.pool"/>
     <service id="sonata.admin.security.handler" alias="sonata.admin.security.handler.noop"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9_yeNH1"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.bL2d6.A"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>

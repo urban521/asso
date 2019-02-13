@@ -94,17 +94,17 @@ class Association
     private $adress_correspondant;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\agasso", mappedBy="association")
+     * @ORM\OneToMany(targetEntity="App\Entity\Agasso", mappedBy="association")
      */
     private $agasso;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\events", inversedBy="associations")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Events", inversedBy="associations")
      */
     private $events;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\activites", inversedBy="associations")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Activites", inversedBy="associations")
      */
     private $activites;
 

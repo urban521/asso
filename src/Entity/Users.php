@@ -84,12 +84,12 @@ class Users
     private $ville_user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\activites", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Activites", inversedBy="users")
      */
     private $activite_user;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\events", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Events", inversedBy="users")
      */
     private $events;
 

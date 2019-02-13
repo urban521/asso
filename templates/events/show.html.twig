@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+   
+    
+        
+    <img src={{ events.picEvent1 }}>
+    <h3>{{ events.title }}</h3>
+    <h5>{{ events.lieu }}</h5>
+    <h6>{{ events.dateEvent|date('Y-m-d') }}</h6>
+
+    <div class="links">
+        <a href="#">Repost</a>
+        <a href="#">Like</a>
+        <a href="#">woohoo</a>
+    </div>
+        
+    
+    
+</section>
+{% endblock %}
