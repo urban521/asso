@@ -4,14 +4,38 @@
         <meta charset="UTF-8">
         <title>{% block title %}Bienvenue{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+        <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
     
     <body>
-        {% block body %}{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="/">ASSO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('Activites') }}
+                        ">Activites</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('activites_create') }}
+                        ">Créer une activité</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/events">Evénements</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
 
-        <script src="{{ asset('build/app.js')}}"></script>
+        <script src="{{ asset('build/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

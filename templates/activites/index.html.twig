@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ActivitesController!{% endblock %}
+
+{% block body %}
+
+<section class="activites">
+
+    {% for activites in activites %} 
+        <activite>
+            <h2>{{ activites.titleActivite }}</h2>
+            <div class="content">
+                <img src="{{ activites.picActivite1 }}" alt="">
+                {{ activites.decriptActivite | raw }}
+                <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">lire la suite</a>
+            </div>
+        </activite>
+    {% endfor %}
+    
+    
+</section>
+
+
+{% endblock %}
