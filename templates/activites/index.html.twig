@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Hello ActivitesController!{% endblock %}
 
 {% block body %}
@@ -11,7 +12,7 @@
             <h2>{{ activites.titleActivite }}</h2>
             <div class="content">
                 <img src="{{ activites.picActivite1 }}" alt="">
-                {{ activites.decriptActivite | raw }}
+                <p>{{ activites.decriptActivite | raw }}</p>
                 <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">lire la suite</a>
             </div>
         </activite>
