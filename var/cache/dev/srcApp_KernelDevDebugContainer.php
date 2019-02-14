@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerLT7fRAY\srcApp_KernelDevDebugContainer([
     'container.build_hash' => 'LT7fRAY',
-    'container.build_id' => '7c965909',
-    'container.build_time' => 1550132241,
+    'container.build_id' => '88dfb1b9',
+    'container.build_time' => 1550141849,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerLT7fRAY');
