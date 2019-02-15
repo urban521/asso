@@ -1,0 +1,73 @@
+.card {
+	margin: 3%;
+	height: 510px;
+	background:#444 url("https://41.media.tumblr.com/dceb2115a1f7a4b2fc4192e2f1452e45/tumblr_mhrn3fhg6d1r5vp1oo1_500.jpg") no-repeat center;
+	background-size: cover;
+	border-radius: 5px;
+}
+
+.card-info {
+	opacity: 0;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.4);
+	background-image: -webkit-linear-gradient(-270deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 50%);
+	background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 50%);
+	
+	height: 100%;
+	-webkit-transition: opacity, 0.3s, ease-in-out;
+	-moz-transition: opacity, 0.3s, ease-in-out;
+	transition: opacity, 0.3s, ease-in-out;
+}
+.card-info h3 {
+	position: absolute;
+	margin-left: 10%;
+	color: white;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	-webkit-transition: top, 0.5s, ease-in-out;
+	-moz-transition: top, 0.5s, ease-in-out;
+	transition: top, 0.5s, ease-in-out;
+}
+.card-info h6 {
+	color: white;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	-webkit-transition: top, 0.5s, ease-in-out;
+	-moz-transition: top, 0.5s, ease-in-out;
+	transition: top, 0.5s, ease-in-out;
+}
+.card-info h5 {
+	color: white;
+	font-family: sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	-webkit-transition: top, 0.5s, ease-in-out;
+	-moz-transition: top, 0.5s, ease-in-out;
+	transition: top, 0.5s, ease-in-out;
+}
+.card-info:hover h3 {
+	top: 50%;
+}
+.card-info .links {
+	position: absolute;
+	bottom: 4%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.card-info .links a {
+	margin: 0 8px;
+	font-size: 13px;
+	color: #aaa;
+	text-decoration: none;
+	-webkit-transition: color, 0.3s, ease-in-out;
+	-moz-transition: color, 0.3s, ease-in-out;
+	transition: color, 0.3s, ease-in-out;
+}
+.card-info .links a:hover {
+	color: white;
+}
+.card-info:hover {
+	opacity: 1;
+}

@@ -576,7 +576,11 @@
       </parameter>
     </parameter>
     <parameter key="sonata.core.form.types" type="collection">
+<<<<<<< HEAD
       <parameter>App\Form\ActivitesType</parameter>
+=======
+      <parameter>App\Form\EventsType</parameter>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
       <parameter>form.type.form</parameter>
       <parameter>form.type.choice</parameter>
       <parameter>form.type.entity</parameter>
@@ -665,6 +669,7 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/asso/var/log/dev.log</argument>
     </service>
+<<<<<<< HEAD
     <service id="App\Controller\ActivitesController" class="App\Controller\ActivitesController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -679,6 +684,26 @@
       <tag name="doctrine.fixture.orm"/>
     </service>
     <service id="App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true">
+=======
+    <service id="App\Controller\AssosController" class="App\Controller\AssosController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\AssosController"/>
+      </call>
+    </service>
+    <service id="App\Controller\EventsController" class="App\Controller\EventsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\EventsController"/>
+      </call>
+    </service>
+    <service id="App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
+    </service>
+    <service id="App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true">
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true">
@@ -975,7 +1000,11 @@
         <argument>Sonata\AdminBundle\Form\Type\Filter</argument>
       </argument>
       <argument type="collection">
+<<<<<<< HEAD
         <argument>App\Form\ActivitesType</argument>
+=======
+        <argument>App\Form\EventsType</argument>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -1262,7 +1291,11 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
+<<<<<<< HEAD
       <argument type="service" id=".service_locator.7YGvL3w"/>
+=======
+      <argument type="service" id=".service_locator.LAN.fF1"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2418,14 +2451,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -5833,16 +5858,21 @@
       <call method="addFixtures">
         <argument type="collection">
           <argument type="collection">
+<<<<<<< HEAD
             <argument key="fixture" type="service" id="App\DataFixtures\ActivitesFixtures"/>
             <argument key="groups" type="collection"/>
           </argument>
           <argument type="collection">
             <argument key="fixture" type="service" id="App\DataFixtures\AppFixtures"/>
+=======
+            <argument key="fixture" type="service" id="App\DataFixtures\EventsFixtures"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
             <argument key="groups" type="collection"/>
           </argument>
         </argument>
       </call>
     </service>
+<<<<<<< HEAD
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5852,6 +5882,18 @@
     <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true" abstract="true"/>
+=======
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventsType" class="App\Form\EventsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true" abstract="true"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AgassoRepository" class="App\Repository\AgassoRepository" autowire="true" abstract="true"/>
@@ -6039,6 +6081,7 @@
         <argument>make:sonata:admin</argument>
       </call>
     </service>
+<<<<<<< HEAD
     <service id=".service_locator.ZE1Xd4E" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6066,6 +6109,21 @@
         <argument key="App\Controller\ActivitesController:form" type="service" id=".service_locator.Rj4akvv"/>
         <argument key="App\Controller\ActivitesController:index" type="service" id=".service_locator.ZE1Xd4E"/>
         <argument key="App\Controller\ActivitesController:show" type="service" id=".service_locator._jnw_mF"/>
+=======
+    <service id=".service_locator.NIoOI3Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.bL2d6.A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
       </argument>
     </service>
     <service id=".service_locator.yQVjGlt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6125,10 +6183,17 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
+<<<<<<< HEAD
     <service id=".service_locator.7YGvL3w" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ActivitesType" type="service" id="App\Form\ActivitesType"/>
+=======
+    <service id=".service_locator.LAN.fF1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Form\EventsType" type="service" id="App\Form\EventsType"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
         <argument key="Sonata\AdminBundle\Form\Type\AdminType" type="service" id="sonata.admin.form.type.admin"/>
         <argument key="Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType" type="service" id="sonata.admin.doctrine_orm.form.type.choice_field_mask"/>
         <argument key="Sonata\AdminBundle\Form\Type\CollectionType" type="service" id="sonata.admin.form.type.collection"/>
@@ -6372,9 +6437,21 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+<<<<<<< HEAD
     <service id=".service_locator.KTVqfp6.App\Controller\ActivitesController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\ActivitesController"/>
       <argument>App\Controller\ActivitesController</argument>
+=======
+    <service id=".service_locator.KTVqfp6.App\Controller\AssosController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\AssosController"/>
+      <argument>App\Controller\AssosController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\EventsController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\EventsController"/>
+      <argument>App\Controller\EventsController</argument>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
@@ -6470,7 +6547,11 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
+<<<<<<< HEAD
       <argument type="service" id=".service_locator.YHlNr3o"/>
+=======
+      <argument type="service" id=".service_locator.bL2d6.A"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -6831,7 +6912,11 @@
     <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
     <service id="Sonata\AdminBundle\Admin\Pool" alias="sonata.admin.pool"/>
     <service id="sonata.admin.security.handler" alias="sonata.admin.security.handler.noop"/>
+<<<<<<< HEAD
     <service id="argument_resolver.controller_locator" alias=".service_locator.YHlNr3o"/>
+=======
+    <service id="argument_resolver.controller_locator" alias=".service_locator.bL2d6.A"/>
+>>>>>>> 47509264ee234f0e113abbb62da9c57179da4d44
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>

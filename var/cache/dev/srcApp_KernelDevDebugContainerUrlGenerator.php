@@ -20,10 +20,10 @@ class srcApp_KernelDevDebugContainerUrlGenerator extends Symfony\Component\Routi
         $this->defaultLocale = $defaultLocale;
         if (null === self::$declaredRoutes) {
             self::$declaredRoutes = [
-        'Activites' => [[], ['_controller' => 'App\\Controller\\ActivitesController::index'], [], [['text', '/activites']], [], []],
-        'activites_create' => [[], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/activites/new']], [], []],
-        'activites_edit' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
-        'activites_show' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
+        'assos' => [[], ['_controller' => 'App\\Controller\\AssosController::index'], [], [['text', '/assos']], [], []],
+        'events' => [[], ['_controller' => 'App\\Controller\\EventsController::index'], [], [['text', '/events']], [], []],
+        'new_event' => [[], ['_controller' => 'App\\Controller\\EventsController::newEvent'], [], [['text', '/events/new']], [], []],
+        'event' => [['id'], ['_controller' => 'App\\Controller\\EventsController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/events']], [], []],
         'sonata_admin_redirect' => [[], ['_controller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController::redirectAction', 'route' => 'sonata_admin_dashboard', 'permanent' => 'true'], [], [['text', '/admin/']], [], []],
         'sonata_admin_dashboard' => [[], ['_controller' => 'Sonata\\AdminBundle\\Action\\DashboardAction'], [], [['text', '/admin/dashboard']], [], []],
         'sonata_admin_retrieve_form_element' => [[], ['_controller' => 'sonata.admin.action.retrieve_form_field_element'], [], [['text', '/admin/core/get-form-field-element']], [], []],

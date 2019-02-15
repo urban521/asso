@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <div class="row">
+            {% for event in events %}
+                <div class="card col-3">
+                    <div class="card-info">
+                        <!--<img src="http://placehold.it/255x180"> -->
+                        <h3>{{ event.title }}</h3>
+                        <h5>{{ event.lieu }}</h5>
+                        <h6>{{ event.dateEvent|date('Y-m-d') }}</h6>
+                
+                        <div class="links">
+                            <a href="#">Repost</a>
+                            <a href="#">Like</a>
+                            <a href="#">woohoo</a>
+                            <a href="{{ path('event', {'id': event.id}) }}">decouvrir</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+</section>
+{% endblock %}
