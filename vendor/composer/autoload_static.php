@@ -99,6 +99,7 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Sonata\\Form\\' => 12,
             'Sonata\\Exporter\\' => 16,
             'Sonata\\Doctrine\\' => 16,
+            'Sonata\\DoctrineORMAdminBundle\\' => 30,
             'Sonata\\DatagridBundle\\' => 22,
             'Sonata\\CoreBundle\\' => 18,
             'Sonata\\Cache\\' => 13,
@@ -135,6 +136,7 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             'Egulias\\EmailValidator\\' => 23,
             'EasyCorp\\EasyLog\\' => 17,
+            'EasyCorp\\Bundle\\EasyAdminBundle\\' => 32,
         ),
         'D' => 
         array (
@@ -438,6 +440,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/src',
         ),
+        'Sonata\\DoctrineORMAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sonata-project/doctrine-orm-admin-bundle/src',
+        ),
         'Sonata\\DatagridBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sonata-project/datagrid-bundle/src',
@@ -521,6 +527,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'EasyCorp\\EasyLog\\' => 
         array (
             0 => __DIR__ . '/..' . '/easycorp/easy-log-handler/src',
+        ),
+        'EasyCorp\\Bundle\\EasyAdminBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/easycorp/easyadmin-bundle/src',
         ),
         'Doctrine\\ORM\\' => 
         array (
@@ -608,6 +618,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'ProxyManager\\' => 
             array (
                 0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
+            ),
+            'Pagerfanta\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
             ),
         ),
         'D' => 
