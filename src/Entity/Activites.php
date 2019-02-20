@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Activites;
+use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActivitesRepository")
@@ -20,11 +23,13 @@ class Activites
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=5, max=255, minMessage="Votre titre dois avoir Minimun 5 Caracteres")
      */
     private $title_activite;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min=5)
      */
     private $decript_activite;
 
@@ -179,4 +184,10 @@ class Activites
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this -> title_activite;
+    }
+
 }

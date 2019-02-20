@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {% if editMode %}
+            Modifier l'Activité
+        {% else %}
+            Création d'une activité
+        {% endif %}
+    </h1>
+
+    {{ form_start(form) }}
+
+
+
+    <div class="form-group">
+        <label for="">Titre de l'Activité</label>
+        {{ form_widget(form.titleActivite, {'attr': {'placeholder': "Titre de l'activité"}}) }}
+
+        <label for="">Description de l'Activité</label>
+        {{ form_widget(form.decriptActivite, {'attr': {'placeholder': "Description de l'activité"}}) }}
+
+        <label for="">Image de l'activité</label>
+        {{ form_widget(form.picActivite1, {'attr': {'placeholder': "Image de l'activité"}}) }}
+    </div>
+    
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter une Activité
+        {% endif %}
+    </button>
+
+    {{ form_end(form) }}
+
+{% endblock %}

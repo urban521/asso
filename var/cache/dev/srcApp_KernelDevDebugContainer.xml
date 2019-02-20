@@ -29,6 +29,8 @@
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
       <parameter key="SonataAdminBundle">Sonata\AdminBundle\SonataAdminBundle</parameter>
       <parameter key="DoctrineFixturesBundle">Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle</parameter>
+      <parameter key="SonataDoctrineORMAdminBundle">Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle</parameter>
+      <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -110,6 +112,14 @@
       <parameter key="DoctrineFixturesBundle" type="collection">
         <parameter key="path">/var/www/asso/vendor/doctrine/doctrine-fixtures-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
+      </parameter>
+      <parameter key="SonataDoctrineORMAdminBundle" type="collection">
+        <parameter key="path">/var/www/asso/vendor/sonata-project/doctrine-orm-admin-bundle/src</parameter>
+        <parameter key="namespace">Sonata\DoctrineORMAdminBundle</parameter>
+      </parameter>
+      <parameter key="EasyAdminBundle" type="collection">
+        <parameter key="path">/var/www/asso/vendor/easycorp/easyadmin-bundle/src</parameter>
+        <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -301,6 +311,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception::showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">/var/www/asso/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -341,25 +352,10 @@
       <parameter>cmf.block.container</parameter>
       <parameter>cmf.block.slideshow</parameter>
     </parameter>
-    <parameter key="sonata_block.blocks" type="collection">
-      <parameter key="sonata.admin.block.admin_list" type="collection">
-        <parameter key="contexts" type="collection">
-          <parameter>admin</parameter>
-        </parameter>
-        <parameter key="templates" type="collection"/>
-        <parameter key="cache">sonata.cache.noop</parameter>
-        <parameter key="settings" type="collection"/>
-      </parameter>
-    </parameter>
+    <parameter key="sonata_block.blocks" type="collection"/>
     <parameter key="sonata_block.blocks_by_class" type="collection"/>
-    <parameter key="sonata_blocks.block_types" type="collection">
-      <parameter>sonata.admin.block.admin_list</parameter>
-    </parameter>
-    <parameter key="sonata_block.cache_blocks" type="collection">
-      <parameter key="by_type" type="collection">
-        <parameter key="sonata.admin.block.admin_list">sonata.cache.noop</parameter>
-      </parameter>
-    </parameter>
+    <parameter key="sonata_blocks.block_types" type="collection"/>
+    <parameter key="sonata_block.cache_blocks" type="collection"/>
     <parameter key="knp_menu.factory.class">Knp\Menu\MenuFactory</parameter>
     <parameter key="knp_menu.factory_extension.routing.class">Knp\Menu\Integration\Symfony\RoutingExtension</parameter>
     <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
@@ -441,11 +437,10 @@
     <parameter key="sonata.admin.configuration.dashboard_groups" type="collection"/>
     <parameter key="sonata.admin.configuration.dashboard_blocks" type="collection">
       <parameter type="collection">
-        <parameter key="type">sonata.admin.block.admin_list</parameter>
         <parameter key="position">left</parameter>
-        <parameter key="roles" type="collection"/>
         <parameter key="settings" type="collection"/>
-        <parameter key="class">col-md-4</parameter>
+        <parameter key="type">sonata.admin.block.admin_list</parameter>
+        <parameter key="roles" type="collection"/>
       </parameter>
     </parameter>
     <parameter key="sonata.admin.configuration.sort_admins">false</parameter>
@@ -496,6 +491,110 @@
     <parameter key="sonata.admin.configuration.filters.persister">sonata.admin.filter_persister.session</parameter>
     <parameter key="sonata.admin.configuration.show.mosaic.button">true</parameter>
     <parameter key="sonata.admin.configuration.translate_group_label">false</parameter>
+    <parameter key="sonata.admin.manipulator.acl.object.orm.class">Sonata\DoctrineORMAdminBundle\Util\ObjectAclManipulator</parameter>
+    <parameter key="sonata_doctrine_orm_admin.entity_manager">null</parameter>
+    <parameter key="sonata_doctrine_orm_admin.templates" type="collection">
+      <parameter key="types" type="collection">
+        <parameter key="list" type="collection">
+          <parameter key="array">@SonataAdmin/CRUD/list_array.html.twig</parameter>
+          <parameter key="boolean">@SonataAdmin/CRUD/list_boolean.html.twig</parameter>
+          <parameter key="date">@SonataAdmin/CRUD/list_date.html.twig</parameter>
+          <parameter key="time">@SonataAdmin/CRUD/list_time.html.twig</parameter>
+          <parameter key="datetime">@SonataAdmin/CRUD/list_datetime.html.twig</parameter>
+          <parameter key="text">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="textarea">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="email">@SonataAdmin/CRUD/list_email.html.twig</parameter>
+          <parameter key="trans">@SonataAdmin/CRUD/list_trans.html.twig</parameter>
+          <parameter key="string">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="smallint">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="bigint">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="integer">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="decimal">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="identifier">@SonataAdmin/CRUD/list_string.html.twig</parameter>
+          <parameter key="currency">@SonataAdmin/CRUD/list_currency.html.twig</parameter>
+          <parameter key="percent">@SonataAdmin/CRUD/list_percent.html.twig</parameter>
+          <parameter key="choice">@SonataAdmin/CRUD/list_choice.html.twig</parameter>
+          <parameter key="url">@SonataAdmin/CRUD/list_url.html.twig</parameter>
+          <parameter key="html">@SonataAdmin/CRUD/list_html.html.twig</parameter>
+        </parameter>
+        <parameter key="show" type="collection">
+          <parameter key="array">@SonataAdmin/CRUD/show_array.html.twig</parameter>
+          <parameter key="boolean">@SonataAdmin/CRUD/show_boolean.html.twig</parameter>
+          <parameter key="date">@SonataAdmin/CRUD/show_date.html.twig</parameter>
+          <parameter key="time">@SonataAdmin/CRUD/show_time.html.twig</parameter>
+          <parameter key="datetime">@SonataAdmin/CRUD/show_datetime.html.twig</parameter>
+          <parameter key="text">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="email">@SonataAdmin/CRUD/show_email.html.twig</parameter>
+          <parameter key="trans">@SonataAdmin/CRUD/show_trans.html.twig</parameter>
+          <parameter key="string">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="smallint">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="bigint">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="integer">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="decimal">@SonataAdmin/CRUD/base_show_field.html.twig</parameter>
+          <parameter key="currency">@SonataAdmin/CRUD/show_currency.html.twig</parameter>
+          <parameter key="percent">@SonataAdmin/CRUD/show_percent.html.twig</parameter>
+          <parameter key="choice">@SonataAdmin/CRUD/show_choice.html.twig</parameter>
+          <parameter key="url">@SonataAdmin/CRUD/show_url.html.twig</parameter>
+          <parameter key="html">@SonataAdmin/CRUD/show_html.html.twig</parameter>
+        </parameter>
+      </parameter>
+      <parameter key="form" type="collection">
+        <parameter>@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig</parameter>
+      </parameter>
+      <parameter key="filter" type="collection">
+        <parameter>@SonataDoctrineORMAdmin/Form/filter_admin_fields.html.twig</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="easyadmin.config" type="collection">
+      <parameter key="site_name">EasyAdmin</parameter>
+      <parameter key="formats" type="collection">
+        <parameter key="date">Y-m-d</parameter>
+        <parameter key="time">H:i:s</parameter>
+        <parameter key="datetime">F j, Y H:i</parameter>
+        <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
+      </parameter>
+      <parameter key="disabled_actions" type="collection"/>
+      <parameter key="translation_domain">messages</parameter>
+      <parameter key="user" type="collection">
+        <parameter key="display_name">true</parameter>
+        <parameter key="display_avatar">true</parameter>
+        <parameter key="name_property_path">__toString</parameter>
+        <parameter key="avatar_property_path">null</parameter>
+      </parameter>
+      <parameter key="design" type="collection">
+        <parameter key="brand_color">hsl(230, 55%, 60%)</parameter>
+        <parameter key="form_theme" type="collection">
+          <parameter>@EasyAdmin/form/bootstrap_4.html.twig</parameter>
+        </parameter>
+        <parameter key="assets" type="collection">
+          <parameter key="css" type="collection"/>
+          <parameter key="js" type="collection"/>
+          <parameter key="favicon" type="collection">
+            <parameter key="path">favicon.ico</parameter>
+            <parameter key="mime_type">image/x-icon</parameter>
+          </parameter>
+        </parameter>
+        <parameter key="menu" type="collection"/>
+      </parameter>
+      <parameter key="list" type="collection">
+        <parameter key="actions" type="collection"/>
+        <parameter key="collapse_actions">false</parameter>
+        <parameter key="batch_actions" type="collection"/>
+        <parameter key="max_results">15</parameter>
+      </parameter>
+      <parameter key="search" type="collection"/>
+      <parameter key="edit" type="collection">
+        <parameter key="actions" type="collection"/>
+      </parameter>
+      <parameter key="new" type="collection">
+        <parameter key="actions" type="collection"/>
+      </parameter>
+      <parameter key="show" type="collection">
+        <parameter key="actions" type="collection"/>
+        <parameter key="max_results">10</parameter>
+      </parameter>
+      <parameter key="entities" type="collection"/>
+    </parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -569,13 +668,20 @@
         <parameter>block</parameter>
         <parameter>@SonataBlock/Profiler/block.html.twig</parameter>
       </parameter>
+      <parameter key="easyadmin.data_collector" type="collection">
+        <parameter>easyadmin</parameter>
+        <parameter>@EasyAdmin/data_collector/easyadmin.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
       </parameter>
     </parameter>
     <parameter key="sonata.core.form.types" type="collection">
+      <parameter>App\Form\ActivitesType</parameter>
       <parameter>App\Form\EventsType</parameter>
+      <parameter>App\Form\RegistrationType</parameter>
+      <parameter>App\Form\UsersType</parameter>
       <parameter>form.type.form</parameter>
       <parameter>form.type.choice</parameter>
       <parameter>form.type.entity</parameter>
@@ -619,6 +725,12 @@
       <parameter>sonata.admin.form.filter.type.daterange</parameter>
       <parameter>sonata.admin.form.filter.type.datetime</parameter>
       <parameter>sonata.admin.form.filter.type.datetime_range</parameter>
+      <parameter>easyadmin.form.type</parameter>
+      <parameter>easyadmin.form.type.autocomplete</parameter>
+      <parameter>easyadmin.form.type.batch</parameter>
+      <parameter>easyadmin.form.type.divider</parameter>
+      <parameter>easyadmin.form.type.section</parameter>
+      <parameter>easyadmin.form.type.group</parameter>
     </parameter>
     <parameter key="sonata.core.form.type_extensions" type="collection">
       <parameter>form.type_extension.form.transformation_failure_handling</parameter>
@@ -632,6 +744,7 @@
       <parameter>sonata.admin.form.extension.field</parameter>
       <parameter>sonata.admin.form.extension.field.mopa</parameter>
       <parameter>sonata.admin.form.extension.choice</parameter>
+      <parameter>easyadmin.form.type.extension</parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection">
       <parameter>console.command.public_alias.doctrine_cache.contains_command</parameter>
@@ -685,10 +798,39 @@
         <argument type="service" id=".service_locator.KTVqfp6.App\Controller\EventsController"/>
       </call>
     </service>
+    <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\SecurityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\UsersController" class="App\Controller\UsersController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\UsersController"/>
+      </call>
+    </service>
+    <service id="App\DataFixtures\ActivitesFixtures" class="App\DataFixtures\ActivitesFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
+    </service>
+    <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
+      <tag name="doctrine.fixture.orm"/>
+    </service>
     <service id="App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UsersType" class="App\Form\UsersType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true">
@@ -720,6 +862,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -983,9 +1129,13 @@
         <argument>Sonata\BlockBundle\Form\Type</argument>
         <argument>Sonata\AdminBundle\Form\Type</argument>
         <argument>Sonata\AdminBundle\Form\Type\Filter</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ActivitesType</argument>
         <argument>App\Form\EventsType</argument>
+        <argument>App\Form\RegistrationType</argument>
+        <argument>App\Form\UsersType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type\EntityType</argument>
@@ -1029,6 +1179,12 @@
         <argument>Sonata\AdminBundle\Form\Type\Filter\DateRangeType</argument>
         <argument>Sonata\AdminBundle\Form\Type\Filter\DateTimeType</argument>
         <argument>Sonata\AdminBundle\Form\Type\Filter\DateTimeRangeType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminBatchFormType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type\TransformationFailureExtension</argument>
@@ -1042,10 +1198,12 @@
         <argument>Sonata\AdminBundle\Form\Extension\Field\Type\FormTypeFieldExtension</argument>
         <argument>Sonata\AdminBundle\Form\Extension\Field\Type\MopaCompatibilityTypeFieldExtension</argument>
         <argument>Sonata\AdminBundle\Form\Extension\ChoiceTypeExtension</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EasyAdminExtension</argument>
       </argument>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser</argument>
         <argument>Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser</argument>
+        <argument>EasyCorp\Bundle\EasyAdminBundle\Form\Guesser\MissingDoctrineOrmTypeGuesser</argument>
       </argument>
       <call method="setName">
         <argument>debug:form</argument>
@@ -1272,7 +1430,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.LAN.fF1"/>
+      <argument type="service" id=".service_locator..xLJTeG"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1283,6 +1441,7 @@
           <argument type="service" id="form.type_extension.form.data_collector"/>
           <argument type="service" id="sonata.admin.form.extension.field"/>
           <argument type="service" id="sonata.admin.form.extension.field.mopa"/>
+          <argument type="service" id="easyadmin.form.type.extension"/>
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="iterator">
           <argument type="service" id="form.type_extension.repeated.validator"/>
@@ -1297,6 +1456,7 @@
       <argument type="iterator">
         <argument type="service" id="form.type_guesser.validator"/>
         <argument type="service" id="form.type_guesser.doctrine"/>
+        <argument type="service" id="easyadmin.form.guesser.missing_doctrine_orm_type_guesser"/>
       </argument>
     </service>
     <service id="form.type_guesser.validator" class="Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser" public="false">
@@ -1500,6 +1660,8 @@
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.ar.xlf</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ar.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ar.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ar.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.ar.xlf</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.az.xlf</argument>
@@ -1513,6 +1675,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.bg.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.bg.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.bg.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.bg.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.bg.xlf</argument>
           </argument>
           <argument key="ca" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ca.xlf</argument>
@@ -1521,6 +1685,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ca.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ca.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ca.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ca.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.ca.xlf</argument>
           </argument>
           <argument key="cs" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.cs.xlf</argument>
@@ -1529,6 +1695,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.cs.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.cs.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.cs.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.cs.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.cs.xlf</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.cy.xlf</argument>
@@ -1537,6 +1705,8 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.da.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.da.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.da.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.da.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.da.xlf</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.de.xlf</argument>
@@ -1547,11 +1717,15 @@
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.de.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.de.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.de.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.de.xlf</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.el.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.el.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.el.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.el.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.el.xlf</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.en.xlf</argument>
@@ -1562,6 +1736,8 @@
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.en.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.en.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.en.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.en.xlf</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.es.xlf</argument>
@@ -1570,6 +1746,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.es.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.es.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.es.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.es.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.es.xlf</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.et.xlf</argument>
@@ -1581,6 +1759,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.eu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.eu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.eu.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.eu.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.eu.xlf</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fa.xlf</argument>
@@ -1589,11 +1769,15 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.fa.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.fa.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.fa.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.fa.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.fa.xlf</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fi.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.fi.xlf</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.fi.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.fi.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.fi.xlf</argument>
           </argument>
           <argument key="fr" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.fr.xlf</argument>
@@ -1604,11 +1788,15 @@
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/validators.fr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.fr.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.fr.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.fr.xlf</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.gl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.gl.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.gl.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.gl.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.gl.xlf</argument>
           </argument>
           <argument key="he" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.he.xlf</argument>
@@ -1622,6 +1810,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.hr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.hr.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.hr.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.hr.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.hr.xlf</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.hu.xlf</argument>
@@ -1631,6 +1821,8 @@
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.hu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.hu.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.hu.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.hu.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.hu.xlf</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.hy.xlf</argument>
@@ -1649,6 +1841,8 @@
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.it.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.it.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.it.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.it.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.it.xlf</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ja.xlf</argument>
@@ -1673,6 +1867,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.lt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.lt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.lt.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.lt.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.lt.xlf</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.lv.xlf</argument>
@@ -1696,6 +1892,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.nl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.nl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.nl.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.nl.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.nl.xlf</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.nn.xlf</argument>
@@ -1715,6 +1913,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.pl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.pl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.pl.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.pl.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.pl.xlf</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.pt.xlf</argument>
@@ -1722,6 +1922,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.pt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.pt.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.pt.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.pt.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.pt.xlf</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.pt_BR.xlf</argument>
@@ -1738,6 +1940,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.ro.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ro.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ro.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ro.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.ro.xlf</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.ru.xlf</argument>
@@ -1747,6 +1951,8 @@
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.ru.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/block-bundle/src/Resources/translations/SonataBlockBundle.ru.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.ru.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ru.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.ru.xlf</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sk.xlf</argument>
@@ -1763,6 +1969,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.sl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.sl.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.sl.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.sl.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.sl.xlf</argument>
           </argument>
           <argument key="sq" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sq.xlf</argument>
@@ -1781,6 +1989,8 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.sv.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/form/Resources/translations/validators.sv.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.sv.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.sv.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.sv.xlf</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.th.xlf</argument>
@@ -1795,6 +2005,8 @@
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.tr.xlf</argument>
             <argument>/var/www/asso/vendor/symfony/security-core/Resources/translations/security.tr.xlf</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.tr.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.tr.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.tr.xlf</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.uk.xlf</argument>
@@ -1802,6 +2014,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.uk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.uk.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.uk.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.uk.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.uk.xlf</argument>
           </argument>
           <argument key="vi" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.vi.xlf</argument>
@@ -1815,6 +2029,8 @@
             <argument>/var/www/asso/vendor/sonata-project/datagrid-bundle/src/Resources/translations/SonataDatagridBundle.zh_CN.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/core-bundle/src/CoreBundle/Resources/translations/SonataCoreBundle.zh_CN.xliff</argument>
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.zh_CN.xliff</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.zh_CN.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.zh_CN.xlf</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.zh_TW.xlf</argument>
@@ -1831,6 +2047,10 @@
           <argument key="zh_HK" type="collection">
             <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/translations/SonataAdminBundle.zh_HK.xliff</argument>
           </argument>
+          <argument key="sr_RS" type="collection">
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.sr_RS.xlf</argument>
+            <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/translations/messages.sr_RS.xlf</argument>
+          </argument>
         </argument>
       </argument>
       <call method="setConfigCacheFactory">
@@ -1838,6 +2058,7 @@
       </call>
       <call method="setFallbackLocales">
         <argument type="collection">
+          <argument>en</argument>
           <argument>en</argument>
         </argument>
       </call>
@@ -2103,6 +2324,9 @@
         <argument type="service" id="sonata.block.data_collector"/>
       </call>
       <call method="add">
+        <argument type="service" id="easyadmin.data_collector"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.config"/>
       </call>
     </service>
@@ -2279,6 +2503,22 @@
         <argument type="collection">
           <argument type="service" id="sonata.block.cache.handler.default"/>
           <argument>onKernelResponse</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.controller</argument>
+        <argument type="collection">
+          <argument type="service" id="easyadmin.listener.controller"/>
+          <argument>onKernelController</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>easy_admin.post_initialize</argument>
+        <argument type="collection">
+          <argument type="service" id="easyadmin.listener.request_post_initialize"/>
+          <argument>initializeRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3205,7 +3445,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.EYGw1Cp"/>
+      <argument type="service" id=".service_locator.9YWaHjN"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3463,6 +3703,7 @@
     </service>
     <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
       <argument type="iterator">
+        <argument type="service" id="security.authentication.provider.dao.main"/>
         <argument type="service" id="security.authentication.provider.anonymous.main"/>
       </argument>
       <argument>true</argument>
@@ -3481,7 +3722,14 @@
       <argument>none</argument>
     </service>
     <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="App\Entity\Utilisateur" type="collection">
+          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>13</argument>
+          </argument>
+        </argument>
+      </argument>
     </service>
     <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -3541,6 +3789,14 @@
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <call method="registerListener">
+        <argument>main</argument>
+        <argument>security_logout</argument>
+        <argument>logout</argument>
+        <argument>_csrf_token</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.user.provider.missing" class="Symfony\Component\Security\Core\User\MissingUserProvider" public="false" abstract="true">
       <argument></argument>
@@ -3602,6 +3858,7 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
         <argument type="service" id="security.user.provider.concrete.in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.in_database"/>
       </argument>
       <argument></argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -3906,6 +4163,12 @@
     <service id="security.user.provider.concrete.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false">
       <argument type="collection"/>
     </service>
+    <service id="security.user.provider.concrete.in_database" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument>App\Entity\Utilisateur</argument>
+      <argument>email</argument>
+      <argument>null</argument>
+    </service>
     <service id="security.firewall.map.config.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
       <argument>dev</argument>
       <argument>security.user_checker</argument>
@@ -3935,12 +4198,13 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>false</argument>
-      <argument>security.user.provider.concrete.in_memory</argument>
+      <argument>security.user.provider.concrete.in_database</argument>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument>security.authentication.form_entry_point.main</argument>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="collection">
+        <argument>form_login</argument>
         <argument>anonymous</argument>
       </argument>
       <argument>null</argument>
@@ -3949,11 +4213,98 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
         <argument type="service" id="security.user.provider.concrete.in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.in_database"/>
       </argument>
       <argument>main</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
       <argument type="service" id="security.authentication.trust_resolver"/>
+    </service>
+    <service id="security.logout_listener.main" class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.logout.success_handler.main"/>
+      <argument type="collection">
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">logout</argument>
+        <argument key="logout_path">security_logout</argument>
+      </argument>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.csrf_token_clearing"/>
+      </call>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.session"/>
+      </call>
+    </service>
+    <service id="security.logout.success_handler.main" class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument>security_login</argument>
+    </service>
+    <service id="security.authentication.provider.dao.main" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
+      <argument type="service" id="security.user.provider.concrete.in_database"/>
+      <argument type="service" id="security.user_checker"/>
+      <argument>main</argument>
+      <argument type="service" id="security.encoder_factory.generic"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.authentication.success_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">security_login</argument>
+          <argument key="always_use_default_target_path">false</argument>
+          <argument key="default_target_path">/</argument>
+          <argument key="target_path_parameter">_target_path</argument>
+          <argument key="use_referer">false</argument>
+        </argument>
+      </call>
+      <call method="setProviderKey">
+        <argument>main</argument>
+      </call>
+    </service>
+    <service id="security.authentication.failure_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">security_login</argument>
+          <argument key="failure_path">null</argument>
+          <argument key="failure_forward">false</argument>
+          <argument key="failure_path_parameter">_failure_path</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="security.authentication.listener.form.main" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
+      <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.in_database"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>main</argument>
+      <argument type="service" id="security.authentication.success_handler.main.form_login"/>
+      <argument type="service" id="security.authentication.failure_handler.main.form_login"/>
+      <argument type="collection">
+        <argument key="check_path">security_login</argument>
+        <argument key="use_forward">false</argument>
+        <argument key="require_previous_session">false</argument>
+        <argument key="username_parameter">_username</argument>
+        <argument key="password_parameter">_password</argument>
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">authenticate</argument>
+        <argument key="post_only">true</argument>
+      </argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.authentication.form_entry_point.main" class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>security_login</argument>
+      <argument>false</argument>
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3969,7 +4320,7 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument type="service" id="security.authentication.form_entry_point.main"/>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -3979,11 +4330,12 @@
       <argument type="iterator">
         <argument type="service" id="security.channel_listener"/>
         <argument type="service" id="security.context_listener.0"/>
+        <argument type="service" id="security.authentication.listener.form.main"/>
         <argument type="service" id="security.authentication.listener.anonymous.main"/>
         <argument type="service" id="security.access_listener"/>
       </argument>
       <argument type="service" id="security.exception_listener.main"/>
-      <argument>null</argument>
+      <argument type="service" id="security.logout_listener.main"/>
       <argument type="service" id="security.firewall.map.config.main"/>
     </service>
     <service id=".service_locator.ko2dQVn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3996,7 +4348,9 @@
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>App\Entity\Utilisateur</argument>
+      </argument>
       <call method="setName">
         <argument>security:encode-password</argument>
       </call>
@@ -4106,10 +4460,11 @@
         <argument key="default_path">/var/www/asso/templates</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">twig.controller.exception::showAction</argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
+          <argument>bootstrap_4_layout.html.twig</argument>
         </argument>
+        <argument key="exception_controller">twig.controller.exception::showAction</argument>
         <argument key="autoescape">name</argument>
         <argument key="cache">/var/www/asso/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
@@ -4210,6 +4565,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="sonata.templates.twig.extension"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="easyadmin.twig.extension"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
@@ -4369,6 +4727,22 @@
       <call method="addPath">
         <argument>/var/www/asso/vendor/sonata-project/admin-bundle/src/Resources/views</argument>
         <argument>!SonataAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/sonata-project/doctrine-orm-admin-bundle/src/Resources/views</argument>
+        <argument>SonataDoctrineORMAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/sonata-project/doctrine-orm-admin-bundle/src/Resources/views</argument>
+        <argument>!SonataDoctrineORMAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/views</argument>
+        <argument>EasyAdmin</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/views</argument>
+        <argument>!EasyAdmin</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/asso/templates</argument>
@@ -5150,9 +5524,7 @@
       <call method="add">
         <argument>sonata.admin.block.admin_list</argument>
         <argument>sonata.admin.block.admin_list</argument>
-        <argument type="collection">
-          <argument>admin</argument>
-        </argument>
+        <argument type="collection"/>
       </call>
       <call method="add">
         <argument>sonata.admin.block.search_result</argument>
@@ -5174,7 +5546,7 @@
     <service id="sonata.block.context_manager.default" class="Sonata\BlockBundle\Block\BlockContextManager" public="true">
       <argument type="service" id="sonata.block.loader.chain"/>
       <argument type="service" id="sonata.block.manager"/>
-      <argument>%sonata_block.cache_blocks%</argument>
+      <argument type="collection"/>
       <argument type="service" id="monolog.logger" on-invalid="ignore"/>
     </service>
     <service id="sonata.block.renderer.default" class="Sonata\BlockBundle\Block\BlockRenderer" public="true">
@@ -5190,7 +5562,7 @@
     <service id="sonata.block.templating.helper" class="Sonata\BlockBundle\Templating\Helper\BlockHelper">
       <tag name="templating.helper" alias="sonata_block"/>
       <argument type="service" id="sonata.block.manager"/>
-      <argument>%sonata_block.cache_blocks%</argument>
+      <argument type="collection"/>
       <argument type="service" id="sonata.block.renderer.default"/>
       <argument type="service" id="sonata.block.context_manager.default"/>
       <argument type="service" id="debug.event_dispatcher"/>
@@ -5206,7 +5578,6 @@
     <service id="sonata.block.loader.service" class="Sonata\BlockBundle\Block\Loader\ServiceLoader">
       <tag name="sonata.block.loader"/>
       <argument type="collection">
-        <argument key="0">sonata.admin.block.admin_list</argument>
         <argument key="sonata.block.service.container" type="collection">
           <argument key="context" type="collection"/>
         </argument>
@@ -5479,7 +5850,34 @@
     </service>
     <service id="sonata.admin.builder.filter.factory" class="Sonata\AdminBundle\Filter\FilterFactory" public="true">
       <argument type="service" id="service_container"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\BooleanFilter">sonata.admin.orm.filter.type.boolean</argument>
+        <argument key="doctrine_orm_boolean">sonata.admin.orm.filter.type.boolean</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\CallbackFilter">sonata.admin.orm.filter.type.callback</argument>
+        <argument key="doctrine_orm_callback">sonata.admin.orm.filter.type.callback</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\ChoiceFilter">sonata.admin.orm.filter.type.choice</argument>
+        <argument key="doctrine_orm_choice">sonata.admin.orm.filter.type.choice</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\ModelFilter">sonata.admin.orm.filter.type.model</argument>
+        <argument key="doctrine_orm_model">sonata.admin.orm.filter.type.model</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\ModelAutocompleteFilter">sonata.admin.orm.filter.type.model_autocomplete</argument>
+        <argument key="doctrine_orm_model_autocomplete">sonata.admin.orm.filter.type.model_autocomplete</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\StringFilter">sonata.admin.orm.filter.type.string</argument>
+        <argument key="doctrine_orm_string">sonata.admin.orm.filter.type.string</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\NumberFilter">sonata.admin.orm.filter.type.number</argument>
+        <argument key="doctrine_orm_number">sonata.admin.orm.filter.type.number</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\DateFilter">sonata.admin.orm.filter.type.date</argument>
+        <argument key="doctrine_orm_date">sonata.admin.orm.filter.type.date</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\DateRangeFilter">sonata.admin.orm.filter.type.date_range</argument>
+        <argument key="doctrine_orm_date_range">sonata.admin.orm.filter.type.date_range</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\DateTimeFilter">sonata.admin.orm.filter.type.datetime</argument>
+        <argument key="doctrine_orm_datetime">sonata.admin.orm.filter.type.datetime</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\TimeFilter">sonata.admin.orm.filter.type.time</argument>
+        <argument key="doctrine_orm_time">sonata.admin.orm.filter.type.time</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\DateTimeRangeFilter">sonata.admin.orm.filter.type.datetime_range</argument>
+        <argument key="doctrine_orm_datetime_range">sonata.admin.orm.filter.type.datetime_range</argument>
+        <argument key="Sonata\DoctrineORMAdminBundle\Filter\ClassFilter">sonata.admin.orm.filter.type.class</argument>
+        <argument key="doctrine_orm_class">sonata.admin.orm.filter.type.class</argument>
+      </argument>
     </service>
     <service id="sonata.admin.breadcrumbs_builder" class="Sonata\AdminBundle\Admin\BreadcrumbsBuilder" public="true">
       <argument>%sonata.admin.configuration.breadcrumbs%</argument>
@@ -5791,7 +6189,13 @@
     <service id="sonata.admin.maker" class="Sonata\AdminBundle\Maker\AdminMaker" public="false">
       <tag name="maker.command"/>
       <argument>/var/www/asso</argument>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="sonata.admin.manager.orm" type="service">
+          <service class="Sonata\DoctrineORMAdminBundle\Model\ModelManager" public="true">
+            <argument type="service" id="doctrine"/>
+          </service>
+        </argument>
+      </argument>
     </service>
     <service id="sonata.admin.security.handler.noop" class="Sonata\AdminBundle\Security\Handler\NoopSecurityHandler" public="false"/>
     <service id="sonata.admin.security.handler.role" class="Sonata\AdminBundle\Security\Handler\RoleSecurityHandler" public="false">
@@ -5834,6 +6238,14 @@
       <call method="addFixtures">
         <argument type="collection">
           <argument type="collection">
+            <argument key="fixture" type="service" id="App\DataFixtures\ActivitesFixtures"/>
+            <argument key="groups" type="collection"/>
+          </argument>
+          <argument type="collection">
+            <argument key="fixture" type="service" id="App\DataFixtures\AppFixtures"/>
+            <argument key="groups" type="collection"/>
+          </argument>
+          <argument type="collection">
             <argument key="fixture" type="service" id="App\DataFixtures\EventsFixtures"/>
             <argument key="groups" type="collection"/>
           </argument>
@@ -5849,10 +6261,26 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\EventsController" class="App\Controller\EventsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UsersController" class="App\Controller\UsersController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UsersController" class="App\Controller\UsersController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UsersController" class="App\Controller\UsersController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\ActivitesFixtures" class="App\DataFixtures\ActivitesFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\ActivitesFixtures" class="App\DataFixtures\ActivitesFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\EventsFixtures" class="App\DataFixtures\EventsFixtures" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventsType" class="App\Form\EventsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UsersType" class="App\Form\UsersType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UsersType" class="App\Form\UsersType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActivitesRepository" class="App\Repository\ActivitesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AgassoRepository" class="App\Repository\AgassoRepository" autowire="true" abstract="true"/>
@@ -5869,6 +6297,8 @@
     <service id=".abstract.instanceof.App\Repository\PublicsRepository" class="App\Repository\PublicsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="maker.auto_command.make_auth" class="Symfony\Bundle\MakerBundle\Command\MakerCommand" public="false">
       <tag name="console.command" command="make:auth"/>
       <argument type="service" id="maker.maker.make_authenticator"/>
@@ -6071,6 +6501,12 @@
         <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.czKK4py"/>
+        <argument key="App\Controller\UsersController:delete" type="service" id=".service_locator.CLREBB2"/>
+        <argument key="App\Controller\UsersController:edit" type="service" id=".service_locator.CLREBB2"/>
+        <argument key="App\Controller\UsersController:index" type="service" id=".service_locator.LVd5Q4X"/>
+        <argument key="App\Controller\UsersController:new" type="service" id=".service_locator.SxwvHq3"/>
+        <argument key="App\Controller\UsersController:show" type="service" id=".service_locator.CLREBB2"/>
       </argument>
     </service>
     <service id=".service_locator.yQVjGlt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6130,10 +6566,19 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.LAN.fF1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator..xLJTeG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ActivitesType" type="service" id="App\Form\ActivitesType"/>
         <argument key="App\Form\EventsType" type="service" id="App\Form\EventsType"/>
+        <argument key="App\Form\RegistrationType" type="service" id="App\Form\RegistrationType"/>
+        <argument key="App\Form\UsersType" type="service" id="App\Form\UsersType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType" type="service" id="easyadmin.form.type.autocomplete"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminBatchFormType" type="service" id="easyadmin.form.type.batch"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType" type="service" id="easyadmin.form.type.divider"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType" type="service" id="easyadmin.form.type"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType" type="service" id="easyadmin.form.type.group"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType" type="service" id="easyadmin.form.type.section"/>
         <argument key="Sonata\AdminBundle\Form\Type\AdminType" type="service" id="sonata.admin.form.type.admin"/>
         <argument key="Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType" type="service" id="sonata.admin.doctrine_orm.form.type.choice_field_mask"/>
         <argument key="Sonata\AdminBundle\Form\Type\CollectionType" type="service" id="sonata.admin.form.type.collection"/>
@@ -6185,7 +6630,7 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.EYGw1Cp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.9YWaHjN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActivitesRepository" type="service" id="App\Repository\ActivitesRepository"/>
@@ -6196,6 +6641,7 @@
         <argument key="App\Repository\InscriptionRepository" type="service" id="App\Repository\InscriptionRepository"/>
         <argument key="App\Repository\PublicsRepository" type="service" id="App\Repository\PublicsRepository"/>
         <argument key="App\Repository\UsersRepository" type="service" id="App\Repository\UsersRepository"/>
+        <argument key="App\Repository\UtilisateurRepository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
     </service>
     <service id="debug.security.voter.security.access.authenticated_voter" class="Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter">
@@ -6395,6 +6841,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
+      <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\UsersController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\UsersController"/>
+      <argument>App\Controller\UsersController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator._pu.0Tb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6449,6 +6907,35 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.lSIKWsr" method="withContext"/>
     </service>
+    <service id=".service_locator.35kQ1_l" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="doctrine" type="service" id="doctrine" on-invalid="ignore"/>
+        <argument key="easyadmin.autocomplete" type="service" id="easyadmin.autocomplete"/>
+        <argument key="easyadmin.config.manager" type="service" id="easyadmin.config.manager"/>
+        <argument key="easyadmin.paginator" type="service" id="easyadmin.paginator"/>
+        <argument key="easyadmin.property_accessor" type="service" id="property_accessor"/>
+        <argument key="easyadmin.query_builder" type="service" id="easyadmin.query_builder"/>
+        <argument key="event_dispatcher" type="service" id="debug.event_dispatcher"/>
+        <argument key="form.factory" type="service" id="form.factory" on-invalid="ignore"/>
+        <argument key="http_kernel" type="service" id="http_kernel" on-invalid="ignore"/>
+        <argument key="parameter_bag" type="service" id="parameter_bag" on-invalid="ignore"/>
+        <argument key="request_stack" type="service" id="request_stack" on-invalid="ignore"/>
+        <argument key="router" type="service" id="router.default" on-invalid="ignore"/>
+        <argument key="security.authorization_checker" type="service" id="security.authorization_checker" on-invalid="ignore"/>
+        <argument key="security.csrf.token_manager" type="service" id="security.csrf.token_manager" on-invalid="ignore"/>
+        <argument key="security.token_storage" type="service" id="security.token_storage" on-invalid="ignore"/>
+        <argument key="serializer" type="service" id="serializer" on-invalid="ignore"/>
+        <argument key="session" type="service" id="session" on-invalid="ignore"/>
+        <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
+      </argument>
+    </service>
+    <service id=".service_locator.35kQ1_l.EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController"/>
+      <argument>EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.35kQ1_l" method="withContext"/>
+    </service>
     <service id="debug.validator.inner" class="Symfony\Component\Validator\Validator\ValidatorInterface" public="false">
       <factory service="validator.builder" method="getValidator"/>
     </service>
@@ -6491,6 +6978,8 @@
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
+    <service id=".errored..service_locator._jnw_mF.App\Entity\Activites" class="App\Entity\Activites"/>
+    <service id=".errored..service_locator.CLREBB2.App\Entity\Users" class="App\Entity\Users"/>
     <service id=".service_locator.UIg4wwt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6819,7 +7308,6 @@
     <service id="Symfony\Component\Security\Http\HttpUtils" alias="security.http_utils" public="false"/>
     <service id="Symfony\Component\Security\Guard\GuardAuthenticatorHandler" alias="security.authentication.guard_handler" public="false"/>
     <service id="security.firewall" alias="debug.security.firewall" public="false"/>
-    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.in_memory"/>
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
