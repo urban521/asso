@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Licencier</h1>
+    <div class="container">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Numero de Licence</th>
+                <td>{{ user.numLicence }}</td>
+            </tr>
+            <tr>
+                <th>Civilite mr</th>
+                <td>{{ user.civiliteMr }}</td>
+            </tr>
+            <tr>
+                <th>Civilite mme</th>
+                <td>{{ user.civiliteMme }}</td>
+            </tr>
+            <tr>
+                <th>Votre Nom</th>
+                <td>{{ user.nomUser }}</td>
+            </tr>
+            <tr>
+                <th>votre Nom de jeune fille</th>
+                <td>{{ user.nomFille }}</td>
+            </tr>
+            <tr>
+                <th> votre Prénom</th>
+                <td>{{ user.prenomUser }}</td>
+            </tr>
+            <tr>
+                <th>Votre date de naissance</th>
+                <td>{{ user.dateNaissance ? user.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Votre Numero de Téléphone 1</th>
+                <td>{{ user.tel1 }}</td>
+            </tr>
+            <tr>
+                <th>Votre Numero de Téléphone 2</th>
+                <td>{{ user.tel2 }}</td>
+            </tr>
+            <tr>
+                <th>Votre Email</th>
+                <td>{{ user.emailUser }}</td>
+            </tr>
+            <tr>
+                <th>Votre adresse</th>
+                <td>{{ user.rue }}</td>
+            </tr>
+            <tr>
+                <th>Votre Code Postal</th>
+                <td>{{ user.cpUser }}</td>
+            </tr>
+            <tr>
+                <th>Votre Ville</th>
+                <td>{{ user.villeUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <a href="{{ path('users_index') }}">Retour à la liste</button></a>
+
+    <a href="{{ path('users_edit', {'id': user.id}) }}">editer</a>
+
+    {{ include('users/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

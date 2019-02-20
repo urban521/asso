@@ -2,9 +2,7 @@
 
 namespace App\Entity;
 
-
-
-use App\Entity\Users;
+use App\Entity\Activites;
 use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
@@ -186,4 +184,10 @@ class Activites
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this -> title_activite;
+    }
+
 }

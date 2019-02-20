@@ -9,16 +9,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ActivitesType extends AbstractType
 {
+    
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('titleActivite')
             ->add('decriptActivite')
             ->add('picActivite1')
-            //->add('pic_activite2')
-            //->add('pic_activite3')
-            //->add('users')
-            //->add('associations')
+            ->add('pic_activite2')
+            ->add('pic_activite3')
+            ->add('users')
+            ->add('associations')
         ;
     }
 
@@ -27,5 +29,5 @@ class ActivitesType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Activites::class,
         ]);
-    }
+    }   
 }

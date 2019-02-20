@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Users;
 use App\Entity\Activites;
 use App\Form\ActivitesType;
 use App\Controller\ActivitesController;
@@ -66,4 +66,9 @@ class ActivitesController extends AbstractController
             'activites' => $activites
         ]);
     }
+
+    /**
+     * Generates the magic method
+     * 
+     */
 }

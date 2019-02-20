@@ -13,6 +13,8 @@
     "build": "encore production --progress"
   },
   "dependencies": {
+    "@fullcalendar/core": "^4.0.0-beta.4",
+    "@fullcalendar/daygrid": "^4.0.0-beta.4",
     "animate.css": "^3.7.0"
   }
 }
