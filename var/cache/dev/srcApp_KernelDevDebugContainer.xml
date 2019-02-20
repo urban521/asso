@@ -664,6 +664,13 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/asso/var/log/dev.log</argument>
     </service>
+    <service id="App\Controller\AgassoController" class="App\Controller\AgassoController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\AgassoController"/>
+      </call>
+    </service>
     <service id="App\Controller\AssosController" class="App\Controller\AssosController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5833,6 +5840,9 @@
         </argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AgassoController" class="App\Controller\AgassoController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AgassoController" class="App\Controller\AgassoController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AgassoController" class="App\Controller\AgassoController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AssosController" class="App\Controller\AssosController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6030,17 +6040,35 @@
         <argument>make:sonata:admin</argument>
       </call>
     </service>
+    <service id=".service_locator.wZ.qUNB" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\AgassoRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Ty.OUX2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service" id="App\Repository\AssociationRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.NIoOI3Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.bL2d6.A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.3VH9Hkg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AgassoController::index" type="service" id=".service_locator.wZ.qUNB"/>
+        <argument key="App\Controller\AgassoController::show" type="service" id=".service_locator.wZ.qUNB"/>
+        <argument key="App\Controller\AssosController::index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
+        <argument key="App\Controller\AgassoController:index" type="service" id=".service_locator.wZ.qUNB"/>
+        <argument key="App\Controller\AgassoController:show" type="service" id=".service_locator.wZ.qUNB"/>
+        <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
       </argument>
@@ -6349,6 +6377,12 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\AgassoController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\AgassoController"/>
+      <argument>App\Controller\AgassoController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator.KTVqfp6.App\Controller\AssosController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\AssosController"/>
       <argument>App\Controller\AssosController</argument>
@@ -6453,7 +6487,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.bL2d6.A"/>
+      <argument type="service" id=".service_locator.3VH9Hkg"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -6813,7 +6847,7 @@
     <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
     <service id="Sonata\AdminBundle\Admin\Pool" alias="sonata.admin.pool"/>
     <service id="sonata.admin.security.handler" alias="sonata.admin.security.handler.noop"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.bL2d6.A"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.3VH9Hkg"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>

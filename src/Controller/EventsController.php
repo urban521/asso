@@ -26,6 +26,47 @@ class EventsController extends AbstractController
         ]);
     }
     /**
+     * @Route("/events/{id}/edit", name="modif_event")
+     */
+    public function modifierProduit($id,Request $request) {
+    	$events = $this->getDoctrine()
+    	                ->getRepository(Events::class)
+    	                ->find($id);
+
+    	$form = $this->createFormBuilder($events)
+            ->add('title',TextType::class)
+            ->add('lieu',TextType::class)
+            ->add('dateEvent',DateType::class)
+            ->add('picEvent1',TextType::class)
+            ->add('picEvent2',TextType::class)
+            ->add('picEvent3',TextType::class)
+            ->add('picEvent4',TextType::class)
+            ->add('participeOui',TextType::class)
+            ->add('participeNon',TextType::class)
+            ->add('participePe',TextType::class)
+            ->add('descriptEvent',TextareaType::class)
+            ->getForm();
+            
+            $form->handleRequest($request);
+
+	    if ($form->isSubmitted() && $form->isValid()) {
+	        
+	        $events = $form->getData();
+
+	       
+	         $entityManager = $this->getDoctrine()->getManager();
+	         
+	         $entityManager->flush();
+
+	        return $this->redirectToRoute('events');
+	    }
+
+        return $this->render('events/newevent.html.twig', [
+           'form' => $form->createView(),
+           'editMode' => $events->getId() !== null
+        ]);
+    }
+    /**
      * @Route("/events/new", name="new_event")
      */
     public function newEvent(Request $request) {
@@ -59,6 +100,7 @@ class EventsController extends AbstractController
         }
         return $this->render('events/newevent.html.twig', [
             'form' => $form->createView(),
+            'editMode' => $events->getId() !== null
         ]);
     }
     /**

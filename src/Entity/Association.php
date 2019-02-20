@@ -91,7 +91,7 @@ class Association
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adress_correspondant;
+    private $adress_correspondant; 
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Agasso", mappedBy="association")
@@ -382,4 +382,9 @@ class Association
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->getNomAsso();
+    }
+
 }

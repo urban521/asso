@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AgassoController!{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_widget(form.ag,{'attr':{'placeholder':'ag'}}) }}
+        {{ form_widget(form.pvAg,{'attr':{'placeholder':'pvpg'}}) }}
+        {{ form_widget(form.dateAg) }}
+        <button type="submit">Ajouter</button>
+     {{ form_end(form) }}
+{% endblock %}

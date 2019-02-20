@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AgassoController!{% endblock %}
+
+{% block body %}
+    <a href="/{{id}}/agasso/new" class="btn btn-primary">new</a>
+    <div class="container">
+        {% for agasso in agasso %}
+            <h3>{{ agasso.ag }}</h3>
+            <h5>{{ agasso.dateAg|date('d-m-Y') }}</h5>
+            <a href="{{ path('agassos', {'id': agasso.id}) }}">decouvrir</a>
+        {% endfor %}
+    </div>
+    
+{% endblock %}
