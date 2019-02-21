@@ -32,6 +32,11 @@ class Agasso
      */
     private $association;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pv_ag;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Agasso
     public function setAssociation(?Association $association): self
     {
         $this->association = $association;
+
+        return $this;
+    }
+
+    public function getPvAg(): ?string
+    {
+        return $this->pv_ag;
+    }
+
+    public function setPvAg(string $pv_ag): self
+    {
+        $this->pv_ag = $pv_ag;
 
         return $this;
     }

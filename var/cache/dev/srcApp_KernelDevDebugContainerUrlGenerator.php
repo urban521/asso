@@ -20,12 +20,13 @@ class srcApp_KernelDevDebugContainerUrlGenerator extends Symfony\Component\Routi
         $this->defaultLocale = $defaultLocale;
         if (null === self::$declaredRoutes) {
             self::$declaredRoutes = [
-        'Activites' => [[], ['_controller' => 'App\\Controller\\ActivitesController::index'], [], [['text', '/activites']], [], []],
-        'activites_create' => [[], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/activites/new']], [], []],
-        'activites_edit' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
-        'activites_show' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
+        'agasso' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::index'], [], [['text', '/agasso'], ['variable', '/', '[^/]++', 'id', true]], [], []],
+        'new_agasso' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::newAgasso'], [], [['text', '/agasso/new'], ['variable', '/', '[^/]++', 'id', true]], [], []],
+        'agassos' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/agasso']], [], []],
         'assos' => [[], ['_controller' => 'App\\Controller\\AssosController::index'], [], [['text', '/assos']], [], []],
+        'new_assos' => [[], ['_controller' => 'App\\Controller\\AssosController::newAsso'], [], [['text', '/assos/new']], [], []],
         'events' => [[], ['_controller' => 'App\\Controller\\EventsController::index'], [], [['text', '/events']], [], []],
+        'modif_event' => [['id'], ['_controller' => 'App\\Controller\\EventsController::modifierProduit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/events']], [], []],
         'new_event' => [[], ['_controller' => 'App\\Controller\\EventsController::newEvent'], [], [['text', '/events/new']], [], []],
         'event' => [['id'], ['_controller' => 'App\\Controller\\EventsController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/events']], [], []],
         'security_registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/security']], [], []],
