@@ -4,7 +4,7 @@
 <section class="container">
     <div class="row">
             {% for event in events %}
-                <div style="background: #444 url('{{ event.picEvent1 }}') no-repeat center; background-size: cover;" class="card col-3">
+                <div style="background: #444 url('../images/uploads/{{ event.imageName1 }}') no-repeat center; background-size: cover;" class="card col-3">
                     <div class="card-info">
                         <!--<img src="http://placehold.it/255x180"> -->
                         <h3>{{ event.title }}</h3>

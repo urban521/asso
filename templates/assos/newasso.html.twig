@@ -7,7 +7,7 @@
 
     <div class="containerr">
         {{ form_start(form) }}
-        {{ form_widget(form.logo,{'attr':{'placeholder':'lien du logo'}}) }}
+        {{ form_widget(form.imageFile,{'attr':{'placeholder':'logo'}}) }}
         {{ form_widget(form.numAsso,{'attr':{'placeholder':'numero association'}}) }}
         {{ form_widget(form.nomAsso, {'attr':{'placeholder':'nom de l\'association'}}) }}
         {{ form_widget(form.adresseAsso,{'attr':{'placeholder':'adresse asso'}}) }}
@@ -20,6 +20,7 @@
         {{ form_widget(form.journalAsso,{'attr':{'placeholder':'journal de l\'association'}}) }}
         {{ form_widget(form.siretAsso,{'attr':{'placeholder':'siret'}}) }}
         {{ form_widget(form.reglementAsso,{'attr':{'placeholder':'reglement interieur'}}) }}
+        {{ form_widget(form.publique,{'attr':{'placeholder':'type de publique'}}) }}
         {{ form_widget(form.diplomeCadre,{'attr':{'placeholder':'diplome cadre'}}) }}
         {{ form_widget(form.adressCorrespondant,{'attr':{'placeholder':'adresse de correspendant'}}) }}
         <button type="submit">

@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Publique;
 use App\Entity\Association;
 use App\Repository\AssociationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +35,9 @@ class AssosController extends AbstractController
     public function newAsso(Request $request) {
         $asso = new Association();
     	$form = $this->createFormBuilder($asso)
-    		->add('logo',TextType::class)
+    		->add('imageFile',VichImageType::class,[
+                'label' => 'logo',
+            ])
     		->add('numAsso',IntegerType::class)
             ->add('nomAsso',TextType::class)
             ->add('adresseAsso',TextType::class)
@@ -44,6 +50,11 @@ class AssosController extends AbstractController
             ->add('journalAsso',TextType::class)
             ->add('siretAsso',TextType::class)
             ->add('reglementAsso',TextType::class)
+            ->add('publique', EntityType::class,[
+                'class' => Publique::class,
+                'multiple' => true,
+                //'choices' => $activites->getTitleActivite(),
+            ])
             ->add('diplomeCadre',TextType::class)
             ->add('adressCorrespondant',TextType::class)
             ->getForm();

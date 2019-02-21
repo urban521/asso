@@ -6,8 +6,9 @@
     <a href="/{{id}}/agasso/new" class="btn btn-primary">new</a>
     <div class="container">
         {% for agasso in agasso %}
-            <h3>{{ agasso.ag }}</h3>
+            <img class="img-fluid" src="../images/uploads/{{ agasso.imageName }}">
             <h5>{{ agasso.dateAg|date('d-m-Y') }}</h5>
+
             <a href="{{ path('agassos', {'id': agasso.id}) }}">decouvrir</a>
         {% endfor %}
     </div>

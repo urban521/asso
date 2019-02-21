@@ -7,6 +7,7 @@ use App\Controller\EventsController;
 use App\Repository\EventsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -37,10 +38,10 @@ class EventsController extends AbstractController
             ->add('title',TextType::class)
             ->add('lieu',TextType::class)
             ->add('dateEvent',DateType::class)
-            ->add('picEvent1',TextType::class)
-            ->add('picEvent2',TextType::class)
-            ->add('picEvent3',TextType::class)
-            ->add('picEvent4',TextType::class)
+            ->add('imageName1',VichImageType::class)
+            ->add('imageName2',VichImageType::class)
+            ->add('imageName3',VichImageType::class)
+            ->add('imageName4',VichImageType::class)
             ->add('participeOui',TextType::class)
             ->add('participeNon',TextType::class)
             ->add('participePe',TextType::class)
@@ -75,10 +76,10 @@ class EventsController extends AbstractController
     		->add('title',TextType::class)
     		->add('lieu',TextType::class)
             ->add('dateEvent',DateType::class)
-            ->add('picEvent1',TextType::class)
-            ->add('picEvent2',TextType::class)
-            ->add('picEvent3',TextType::class)
-            ->add('picEvent4',TextType::class)
+            ->add('imageFile1',VichImageType::class)
+            ->add('imageFile2',VichImageType::class)
+            ->add('imageFile3',VichImageType::class)
+            ->add('imageFile4',VichImageType::class)
             ->add('participeOui',TextType::class)
             ->add('participeNon',TextType::class)
             ->add('participePe',TextType::class)

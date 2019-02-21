@@ -20,6 +20,10 @@ class srcApp_KernelDevDebugContainerUrlGenerator extends Symfony\Component\Routi
         $this->defaultLocale = $defaultLocale;
         if (null === self::$declaredRoutes) {
             self::$declaredRoutes = [
+        'Activites' => [[], ['_controller' => 'App\\Controller\\ActivitesController::index'], [], [['text', '/activites']], [], []],
+        'activites_create' => [[], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/activites/new']], [], []],
+        'activites_edit' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::form'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
+        'activites_show' => [['id'], ['_controller' => 'App\\Controller\\ActivitesController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/activites']], [], []],
         'agasso' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::index'], [], [['text', '/agasso'], ['variable', '/', '[^/]++', 'id', true]], [], []],
         'new_agasso' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::newAgasso'], [], [['text', '/agasso/new'], ['variable', '/', '[^/]++', 'id', true]], [], []],
         'agassos' => [['id'], ['_controller' => 'App\\Controller\\AgassoController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/agasso']], [], []],
@@ -37,6 +41,7 @@ class srcApp_KernelDevDebugContainerUrlGenerator extends Symfony\Component\Routi
         'users_show' => [['id'], ['_controller' => 'App\\Controller\\UsersController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/users']], [], []],
         'users_edit' => [['id'], ['_controller' => 'App\\Controller\\UsersController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/users']], [], []],
         'users_delete' => [['id'], ['_controller' => 'App\\Controller\\UsersController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/users']], [], []],
+        'easyadmin' => [[], ['_controller' => 'EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\EasyAdminController::indexAction'], [], [['text', '/administration/']], [], []],
         '_twig_error_test' => [['code', '_format'], ['_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
         '_wdt' => [['token'], ['_controller' => 'web_profiler.controller.profiler::toolbarAction'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/_wdt']], [], []],
         '_profiler_home' => [[], ['_controller' => 'web_profiler.controller.profiler::homeAction'], [], [['text', '/_profiler/']], [], []],

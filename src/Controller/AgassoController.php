@@ -8,6 +8,7 @@ use App\Controller\AgassoController;
 use App\Repository\AgassoRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +23,6 @@ class AgassoController extends AbstractController
      */
     public function index(AgassoRepository $repo, $id) {
         $asso = $this->getDoctrine()->getRepository(Association::class)->find($id);
-        dump($asso);
         $agasso=$asso->getAgasso();
         return $this->render('agasso/index.html.twig', [
             'controller_name' => 'AgassoController',
@@ -39,9 +39,10 @@ class AgassoController extends AbstractController
     	$form = $this->createFormBuilder($agasso)
     		->add('ag',TextType::class)
             ->add('dateAg',DateType::class)
-            ->add('pvAg',TextType::class)
+            ->add('imageFile',VichImageType::class)
             ->add('association',EntityType::class, [
                 'class' => Association::class,
+                'label' => 'choisir l\'association'
             ])
             ->getForm();
             

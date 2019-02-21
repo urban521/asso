@@ -2,12 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AssociationRepository")
+ * @Vich\Uploadable
  */
 class Association
 {
@@ -17,11 +21,6 @@ class Association
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $logo;
 
     /**
      * @ORM\Column(type="integer")
@@ -108,28 +107,82 @@ class Association
      */
     private $activites;
 
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName")
+     * 
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Publique", inversedBy="associations")
+     */
+    private $Publique;
+
+    
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
     public function __construct()
     {
         $this->agasso = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->activites = new ArrayCollection();
+        $this->updatedAt = new \Datetime();
+        $this->publique = new ArrayCollection();
+        $this->Publique = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(?string $logo): self
-    {
-        $this->logo = $logo;
-
-        return $this;
     }
 
     public function getNumAsso(): ?int
@@ -385,6 +438,39 @@ class Association
 
     public function __toString() {
         return $this->getNomAsso();
+    }
+
+    /**
+     * @return Collection|Publique[]
+     */
+    public function getPublique(): Collection
+    {
+        return $this->Publique;
+    }
+
+    public function addPublique(Publique $publique): self
+    {
+        if (!$this->Publique->contains($publique)) {
+            $this->Publique[] = $publique;
+        }
+
+        return $this;
+    }
+
+    public function removePublique(Publique $publique): self
+    {
+        if ($this->Publique->contains($publique)) {
+            $this->Publique->removeElement($publique);
+        }
+
+        return $this;
+    }
+
+    public function setPublique(string $publique): self
+    {
+        $this->publique = $publique;
+
+        return $this;
     }
 
 }

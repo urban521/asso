@@ -13,7 +13,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'd11dcc0191a380951885e568af488540' => __DIR__ . '/..' . '/sonata-project/block-bundle/src/Resources/stubs/symfony2.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -29,6 +28,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+        ),
+        'V' => 
+        array (
+            'Vich\\UploaderBundle\\' => 20,
         ),
         'T' => 
         array (
@@ -94,17 +97,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
-            'Sonata\\Twig\\' => 12,
-            'Sonata\\Serializer\\' => 18,
-            'Sonata\\Form\\' => 12,
-            'Sonata\\Exporter\\' => 16,
-            'Sonata\\Doctrine\\' => 16,
-            'Sonata\\DoctrineORMAdminBundle\\' => 30,
-            'Sonata\\DatagridBundle\\' => 22,
-            'Sonata\\CoreBundle\\' => 18,
-            'Sonata\\Cache\\' => 13,
-            'Sonata\\BlockBundle\\' => 19,
-            'Sonata\\AdminBundle\\' => 19,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
         ),
         'P' => 
@@ -120,6 +112,7 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Metadata\\' => 9,
         ),
         'K' => 
         array (
@@ -183,6 +176,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Vich\\UploaderBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vich/uploader-bundle',
         ),
         'Twig\\Extensions\\' => 
         array (
@@ -420,50 +417,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
-        'Sonata\\Twig\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/core-bundle/src/Twig',
-        ),
-        'Sonata\\Serializer\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/core-bundle/src/Serializer',
-        ),
-        'Sonata\\Form\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/core-bundle/src/Form',
-        ),
-        'Sonata\\Exporter\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/exporter/src',
-        ),
-        'Sonata\\Doctrine\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/doctrine-extensions/src',
-        ),
-        'Sonata\\DoctrineORMAdminBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/doctrine-orm-admin-bundle/src',
-        ),
-        'Sonata\\DatagridBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/datagrid-bundle/src',
-        ),
-        'Sonata\\CoreBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/core-bundle/src/CoreBundle',
-        ),
-        'Sonata\\Cache\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/cache/src',
-        ),
-        'Sonata\\BlockBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/block-bundle/src',
-        ),
-        'Sonata\\AdminBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sonata-project/admin-bundle/src',
-        ),
         'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle',
@@ -499,6 +452,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Metadata\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jms/metadata/src',
         ),
         'Knp\\Menu\\' => 
         array (
@@ -633,6 +590,13 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Doctrine\\Common\\Collections\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/collections/lib',
+            ),
+        ),
+        'B' => 
+        array (
+            'Behat\\Transliterator' => 
+            array (
+                0 => __DIR__ . '/..' . '/behat/transliterator/src',
             ),
         ),
     );
