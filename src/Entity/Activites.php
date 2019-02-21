@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Users;
 use App\Entity\Activites;
 use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;

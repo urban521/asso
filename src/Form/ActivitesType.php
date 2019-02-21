@@ -19,7 +19,7 @@ class ActivitesType extends AbstractType
             ->add('picActivite1')
             ->add('pic_activite2')
             ->add('pic_activite3')
-            ->add('users')
+            //->add('users')
             ->add('associations')
         ;
     }

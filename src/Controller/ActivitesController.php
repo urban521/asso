@@ -8,6 +8,7 @@ use App\Controller\ActivitesController;
 use App\Repository\ActivitesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -66,9 +67,4 @@ class ActivitesController extends AbstractController
             'activites' => $activites
         ]);
     }
-
-    /**
-     * Generates the magic method
-     * 
-     */
 }
