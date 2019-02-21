@@ -341,20 +341,96 @@
         </parameter>
       </parameter>
       <parameter key="site_name">EasyAdmin</parameter>
+      <parameter key="user" type="collection">
+        <parameter key="display_name">true</parameter>
+        <parameter key="display_avatar">false</parameter>
+        <parameter key="name_property_path">__toString</parameter>
+        <parameter key="avatar_property_path">null</parameter>
+      </parameter>
       <parameter key="formats" type="collection">
-        <parameter key="date">Y-m-d</parameter>
+        <parameter key="date">d/m/Y</parameter>
         <parameter key="time">H:i:s</parameter>
         <parameter key="datetime">F j, Y H:i</parameter>
         <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
       </parameter>
+      <parameter key="entities" type="collection">
+        <parameter key="User" type="collection">
+          <parameter key="label">Licenciers</parameter>
+          <parameter key="list" type="collection">
+            <parameter key="title">Liste des licenciers</parameter>
+          </parameter>
+          <parameter key="class">App\Entity\Users</parameter>
+          <parameter key="form" type="collection">
+            <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">num_licence</parameter>
+                <parameter key="label">Numéro de Licence</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">civilite</parameter>
+                <parameter key="label"> Etat civil</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">nom_user</parameter>
+                <parameter key="label">Nom</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">nom_fille</parameter>
+                <parameter key="label">Nom de jeune fille</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">prenom_user</parameter>
+                <parameter key="label">Prénom</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">date_naissance</parameter>
+                <parameter key="label">Date de Naissance</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">role</parameter>
+                <parameter key="label">Rôle du licencié</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">tel1</parameter>
+                <parameter key="label">Téléphone 1</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">tel2</parameter>
+                <parameter key="label">Téléphone 2</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">email_user</parameter>
+                <parameter key="label">Email</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">rue</parameter>
+                <parameter key="label">Adresse</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">cp_user</parameter>
+                <parameter key="label">Code postal</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">ville_user</parameter>
+                <parameter key="label">Ville</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">activite_user</parameter>
+                <parameter key="label">Activités Sportives</parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">User</parameter>
+        </parameter>
+        <parameter key="Activite" type="collection">
+          <parameter key="label">Activites</parameter>
+          <parameter key="class">App\Entity\Activites</parameter>
+          <parameter key="name">Activite</parameter>
+        </parameter>
+      </parameter>
+      <parameter key="site_name">EasyAdmin</parameter>
       <parameter key="disabled_actions" type="collection"/>
       <parameter key="translation_domain">messages</parameter>
-      <parameter key="user" type="collection">
-        <parameter key="display_name">true</parameter>
-        <parameter key="display_avatar">true</parameter>
-        <parameter key="name_property_path">__toString</parameter>
-        <parameter key="avatar_property_path">null</parameter>
-      </parameter>
       <parameter key="design" type="collection">
         <parameter key="brand_color">hsl(230, 55%, 60%)</parameter>
         <parameter key="form_theme" type="collection">
@@ -509,8 +585,12 @@
   </parameters>
   <services>
     <service id="service_container" class="Symfony\Component\DependencyInjection\ContainerInterface" public="true" synthetic="true"/>
-    <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
-      <argument>/var/www/asso/var/log/dev.log</argument>
+    <service id="App\Controller\ActivitesController" class="App\Controller\ActivitesController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\ActivitesController"/>
+      </call>
     </service>
     <service id="App\Controller\ActivitesController" class="App\Controller\ActivitesController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -3476,7 +3556,15 @@
       <argument type="service" id="security.authentication.retry_entry_point"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false"/>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher..Hgh7Or"/>
+        <argument type="collection">
+          <argument>ROLE_USER</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.token_storage"/>
@@ -3968,6 +4056,9 @@
         <argument key="security.firewall.map.context.dev" type="service" id="security.firewall.map.context.dev"/>
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
+    </service>
+    <service id=".security.request_matcher..Hgh7Or" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/administration</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -5034,6 +5125,24 @@
     <service id="easyadmin.form.type.group" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType">
       <tag name="form.type" alias="easyadmin_group"/>
     </service>
+    </service>
+    <service id="easyadmin.form.type.autocomplete" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType">
+      <tag name="form.type" alias="easyadmin_autocomplete"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+    </service>
+    <service id="easyadmin.form.type.batch" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminBatchFormType">
+      <tag name="form.type" alias="easyadmin_batch"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+    </service>
+    <service id="easyadmin.form.type.divider" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType">
+      <tag name="form.type" alias="easyadmin_divider"/>
+    </service>
+    <service id="easyadmin.form.type.section" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType">
+      <tag name="form.type" alias="easyadmin_section"/>
+    </service>
+    <service id="easyadmin.form.type.group" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType">
+      <tag name="form.type" alias="easyadmin_group"/>
+    </service>
     <service id="easyadmin.form.type.extension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EasyAdminExtension">
       <tag name="form.type_extension" alias="form" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="request_stack" on-invalid="null"/>
@@ -5586,6 +5695,20 @@
       </argument>
     </service>
     <service id=".service_locator.SxwvHq3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.CLREBB2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="user" type="service" id=".errored..service_locator.CLREBB2.App\Entity\Users"/>
+      </argument>
+    </service>
+    <service id=".service_locator.XcmJZZo" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>

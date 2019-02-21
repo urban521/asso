@@ -2,3 +2,35 @@ easy_admin:
     entities:
         # change the following to the namespaces of your own entities
         - App\Entity\Events
+    user:
+        display_name: true
+        display_avatar: false
+    formats:
+        date:     'd/m/Y'
+    entities:
+        User:
+            label: Licenciers
+            list:
+                title: Liste des licenciers        
+            class: App\Entity\Users
+            form:
+                fields:
+                    - { property: 'num_licence', label: 'Numéro de Licence' }
+                    - { property: 'civilite', label: ' Etat civil' }
+                    - { property: 'nom_user', label: 'Nom' }
+                    - { property: 'nom_fille', label: 'Nom de jeune fille' }
+                    - { property: 'prenom_user', label: 'Prénom' }
+                    - { property: 'date_naissance', label: 'Date de Naissance' }
+                    - { property: 'role', label: 'Rôle du licencié'}
+                    - { property: 'tel1', label: 'Téléphone 1' }
+                    - { property: 'tel2', label: 'Téléphone 2' }
+                    - { property: 'email_user', label: 'Email' }
+                    - { property: 'rue', label: 'Adresse' }
+                    - { property: 'cp_user', label: 'Code postal' }
+                    - { property: 'ville_user', label: 'Ville' }
+                    - { property: 'activite_user', label: 'Activités Sportives' }
+        Activite:
+                label: Activites
+                class: App\Entity\Activites
+        
+        

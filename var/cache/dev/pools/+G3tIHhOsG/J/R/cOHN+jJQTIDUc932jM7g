@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 <?php return [PHP_INT_MAX, 1550759251];
+=======
+<<<<<<< HEAD
+<?php return [PHP_INT_MAX, 1550673192];
+=======
+<?php return [PHP_INT_MAX, 1550504771];
+>>>>>>> 203f78c8be914079776b79a8f8cb59255eaf8469
+>>>>>>> bd31b43b26d3ee6f4cbf85c2e9e07226783e6a9e

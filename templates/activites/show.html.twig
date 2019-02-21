@@ -14,12 +14,14 @@
             <h2>{{ activites.titleActivite }}</h2>
                 <div class="card" style="width:400px">
                     <img class="card-img-top" src="{{ activites.picActivite1 | raw }}" alt="Card image" style="width:100%">
-                    <div class="card-body">
+                </div>
+                <div class="card-body">
                     <p class="card-text"><p>{{ activites.decriptActivite | raw }}</p></p>
-                    </div>
                 </div>
             </div>
             <br>
+            <a href="/activites" type="button">retour à la liste</a>
+
         </div> 
     </activite>
 

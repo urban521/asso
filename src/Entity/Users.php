@@ -28,12 +28,8 @@ class Users
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $civilite_mr;
+    private $civilite;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $civilite_mme;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -95,6 +91,11 @@ class Users
      */
     private $events;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
     public function __construct()
     {
         $this->activite_user = new ArrayCollection();
@@ -118,29 +119,18 @@ class Users
         return $this;
     }
 
-    public function getCiviliteMr(): ?string
+    public function getCivilite(): ?string
     {
-        return $this->civilite_mr;
+        return $this->civilite;
     }
 
-    public function setCiviliteMr(string $civilite_mr): self
+    public function setCivilite(string $civilite): self
     {
-        $this->civilite_mr = $civilite_mr;
+        $this->civilite = $civilite;
 
         return $this;
     }
 
-    public function getCiviliteMme(): ?string
-    {
-        return $this->civilite_mme;
-    }
-
-    public function setCiviliteMme(string $civilite_mme): self
-    {
-        $this->civilite_mme = $civilite_mme;
-
-        return $this;
-    }
 
     public function getNomUser(): ?string
     {
@@ -288,6 +278,10 @@ class Users
         return $this;
     }
 
+    public function setActiviteUser($activite) {
+        $this->activite_user[] = $activite;
+    }
+
     /**
      * @return Collection|events[]
      */
@@ -310,6 +304,23 @@ class Users
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this -> nom_user;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

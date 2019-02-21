@@ -10,12 +10,12 @@
             <tr>
                 <th>Id</th>
                 <th>Numero de licence</th>
-                <th>Civilite mr</th>
-                <th>Civilite mme</th>
+                <th>choisir votre civilité</th>
                 <th>Nom</th>
                 <th>Nom de jeune fille</th>
                 <th>Prenom</th>
                 <th>Date de naissance</th>
+                <th>Role du Licencié</th>
                 <th>Telephone 1</th>
                 <th>Telephone 2</th>
                 <th>Email</th>
@@ -30,12 +30,12 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>{{ user.numLicence }}</td>
-                <td>{{ user.civiliteMr }}</td>
-                <td>{{ user.civiliteMme }}</td>
+                <td>{{ user.civilite }}</td>
                 <td>{{ user.nomUser }}</td>
                 <td>{{ user.nomFille }}</td>
                 <td>{{ user.prenomUser }}</td>
                 <td>{{ user.dateNaissance ? user.dateNaissance|date('d-m-y') : '' }}</td>
+                <td>{{ user.role }}</td>
                 <td>{{ user.tel1 }}</td>
                 <td>{{ user.tel2 }}</td>
                 <td>{{ user.emailUser }}</td>
