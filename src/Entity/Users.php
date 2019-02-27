@@ -91,10 +91,11 @@ class Users
      */
     private $events;
 
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $role;
+    private $association;
 
     public function __construct()
     {
@@ -321,6 +322,18 @@ class Users
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getAssociation(): ?string
+    {
+        return $this->association;
+    }
+
+    public function setAssociation(string $association): self
+    {
+        $this->association = $association;
 
         return $this;
     }

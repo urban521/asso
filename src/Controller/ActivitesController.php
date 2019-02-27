@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ActivitesController extends AbstractController
@@ -33,6 +34,10 @@ class ActivitesController extends AbstractController
     /**
      * @Route("/activites/new", name="activites_create")
      * @Route("/activites/{id}/edit", name="activites_edit")
+     * 
+     * @Security("has_role('ROLE_SUPER_ADMIN')")
+     * 
+     *  on peux supprimer cette fonction
      */
     public function form(Activites $activites = null, Request $request, ObjectManager $manager){
         if(!$activites){
