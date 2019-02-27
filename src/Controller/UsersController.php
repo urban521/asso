@@ -1,7 +1,8 @@
 <?php
-namespace App\Controller;
+
 
 namespace App\Controller;
+
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Entity\Activites;

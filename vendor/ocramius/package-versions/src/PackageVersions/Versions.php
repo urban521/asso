@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PackageVersions;
 
 /**
@@ -10,8 +12,8 @@ namespace PackageVersions;
  */
 final class Versions
 {
-    const ROOT_PACKAGE_NAME = '__root__';
-    const VERSIONS = array (
+    public const ROOT_PACKAGE_NAME = '__root__';
+    public const VERSIONS          = array (
   'behat/transliterator' => 'v1.2.0@826ce7e9c2a6664c0d1f381cbb38b1fb80a7ee2c',
   'doctrine/annotations' => 'v1.6.0@c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5',
   'doctrine/cache' => 'v1.8.0@d768d58baee9a4862ca783840eca1b9add7a7f57',
@@ -36,8 +38,8 @@ final class Versions
   'jdorn/sql-formatter' => 'v1.2.17@64990d96e0959dff8e059dfcdc1af130728d92bc',
   'jms/metadata' => '2.0.0@e918c3a65105f73b74d94a0837b9f7d611d5bf0c',
   'monolog/monolog' => '1.24.0@bfc9ebb28f97e7a24c45bdc3f0ff482e47bb0266',
-  'ocramius/package-versions' => '1.3.0@4489d5002c49d55576fa0ba786f42dbb009be46f',
-  'ocramius/proxy-manager' => '2.1.1@e18ac876b2e4819c76349de8f78ccc8ef1554cd7',
+  'ocramius/package-versions' => '1.4.0@a4d4b60d0e60da2487bd21a2c6ac089f85570dbb',
+  'ocramius/proxy-manager' => '2.2.2@14b137b06b0f911944132df9d51e445a35920ab1',
   'pagerfanta/pagerfanta' => 'v2.0.1@15770d9d7f6e8e07af568aed104a51f869591e73',
   'phpdocumentor/reflection-common' => '1.0.1@21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6',
   'phpdocumentor/reflection-docblock' => '4.3.0@94fd0001232e47129dd3504189fa1c7225010d08',
@@ -49,6 +51,7 @@ final class Versions
   'psr/simple-cache' => '1.0.1@408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
   'sensio/framework-extra-bundle' => 'v5.2.4@1fdf591c4b388e62dbb2579de89c1560b33f865d',
   'swiftmailer/swiftmailer' => 'v6.1.3@8ddcb66ac10c392d3beb54829eef8ac1438595f4',
+  'symfony/apache-pack' => 'v1.0.1@3aa5818d73ad2551281fc58a75afd9ca82622e6c',
   'symfony/asset' => 'v4.2.3@7eee96a8630f9448304ae4f0e3b474ea4e033664',
   'symfony/cache' => 'v4.2.3@7c5b85bcc5f87dd7938123be12ce3323be6cde5a',
   'symfony/config' => 'v4.2.3@25a2e7abe0d97e70282537292e3df45cf6da7b98',
@@ -62,7 +65,7 @@ final class Versions
   'symfony/expression-language' => 'v4.2.3@a69b153996a13ffdb05395e8724c7217a8448e9e',
   'symfony/filesystem' => 'v4.2.3@7c16ebc2629827d4ec915a52ac809768d060a4ee',
   'symfony/finder' => 'v4.2.3@ef71816cbb264988bb57fe6a73f610888b9aa70c',
-  'symfony/flex' => 'v1.1.8@955774ecf07b10230bb5b44e150ba078b45f68fa',
+  'symfony/flex' => 'v1.2.0@7f04fb50c5da6d020e4df743b4c764c188bb24bf',
   'symfony/form' => 'v4.2.3@48fcd7482d3a946f2ca6f778003ec042534b5d7d',
   'symfony/framework-bundle' => 'v4.2.3@5707ad22d7dcf39643128e73a85efc0f20745b44',
   'symfony/http-foundation' => 'v4.2.3@8d2318b73e0a1bc75baa699d00ebe2ae8b595a39',
@@ -141,7 +144,7 @@ final class Versions
     }
 
     /**
-     * @throws \OutOfBoundsException if a version cannot be located
+     * @throws \OutOfBoundsException If a version cannot be located.
      */
     public static function getVersion(string $packageName) : string
     {

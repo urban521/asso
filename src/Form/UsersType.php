@@ -6,10 +6,12 @@ use App\Entity\Users;
 use App\Form\UsersType;
 use App\Entity\Activites;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\PropertyInfo\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class UsersType extends AbstractType
@@ -39,7 +41,7 @@ class UsersType extends AbstractType
                 'class' => Activites::class,
                 'multiple' => true
             ])
-            ->add('role', ChoiceType::class, [ 
+            /*->add('role', ChoiceType::class, [ 
                 'label' => 'Choisissez le role du licencié',
                 'choices' => [
                     'Pratiquant' => 'Pratiquant',
@@ -53,8 +55,9 @@ class UsersType extends AbstractType
                     'Cadre Technique Secondaire' => 'Cadre technique Secondaire',
                     'Membre du bureau' => 'Membre du bureau',
                 ]
-            ])
-            //->add('events')
+            ])*/
+            //->add('events'),
+            ->add('association', HiddenType::class)
         ;
     }
 

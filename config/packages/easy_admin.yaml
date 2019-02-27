@@ -3,12 +3,12 @@ easy_admin:
         display_name: true
         display_avatar: false
     formats:
-        date:     'd/m/Y'
+        date: 'd/m/Y'
     entities:
         Users:
             label: Licenciers
             list:
-                title: Liste des licenciers        
+                title: Liste des licenciers     
             class: App\Entity\Users
             form:
                 fields:
