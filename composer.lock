@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "2fc90a4b535629fe1dc124a10b4bc366",
-=======
-    "content-hash": "309da3bcae736dc7295f2a21b35f78c4",
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     "packages": [
         {
             "name": "behat/transliterator",
@@ -6235,7 +6231,6 @@
             "time": "2018-05-16T17:37:13+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "fzaninotto/faker",
             "version": "v1.8.0",
             "source": {
@@ -6409,8 +6404,6 @@
             "time": "2017-12-24T16:32:39+00:00"
         },
         {
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
             "name": "nikic/php-parser",
             "version": "v4.2.1",
             "source": {

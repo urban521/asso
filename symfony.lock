@@ -2,6 +2,9 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "cocur/slugify": {
+        "version": "v3.2"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -109,18 +112,21 @@
     },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
-<<<<<<< HEAD
     },
     "fzaninotto/faker": {
         "version": "v1.8.0"
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "jms/metadata": {
         "version": "2.0.0"
+    },
+    "knplabs/knp-menu": {
+        "version": "2.3.0"
+    },
+    "knplabs/knp-menu-bundle": {
+        "version": "v2.2.1"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -349,6 +355,9 @@
             "version": "4.2",
             "ref": "5374e24d508ba8fd6ba9eb15170255fdb778316a"
         }
+    },
+    "symfony/security-acl": {
+        "version": "v3.0.1"
     },
     "symfony/security-bundle": {
         "version": "3.3",
