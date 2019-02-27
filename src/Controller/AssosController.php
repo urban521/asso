@@ -21,14 +21,15 @@ class AssosController extends AbstractController
     /**
      * @Route("/assos", name="assos")
      */
-    public function index(AssociationRepository $repo)
-    {
+    public function index(AssociationRepository $repo) {
+        
         $asso=$repo->findAll();
         return $this->render('assos/index.html.twig', [
             'controller_name' => 'AssosController',
-            'asso'=>$asso
+            'asso'=>$asso,
+
         ]);
-    }
+    }  
     /**
      * @Route("/assos/new", name="new_assos")
      */
@@ -46,16 +47,26 @@ class AssosController extends AbstractController
             ->add('tel1Asso',TextType::class)
             ->add('tel2Asso',TextType::class)
             ->add('dateCreation',DateType::class)
-            ->add('statusAsso',TextType::class)
-            ->add('journalAsso',TextType::class)
-            ->add('siretAsso',TextType::class)
-            ->add('reglementAsso',TextType::class)
+            ->add('imageFile1',VichImageType::class,[
+                'label' => 'status Asso',
+            ])
+            ->add('imageFile2',VichImageType::class,[
+                'label' => 'journal Asso',
+            ])
+            ->add('imageFile3',VichImageType::class,[
+                'label' => 'siret Asso',
+            ])
+            ->add('imageFile4',VichImageType::class,[
+                'label' => 'reglement interieur',
+            ])      
             ->add('publique', EntityType::class,[
                 'class' => Publique::class,
                 'multiple' => true,
                 //'choices' => $activites->getTitleActivite(),
             ])
-            ->add('diplomeCadre',TextType::class)
+            ->add('imageFile5',VichImageType::class,[
+                'label' => 'diplome cadre',
+            ])
             ->add('adressCorrespondant',TextType::class)
             ->getForm();
             

@@ -12,13 +12,13 @@
                     <div class="madiva">
                         <img class="image img-fluid" src="../images/uploads/{{ asso.imageName  }}">
                         <div class="text-center"> {% for publique in asso.publique %}
-                        {% dump(publique) %}
                         {{ publique }}
                         {% endfor %}
                         </div>
                         <div class="text-center">{{ asso.adresseAsso }} {{ asso.villeAsso }} {{ asso.cpAsso }}</div>
                         <div class="text-center">{{ asso.tel1Asso }}</div>
                         <div class="text-center">{{ asso.tel2Asso }}</div>
+                        <a href="{{path('agasso', {'id': asso.id})}}" class="btn btn-primary">agasso</a>
                     </div>
                     
                 </div>

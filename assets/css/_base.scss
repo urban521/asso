@@ -45,6 +45,11 @@ nav ul li a {
     font-size: 20px;
 }
 
+nav ul li a:hover {
+    text-decoration: none;
+    color: red;
+}
+
 .menu-icon {
     width: 100%;
     background: #000;
@@ -73,7 +78,7 @@ nav ul li a {
     }
 
     .showing {
-        min-height: 20em;
+        min-height: 25em;
     }
 
     nav ul li {
@@ -86,4 +91,4 @@ nav ul li a {
     .menu-icon {
         display: block;
     }
-}
+} 

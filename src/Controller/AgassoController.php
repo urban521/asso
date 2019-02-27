@@ -31,6 +31,41 @@ class AgassoController extends AbstractController
         ]);
     }
     /**
+     * @Route("/agasso/{id}/edit", name="edit_agasso")
+     */
+    public function modifierAgasso($id,Request $request) {
+       
+    	$agasso = $this->getDoctrine()
+    	                ->getRepository(Agasso::class)
+    	                ->find($id);
+
+        $form = $this->createFormBuilder($agasso)
+            ->add('ag',TextType::class)
+            ->add('dateAg',DateType::class)
+            ->add('imageFile',VichImageType::class)
+            ->add('association',EntityType::class, [
+                'class' => Association::class,
+                'label' => 'choisir l\'association'
+            ])
+            ->getForm();
+            $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $agasso = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('agasso', [
+                'id' => $asso->getId(),
+            ]);
+        }
+        return $this->render('agasso/newagasso.html.twig', [
+            'form' => $form->createView(),
+            'editMode' => $agasso->getId() !== null
+        ]);
+    }
+    /**
      * @Route("/{id}/agasso/new", name="new_agasso")
      */
     public function newAgasso(Request $request, $id) {
@@ -45,11 +80,11 @@ class AgassoController extends AbstractController
                 'label' => 'choisir l\'association'
             ])
             ->getForm();
-            
+
             $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $agasso = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -74,7 +109,8 @@ class AgassoController extends AbstractController
         $agasso=$repo->find($id);
         
         return $this->render('agasso/show.html.twig',[
-            'agasso'=>$agasso
+            'agasso'=>$agasso,
+            'id' => $agasso->getId(),
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AgassoRepository")
@@ -80,7 +81,7 @@ class Agasso
         }
     }
 
-    public function getImageFile(): ?File
+    public function getImageFile(): ?File 
     {
         return $this->imageFile;
     }
@@ -132,18 +133,6 @@ class Agasso
     public function setAssociation(?Association $association): self
     {
         $this->association = $association;
-
-        return $this;
-    }
-
-    public function getPvAg(): ?string
-    {
-        return $this->pv_ag;
-    }
-
-    public function setPvAg(string $pv_ag): self
-    {
-        $this->pv_ag = $pv_ag;
 
         return $this;
     }

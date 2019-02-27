@@ -13,7 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\AssociationRepository")
  * @Vich\Uploadable
  */
-class Association
+class Association 
 {
     /**
      * @ORM\Id()
@@ -65,31 +65,6 @@ class Association
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status_asso;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $journal_asso;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $siret_asso;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $reglement_asso;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $diplome_cadre;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $adress_correspondant; 
 
     /**
@@ -135,7 +110,120 @@ class Association
      */
     private $Publique;
 
-    
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName1")
+     * 
+     * @var File
+     */
+    private $imageFile1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName1;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt1;
+
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName2")
+     * 
+     * @var File
+     */
+    private $imageFile2;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName2;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt2;
+
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName3")
+     * 
+     * @var File
+     */
+    private $imageFile3;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName3;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt3;
+
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName4")
+     * 
+     * @var File
+     */
+    private $imageFile4;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName4;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt4;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName5")
+     * 
+     * @var File
+     */
+    private $imageFile5;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName5;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt5;
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -146,6 +234,104 @@ class Association
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
      */
+    public function setImageFile1(?File $imageFile1 = null): void
+    {
+        $this->imageFile1 = $imageFile1;
+
+        if ($this->imageFile1 instanceof UploadedFile) { 
+            $this->updatedAt1 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile1(): ?File
+    {
+        return $this->imageFile1;
+    }
+
+    public function setImageName1(?string $imageName1): void
+    {
+        $this->imageName1 = $imageName1;
+    }
+
+    public function getImageName1(): ?string
+    {
+        return $this->imageName1;
+    }
+
+    public function setImageFile2(?File $imageFile2 = null): void
+    {
+        $this->imageFile2 = $imageFile2;
+
+        if ($this->imageFile2 instanceof UploadedFile) {
+            $this->updatedAt2 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile2(): ?File
+    {
+        return $this->imageFile2;
+    }
+
+    public function setImageName2(?string $imageName2): void
+    {
+        $this->imageName2 = $imageName2;
+    }
+
+    public function getImageName2(): ?string
+    {
+        return $this->imageName2;
+    }
+
+    public function setImageFile3(?File $imageFile3 = null): void
+    {
+        $this->imageFile3 = $imageFile3;
+
+        if ($this->imageFile3 instanceof UploadedFile) {
+            $this->updatedAt3 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile3(): ?File
+    {
+        return $this->imageFile3;
+    }
+
+    public function setImageName3(?string $imageName3): void
+    {
+        $this->imageName3 = $imageName3;
+    }
+
+    public function getImageName3(): ?string
+    {
+        return $this->imageName3;
+    }
+
+    public function setImageFile4(?File $imageFile4 = null): void
+    {
+        $this->imageFile4 = $imageFile4;
+
+        if ($this->imageFile4 instanceof UploadedFile) {
+            $this->updatedAt4 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile4(): ?File
+    {
+        return $this->imageFile4;
+    }
+
+    public function setImageName4(?string $imageName4): void
+    {
+        $this->imageName4 = $imageName4;
+    }
+
+    public function getImageName4(): ?string
+    {
+        return $this->imageName4;
+    }
+
+    
+
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
@@ -170,12 +356,42 @@ class Association
         return $this->imageName;
     }
 
+
+    public function setImageFile5(?File $imageFile5 = null): void
+    {
+        $this->imageFile5 = $imageFile5;
+
+        if ($this->imageFile5 instanceof UploadedFile) {
+            $this->updatedAt5 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile5(): ?File
+    {
+        return $this->imageFile5;
+    }
+
+    public function setImageName5(?string $imageName5): void
+    {
+        $this->imageName5 = $imageName5;
+    }
+
+    public function getImageName5(): ?string
+    {
+        return $this->imageName5;
+    }
+
     public function __construct()
     {
         $this->agasso = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->activites = new ArrayCollection();
         $this->updatedAt = new \Datetime();
+        $this->updatedAt1 = new \Datetime();
+        $this->updatedAt2 = new \Datetime();
+        $this->updatedAt3 = new \Datetime();
+        $this->updatedAt4 = new \Datetime();
+        $this->updatedAt5 = new \Datetime();
         $this->publique = new ArrayCollection();
         $this->Publique = new ArrayCollection();
     }
@@ -277,66 +493,6 @@ class Association
     public function setDateCreation(\DateTimeInterface $date_creation): self
     {
         $this->date_creation = $date_creation;
-
-        return $this;
-    }
-
-    public function getStatusAsso(): ?string
-    {
-        return $this->status_asso;
-    }
-
-    public function setStatusAsso(string $status_asso): self
-    {
-        $this->status_asso = $status_asso;
-
-        return $this;
-    }
-
-    public function getJournalAsso(): ?string
-    {
-        return $this->journal_asso;
-    }
-
-    public function setJournalAsso(string $journal_asso): self
-    {
-        $this->journal_asso = $journal_asso;
-
-        return $this;
-    }
-
-    public function getSiretAsso(): ?string
-    {
-        return $this->siret_asso;
-    }
-
-    public function setSiretAsso(?string $siret_asso): self
-    {
-        $this->siret_asso = $siret_asso;
-
-        return $this;
-    }
-
-    public function getReglementAsso(): ?string
-    {
-        return $this->reglement_asso;
-    }
-
-    public function setReglementAsso(?string $reglement_asso): self
-    {
-        $this->reglement_asso = $reglement_asso;
-
-        return $this;
-    }
-
-    public function getDiplomeCadre(): ?string
-    {
-        return $this->diplome_cadre;
-    }
-
-    public function setDiplomeCadre(string $diplome_cadre): self
-    {
-        $this->diplome_cadre = $diplome_cadre;
 
         return $this;
     }

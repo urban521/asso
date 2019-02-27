@@ -9,9 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActivitesRepository")
+ * @Vich\Uploadable
  */
 class Activites
 {
@@ -35,21 +38,6 @@ class Activites
     private $decript_activite;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $pic_activite1;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $pic_activite2;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $pic_activite3;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="activite_user")
      */
     private $users;
@@ -59,10 +47,163 @@ class Activites
      */
     private $associations;
 
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName1")
+     * 
+     * @var File
+     */
+    private $imageFile1;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName1;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt1;
+
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName2")
+     * 
+     * @var File
+     */
+    private $imageFile2;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName2;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt2;
+
+     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName3")
+     * 
+     * @var File
+     */
+    private $imageFile3;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $imageName3;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt3;
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
+     */
+    public function setImageFile1(?File $imageFile1 = null): void
+    {
+        $this->imageFile1 = $imageFile1;
+
+        if ($this->imageFile1 instanceof UploadedFile) { 
+            $this->updatedAt1 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile1(): ?File
+    {
+        return $this->imageFile1;
+    }
+
+    public function setImageName1(?string $imageName1): void
+    {
+        $this->imageName1 = $imageName1;
+    }
+
+    public function getImageName1(): ?string
+    {
+        return $this->imageName1;
+    }
+
+    public function setImageFile2(?File $imageFile2 = null): void
+    {
+        $this->imageFile2 = $imageFile2;
+
+        if ($this->imageFile2 instanceof UploadedFile) {
+            $this->updatedAt2 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile2(): ?File
+    {
+        return $this->imageFile2;
+    }
+
+    public function setImageName2(?string $imageName2): void
+    {
+        $this->imageName2 = $imageName2;
+    }
+
+    public function getImageName2(): ?string
+    {
+        return $this->imageName2;
+    }
+
+    public function setImageFile3(?File $imageFile3 = null): void
+    {
+        $this->imageFile3 = $imageFile3;
+
+        if ($this->imageFile3 instanceof UploadedFile) {
+            $this->updatedAt3 = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile3(): ?File
+    {
+        return $this->imageFile3;
+    }
+
+    public function setImageName3(?string $imageName3): void
+    {
+        $this->imageName3 = $imageName3;
+    }
+
+    public function getImageName3(): ?string
+    {
+        return $this->imageName3;
+    }
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->associations = new ArrayCollection();
+        $this->updatedAt1 = new \Datetime();
+        $this->updatedAt2 = new \Datetime();
+        $this->updatedAt3 = new \Datetime();
     }
 
     public function getId(): ?int
@@ -90,42 +231,6 @@ class Activites
     public function setDecriptActivite(?string $decript_activite): self
     {
         $this->decript_activite = $decript_activite;
-
-        return $this;
-    }
-
-    public function getPicActivite1(): ?string
-    {
-        return $this->pic_activite1;
-    }
-
-    public function setPicActivite1(?string $pic_activite1): self
-    {
-        $this->pic_activite1 = $pic_activite1;
-
-        return $this;
-    }
-
-    public function getPicActivite2(): ?string
-    {
-        return $this->pic_activite2;
-    }
-
-    public function setPicActivite2(?string $pic_activite2): self
-    {
-        $this->pic_activite2 = $pic_activite2;
-
-        return $this;
-    }
-
-    public function getPicActivite3(): ?string
-    {
-        return $this->pic_activite3;
-    }
-
-    public function setPicActivite3(?string $pic_activite3): self
-    {
-        $this->pic_activite3 = $pic_activite3;
 
         return $this;
     }
@@ -191,4 +296,76 @@ class Activites
         return $this -> title_activite;
     }
 
+
+    /**
+     * Get the value of updatedAt3
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt3()
+    {
+        return $this->updatedAt3;
+    }
+
+    /**
+     * Set the value of updatedAt3
+     *
+     * @param  \DateTime  $updatedAt3
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt3(\DateTime $updatedAt3)
+    {
+        $this->updatedAt3 = $updatedAt3;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt2
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt2()
+    {
+        return $this->updatedAt2;
+    }
+
+    /**
+     * Set the value of updatedAt2
+     *
+     * @param  \DateTime  $updatedAt2
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt2(\DateTime $updatedAt2)
+    {
+        $this->updatedAt2 = $updatedAt2;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt1
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt1()
+    {
+        return $this->updatedAt1;
+    }
+
+    /**
+     * Set the value of updatedAt1
+     *
+     * @param  \DateTime  $updatedAt1
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt1(\DateTime $updatedAt1)
+    {
+        $this->updatedAt1 = $updatedAt1;
+
+        return $this;
+    }
 }

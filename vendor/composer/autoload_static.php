@@ -124,6 +124,7 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Fig\\Link\\' => 9,
             'Faker\\' => 6,
             'Facebook\\WebDriver\\' => 19,
+            'FOS\\UserBundle\\' => 15,
         ),
         'E' => 
         array (
@@ -476,6 +477,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'Facebook\\WebDriver\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/webdriver/lib',
+        ),
+        'FOS\\UserBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
         ),
         'Egulias\\EmailValidator\\' => 
         array (

@@ -38,21 +38,6 @@ class Events
     private $date_event;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $participe_oui;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $participe_non;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $participe_pe;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $descript_event;
@@ -316,42 +301,6 @@ class Events
         return $this;
     }
 
-    public function getParticipeOui(): ?string
-    {
-        return $this->participe_oui;
-    }
-
-    public function setParticipeOui(string $participe_oui): self
-    {
-        $this->participe_oui = $participe_oui;
-
-        return $this;
-    }
-
-    public function getParticipeNon(): ?string
-    {
-        return $this->participe_non;
-    }
-
-    public function setParticipeNon(string $participe_non): self
-    {
-        $this->participe_non = $participe_non;
-
-        return $this;
-    }
-
-    public function getParticipePe(): ?string
-    {
-        return $this->participe_pe;
-    }
-
-    public function setParticipePe(string $participe_pe): self
-    {
-        $this->participe_pe = $participe_pe;
-
-        return $this;
-    }
-
     public function getDescriptEvent(): ?string
     {
         return $this->descript_event;
@@ -518,5 +467,5 @@ class Events
         $this->updatedAt3 = $updatedAt3;
 
         return $this;
-    }
+    } 
 }

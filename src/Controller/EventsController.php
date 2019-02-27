@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -38,13 +39,18 @@ class EventsController extends AbstractController
             ->add('title',TextType::class)
             ->add('lieu',TextType::class)
             ->add('dateEvent',DateType::class)
-            ->add('imageName1',VichImageType::class)
-            ->add('imageName2',VichImageType::class)
-            ->add('imageName3',VichImageType::class)
-            ->add('imageName4',VichImageType::class)
-            ->add('participeOui',TextType::class)
-            ->add('participeNon',TextType::class)
-            ->add('participePe',TextType::class)
+            ->add('imageFile1',VichImageType::class)
+            ->add('imageFile2',VichImageType::class)
+            ->add('imageFile3',VichImageType::class)
+            ->add('imageFile4',VichImageType::class)
+            ->add('participation', ChoiceType::class, [
+                'label' => 'allez vous y participer',
+                'choices' => [
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+                    'peut-etre' => 'peut-etre',
+                ]
+            ])
             ->add('descriptEvent',TextareaType::class)
             ->getForm();
             
@@ -80,9 +86,6 @@ class EventsController extends AbstractController
             ->add('imageFile2',VichImageType::class)
             ->add('imageFile3',VichImageType::class)
             ->add('imageFile4',VichImageType::class)
-            ->add('participeOui',TextType::class)
-            ->add('participeNon',TextType::class)
-            ->add('participePe',TextType::class)
             ->add('descriptEvent',TextareaType::class)
             ->getForm();
             

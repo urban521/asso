@@ -38,7 +38,6 @@ class UsersType extends AbstractType
             ->add('activite_user', EntityType::class,[
                 'class' => Activites::class,
                 'multiple' => true
-
             ])
             ->add('role', ChoiceType::class, [ 
                 'label' => 'Choisissez le role du licencié',
