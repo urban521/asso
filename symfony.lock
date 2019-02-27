@@ -109,7 +109,6 @@
     },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
-<<<<<<< HEAD
     },
     "fzaninotto/faker": {
         "version": "v1.8.0"
