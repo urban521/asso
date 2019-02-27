@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerNPLwa8U\srcApp_KernelDevDebugContainer([
     'container.build_hash' => 'NPLwa8U',
-    'container.build_id' => '8a596f69',
-    'container.build_time' => 1551281121,
+    'container.build_id' => 'a513d08e',
+    'container.build_time' => 1551281241,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerNPLwa8U');
