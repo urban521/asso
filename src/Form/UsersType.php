@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Entity\Activites;
+use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\PropertyInfo\Type;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,29 +20,33 @@ class UsersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('num_licence')
+            ->add('num_licence', ChoiceType::class, [ 'label' => 'Numéro de licence'])
+            ->add('association',EntityType::class, [
+                'class' => Association::class,
+                'label' => 'choisir l\'association'
+            ])
             ->add('civilite', ChoiceType::class, [ 
-                'label' => 'Choisir votre civilité',
+                'label' => 'Choisir la civilité',
                 'choices' => [
                     'Mr' => 'Monsieur',
                     'Mme' => 'Madame',
                 ]
             ])
-            ->add('nom_user')
-            ->add('nom_fille')
-            ->add('prenom_user')
-            ->add('date_naissance')
-            ->add('tel1')
-            ->add('tel2')
-            ->add('email_user')
-            ->add('rue')
-            ->add('cp_user')
-            ->add('ville_user')
+            ->add('nom_user', ChoiceType::class, [ 'label' => 'Nom'])
+            ->add('nom_fille', ChoiceType::class, [ 'label' => 'Nom de jeune fille'])
+            ->add('prenom_user', ChoiceType::class, [ 'label' => 'Prénom'])
+            ->add('date_naissance', ChoiceType::class, [ 'label' => 'Date de naissance'])
+            ->add('tel1', ChoiceType::class, [ 'label' => 'Numéro de téléphone 1'])
+            ->add('tel2', ChoiceType::class, [ 'label' => 'Numéro de téléphone 2'])
+            ->add('email_user', ChoiceType::class, [ 'label' => 'Email'])
+            ->add('rue', ChoiceType::class, [ 'label' => 'Adresse (numéro, rue)'])
+            ->add('cp_user', ChoiceType::class, [ 'label' => 'Code postal'])
+            ->add('ville_user', ChoiceType::class, [ 'label' => 'Ville'])
             ->add('activite_user', EntityType::class,[
                 'class' => Activites::class,
                 'multiple' => true
             ])
-            /*->add('role', ChoiceType::class, [ 
+            ->add('role', ChoiceType::class, [ 
                 'label' => 'Choisissez le role du licencié',
                 'choices' => [
                     'Pratiquant' => 'Pratiquant',
@@ -55,9 +60,7 @@ class UsersType extends AbstractType
                     'Cadre Technique Secondaire' => 'Cadre technique Secondaire',
                     'Membre du bureau' => 'Membre du bureau',
                 ]
-            ])*/
-            //->add('events'),
-            ->add('association', HiddenType::class)
+            ])
         ;
     }
 

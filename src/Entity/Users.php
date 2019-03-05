@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-
 use App\Entity\Users;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
@@ -92,16 +91,24 @@ class Users
     private $events;
 
     
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $association;
 
     public function __construct()
     {
         $this->activite_user = new ArrayCollection();
         $this->events = new ArrayCollection();
+        $this->association = new ArrayCollection();
     }
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Association", inversedBy="users")
+     */
+    private $association;
+    
 
     public function getId(): ?int
     {
@@ -314,6 +321,7 @@ class Users
         return $this -> nom_user;
     }
 
+
     public function getRole(): ?string
     {
         return $this->role;
@@ -326,15 +334,31 @@ class Users
         return $this;
     }
 
-    public function getAssociation(): ?string
+    /**
+     * @return Collection|association[]
+     */
+    public function getAssociation(): Collection
     {
         return $this->association;
     }
 
-    public function setAssociation(string $association): self
+    public function addAssociation(association $association): self
     {
-        $this->association = $association;
+        if (!$this->association->contains($association)) {
+            $this->association[] = $association;
+        }
 
         return $this;
     }
+
+    public function removeAssociation(association $association): self
+    {
+        if ($this->association->contains($association)) {
+            $this->association->removeElement($association);
+        }
+
+        return $this;
+    }
+
+
 }

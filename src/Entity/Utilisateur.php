@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Users;
+use App\Entity\Utilisateur;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -16,7 +17,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * message="L'email que vous avez indiquer et déjà utilisé !"
  * )
  */
-class Users implements UserInterface
+class Utilisateur implements UserInterface
 {
     /**
      * @ORM\Id()

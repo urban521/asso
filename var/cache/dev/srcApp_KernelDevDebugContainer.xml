@@ -116,6 +116,18 @@
       <parameter key="monsieur">monsieur</parameter>
       <parameter key="madame">madame</parameter>
     </parameter>
+    <parameter key="roles" type="collection">
+      <parameter key="Pratiquant">pratiquant</parameter>
+      <parameter key="Président">president</parameter>
+      <parameter key="Vis-président">vis-president</parameter>
+      <parameter key="Secrétaire">secretaire</parameter>
+      <parameter key="Vis-Secrétaire">vis-secretaire</parameter>
+      <parameter key="Trésorier">trésorier</parameter>
+      <parameter key="Vis-Trésorier">vis-trésorier</parameter>
+      <parameter key="Cadre Technique Principale">cadre technique principal</parameter>
+      <parameter key="Cadre Technique Secondaire">cadre technique secondaire</parameter>
+      <parameter key="Membre du Bureau">membre du bureau</parameter>
+    </parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
@@ -292,6 +304,7 @@
       </parameter>
       <parameter key="ROLE_SUPER_ADMIN" type="collection">
         <parameter>ROLE_ADMIN</parameter>
+        <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
       </parameter>
     </parameter>
     <parameter key="security.access.denied_url">null</parameter>
@@ -348,9 +361,9 @@
         <parameter key="avatar_property_path">null</parameter>
       </parameter>
       <parameter key="formats" type="collection">
-        <parameter key="date">d/m/Y</parameter>
+        <parameter key="datetime">d/m/Y H:i:s</parameter>
+        <parameter key="date">Y-m-d</parameter>
         <parameter key="time">H:i:s</parameter>
-        <parameter key="datetime">F j, Y H:i</parameter>
         <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
       </parameter>
       <parameter key="entities" type="collection">
@@ -362,6 +375,10 @@
           <parameter key="class">App\Entity\Users</parameter>
           <parameter key="form" type="collection">
             <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">association</parameter>
+                <parameter key="label">association</parameter>
+              </parameter>
               <parameter type="collection">
                 <parameter key="property">num_licence</parameter>
                 <parameter key="label">Numéro de Licence</parameter>
@@ -425,6 +442,26 @@
               <parameter type="collection">
                 <parameter key="property">activite_user</parameter>
                 <parameter key="label">Activités Sportives</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">role</parameter>
+                <parameter key="type">choice</parameter>
+                <parameter key="type_options" type="collection">
+                  <parameter key="expanded">true</parameter>
+                  <parameter key="choices" type="collection">
+                    <parameter key="Pratiquant">pratiquant</parameter>
+                    <parameter key="Président">president</parameter>
+                    <parameter key="Vis-président">vis-president</parameter>
+                    <parameter key="Secrétaire">secretaire</parameter>
+                    <parameter key="Vis-Secrétaire">vis-secretaire</parameter>
+                    <parameter key="Trésorier">trésorier</parameter>
+                    <parameter key="Vis-Trésorier">vis-trésorier</parameter>
+                    <parameter key="Cadre Technique Principale">cadre technique principal</parameter>
+                    <parameter key="Cadre Technique Secondaire">cadre technique secondaire</parameter>
+                    <parameter key="Membre du Bureau">membre du bureau</parameter>
+                  </parameter>
+                </parameter>
+                <parameter key="label">role dans le club</parameter>
               </parameter>
             </parameter>
           </parameter>
@@ -672,7 +709,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
+      <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
     <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
@@ -688,7 +725,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.resetting.email.from_email" type="collection">
-      <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
+      <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
@@ -4206,7 +4243,7 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.TL5r4R7"/>
+        <argument type="service" id=".security.request_matcher.GScMNJa"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
         </argument>
@@ -4709,8 +4746,8 @@
     <service id=".security.request_matcher._pRcrzc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin/</argument>
     </service>
-    <service id=".security.request_matcher.TL5r4R7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/client/</argument>
+    <service id=".security.request_matcher.GScMNJa" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/licencier/</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>

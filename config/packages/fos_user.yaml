@@ -3,5 +3,5 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
-        address: "samy.aformac2018@gmail.com"
-        sender_name: "contactasso@aformac.com"
+        address: "cd87@sportspourtous.org"
+        sender_name: "cd87 Sports pour tous"

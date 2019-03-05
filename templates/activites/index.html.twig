@@ -5,35 +5,28 @@
 
 {% block body %}
 
-<!--<section class="activites">
 
-    {% for activites in activites %} 
-        <activite>
-            <h2>{{ activites.titleActivite }}</h2>
-            <div class="content">
-                <img src="{{ activites.picActivite1 }}" alt="">
-                <p>{{ activites.decriptActivite | raw }}</p>
-                <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">lire la suite</a>
-            </div>
-        </activite>
-    {% endfor %}
-</section>-->
-
-<section class="activites">
+<section class="gallery-block cards-gallery">
     {% for activites in activites %}
         <div class="container">
-            <h4 class="card-title">{{ activites.titleActivite }}</h4>
-            <div class="card" style="width:400px">
-                <img class="card-img-top" src="{{ activites.picActivite1 }}" alt="" style="width:100%">
-                <div class="card-body">
-                </div>
-                <p class="card-text"><p>{{ activites.decriptActivite | raw }}</p></p>
-                <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a>
+            <div class="heading">
+                <p class="card-title">{{ activites.titleActivite }}</p>
             </div>
-            <br>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 transform-on-hover">
+                        <a class="lightbox" href="/images/{{ activites.imageName1 }}"><img src="/images/{{ activites.imageName1 }}" class="card-img-top"</a>
+                        
+                        <div class="card-body">
+                            <p class="text-muted card-text"><p>{{ activites.decriptActivite | raw }}</p></p>
+                            <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>    
         </div>
-    </activite>
     {% endfor %}
 </section>
+<script> baguetteBox.run('.card-gallery', {animation: 'slideIn'})</script>
 
 {% endblock %}

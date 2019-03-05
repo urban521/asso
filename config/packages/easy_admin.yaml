@@ -3,7 +3,7 @@ easy_admin:
         display_name: true
         display_avatar: false
     formats:
-        date: 'd/m/Y'
+        datetime: 'd/m/Y H:i:s'
     entities:
         Users:
             label: Licenciers
@@ -12,6 +12,7 @@ easy_admin:
             class: App\Entity\Users
             form:
                 fields:
+                    - { property: 'association', label: 'association' }
                     - { property: 'num_licence', label: 'Numéro de Licence' }
                     - { property: 'civilite', type: 'choice', type_options: { expanded: true, choices: '%gender%'}, label: 'Etat civil' }
                     - { property: 'nom_user', label: 'Nom' }
@@ -26,6 +27,8 @@ easy_admin:
                     - { property: 'cp_user', label: 'Code postal' }
                     - { property: 'ville_user', label: 'Ville' }
                     - { property: 'activite_user', label: 'Activités Sportives' }
+                    - { property: 'role', type: 'choice', type_options: { expanded: true, choices: '%roles%'}, label: 'role dans le club' }
+
         User:
                 label: user
                 list:

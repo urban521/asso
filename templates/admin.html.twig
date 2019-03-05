@@ -1,9 +1,77 @@
 {% extends "base.html.twig" %}
 
+
+
 {% block body %}
 
-    <h1>page Admin</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#">logo</a>
 
-    <p><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></p>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></p>
+        {% else %}
+            <p><a href="{{ path('fos_user_security_login') }}">Se connecter</a></p>
+        </a>
+        {% endif %}
+    </div>
+  </div>
+</nav>
+<body>
+    <div class="container">
+        <h2 class="ryan1">LA PAGE DE GESTION DE VOTRE ASSOCIATION SPORTIVE</h2>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-center">
+                <div class="card-block">
+                    <img src="/images/Nos-activits.jpg" alt="" class="img-fluid">
+                    <div class="card-title">
+                        <h4>ASSOCIATION</h4>
+                    </div>
+                    <div class="card-text">
+                        <a href="/assos/new"><p>Modifier votre ASSOCIATION</p></a></button>
+                        <a href="/assos"><p>Voir votre ASSOCIATION</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>            
+                
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-center">
+                <div class="card-block">
+                    <img src="/images/Nos-activits.jpg" alt="" class="img-fluid">
+                    <div class="card-title">
+                        <h4>LICENCIERS</h4>
+                    </div>
+                    <div class="card-text">
+                        <a href="/users/new"><p>Creer Vos LICENCIERS</p></a>
+                        <a href="#"><p>Voir la liste de vos LICENCIERS</p></a>
+                        <a href="/users"><p>Modifier vos LICENCIERS</p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <h4>EVENEMENTS</h4>
+            <a href="#"><p>Créer Vos EVENEMENTS</p></a>
+            <a href="#"><p>Voir la liste de vos EVENEMENTS</p></a>
+            <a href="/events"><p>Modifier vos EVENEMENTS</p></a>
+        </div>
+
+        <div class="col-3">
+            <h4>COMPTABILITE</h4>
+            <a href="#"><p>Aller sur votre COMPTABILITE</p></a>
+            <a href="#"><p>TUTO explication de la mise en route de votre COMPTABILITE</p></a>
+        </div>
+    </div>
+    </div>
+</body>
 
 {% endblock %}

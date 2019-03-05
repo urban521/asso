@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\Publique;
 use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AssociationRepository")
@@ -93,7 +95,7 @@ class Association
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * 
      * @var string
      */
     private $imageName;
@@ -223,7 +225,12 @@ class Association
      *
      * @var \DateTime
      */
-    private $updatedAt5; 
+    private $updatedAt5;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Users", mappedBy="association")
+     */
+    private $users; 
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -394,6 +401,7 @@ class Association
         $this->updatedAt5 = new \Datetime();
         $this->publique = new ArrayCollection();
         $this->Publique = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -625,6 +633,34 @@ class Association
     public function setPublique(string $publique): self
     {
         $this->publique = $publique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Users[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(Users $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addAssociation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Users $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeAssociation($this);
+        }
 
         return $this;
     }
