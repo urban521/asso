@@ -18,10 +18,21 @@
                 </div>
                 <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a>
             </div>
-            <br>
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card border-0 transform-on-hover">
+                        <a class="lightbox" href="/images/{{ activites.imageName1 }}"><img src="/images/{{ activites.imageName1 }}" class="card-img-top"</a>
+                        
+                        <div class="card-body">
+                            <p class="text-muted card-text"><p>{{ activites.decriptActivite | raw }}</p></p>
+                            <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>    
         </div>
-    </activite>
     {% endfor %}
 </section>
+<script> baguetteBox.run('.card-gallery', {animation: 'slideIn'})</script>
 
 {% endblock %} 

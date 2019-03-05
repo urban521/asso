@@ -27,6 +27,7 @@
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
       <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -101,6 +102,10 @@
         <parameter key="path">/var/www/asso/vendor/friendsofsymfony/user-bundle</parameter>
         <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
+      <parameter key="KnpMenuBundle" type="collection">
+        <parameter key="path">/var/www/asso/vendor/knplabs/knp-menu-bundle/src</parameter>
+        <parameter key="namespace">Knp\Bundle\MenuBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
@@ -110,6 +115,18 @@
     <parameter key="gender" type="collection">
       <parameter key="monsieur">monsieur</parameter>
       <parameter key="madame">madame</parameter>
+    </parameter>
+    <parameter key="roles" type="collection">
+      <parameter key="Pratiquant">pratiquant</parameter>
+      <parameter key="Président">president</parameter>
+      <parameter key="Vis-président">vis-president</parameter>
+      <parameter key="Secrétaire">secretaire</parameter>
+      <parameter key="Vis-Secrétaire">vis-secretaire</parameter>
+      <parameter key="Trésorier">trésorier</parameter>
+      <parameter key="Vis-Trésorier">vis-trésorier</parameter>
+      <parameter key="Cadre Technique Principale">cadre technique principal</parameter>
+      <parameter key="Cadre Technique Secondaire">cadre technique secondaire</parameter>
+      <parameter key="Membre du Bureau">membre du bureau</parameter>
     </parameter>
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
@@ -287,6 +304,7 @@
       </parameter>
       <parameter key="ROLE_SUPER_ADMIN" type="collection">
         <parameter>ROLE_ADMIN</parameter>
+        <parameter>ROLE_ALLOWED_TO_SWITCH</parameter>
       </parameter>
     </parameter>
     <parameter key="security.access.denied_url">null</parameter>
@@ -343,9 +361,9 @@
         <parameter key="avatar_property_path">null</parameter>
       </parameter>
       <parameter key="formats" type="collection">
-        <parameter key="date">d/m/Y</parameter>
+        <parameter key="datetime">d/m/Y H:i:s</parameter>
+        <parameter key="date">Y-m-d</parameter>
         <parameter key="time">H:i:s</parameter>
-        <parameter key="datetime">F j, Y H:i</parameter>
         <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
       </parameter>
       <parameter key="entities" type="collection">
@@ -357,6 +375,10 @@
           <parameter key="class">App\Entity\Users</parameter>
           <parameter key="form" type="collection">
             <parameter key="fields" type="collection">
+              <parameter type="collection">
+                <parameter key="property">association</parameter>
+                <parameter key="label">association</parameter>
+              </parameter>
               <parameter type="collection">
                 <parameter key="property">num_licence</parameter>
                 <parameter key="label">Numéro de Licence</parameter>
@@ -420,6 +442,26 @@
               <parameter type="collection">
                 <parameter key="property">activite_user</parameter>
                 <parameter key="label">Activités Sportives</parameter>
+              </parameter>
+              <parameter type="collection">
+                <parameter key="property">role</parameter>
+                <parameter key="type">choice</parameter>
+                <parameter key="type_options" type="collection">
+                  <parameter key="expanded">true</parameter>
+                  <parameter key="choices" type="collection">
+                    <parameter key="Pratiquant">pratiquant</parameter>
+                    <parameter key="Président">president</parameter>
+                    <parameter key="Vis-président">vis-president</parameter>
+                    <parameter key="Secrétaire">secretaire</parameter>
+                    <parameter key="Vis-Secrétaire">vis-secretaire</parameter>
+                    <parameter key="Trésorier">trésorier</parameter>
+                    <parameter key="Vis-Trésorier">vis-trésorier</parameter>
+                    <parameter key="Cadre Technique Principale">cadre technique principal</parameter>
+                    <parameter key="Cadre Technique Secondaire">cadre technique secondaire</parameter>
+                    <parameter key="Membre du Bureau">membre du bureau</parameter>
+                  </parameter>
+                </parameter>
+                <parameter key="label">role dans le club</parameter>
               </parameter>
             </parameter>
           </parameter>
@@ -667,7 +709,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-      <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
+      <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
     <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
@@ -683,7 +725,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.resetting.email.from_email" type="collection">
-      <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
+      <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
@@ -693,6 +735,23 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="knp_menu.factory.class">Knp\Menu\MenuFactory</parameter>
+    <parameter key="knp_menu.factory_extension.routing.class">Knp\Menu\Integration\Symfony\RoutingExtension</parameter>
+    <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
+    <parameter key="knp_menu.matcher.class">Knp\Menu\Matcher\Matcher</parameter>
+    <parameter key="knp_menu.menu_provider.chain.class">Knp\Menu\Provider\ChainProvider</parameter>
+    <parameter key="knp_menu.menu_provider.container_aware.class">Knp\Bundle\MenuBundle\Provider\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.menu_provider.builder_alias.class">Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider</parameter>
+    <parameter key="knp_menu.renderer_provider.class">Knp\Bundle\MenuBundle\Renderer\ContainerAwareProvider</parameter>
+    <parameter key="knp_menu.renderer.list.class">Knp\Menu\Renderer\ListRenderer</parameter>
+    <parameter key="knp_menu.renderer.list.options" type="collection"/>
+    <parameter key="knp_menu.listener.voters.class">Knp\Bundle\MenuBundle\EventListener\VoterInitializerListener</parameter>
+    <parameter key="knp_menu.voter.router.class">Knp\Menu\Matcher\Voter\RouteVoter</parameter>
+    <parameter key="knp_menu.twig.extension.class">Knp\Menu\Twig\MenuExtension</parameter>
+    <parameter key="knp_menu.renderer.twig.class">Knp\Menu\Renderer\TwigRenderer</parameter>
+    <parameter key="knp_menu.renderer.twig.options" type="collection"/>
+    <parameter key="knp_menu.renderer.twig.template">@KnpMenu/menu.html.twig</parameter>
+    <parameter key="knp_menu.default_renderer">twig</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -4187,7 +4246,7 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.TL5r4R7"/>
+        <argument type="service" id=".security.request_matcher.GScMNJa"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
         </argument>
@@ -4690,8 +4749,8 @@
     <service id=".security.request_matcher._pRcrzc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin/</argument>
     </service>
-    <service id=".security.request_matcher.TL5r4R7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/client/</argument>
+    <service id=".security.request_matcher.GScMNJa" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/licencier/</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -4802,6 +4861,9 @@
     <service id="twig" class="Twig\Environment" public="true">
       <argument type="service" id="twig.loader.filesystem"/>
       <argument type="collection">
+        <argument key="paths" type="collection">
+          <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
+        </argument>
         <argument key="default_path">/var/www/asso/templates</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -4813,7 +4875,6 @@
         <argument key="autoescape">name</argument>
         <argument key="cache">/var/www/asso/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
-        <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
           <argument key="format">F j, Y H:i</argument>
           <argument key="interval_format">%d days</argument>
@@ -4888,6 +4949,9 @@
       <call method="addExtension">
         <argument type="service" id="vich_uploader.twig.extension.uploader"/>
       </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_menu.twig.extension"/>
+      </call>
       <call method="addGlobal">
         <argument>app</argument>
         <argument type="service" id="twig.app_variable"/>
@@ -4917,6 +4981,7 @@
       <argument type="service" id=".service_locator.lSIKWsr.twig.cache_warmer"/>
       <argument type="service" id="templating.finder" on-invalid="ignore"/>
       <argument type="collection">
+        <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
     </service>
@@ -4924,6 +4989,7 @@
       <argument type="service" id="kernel"/>
       <argument>/var/www/asso/src</argument>
       <argument type="collection">
+        <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
       <argument>/var/www/asso/templates</argument>
@@ -4937,6 +5003,9 @@
     <service id="twig.loader.native_filesystem" class="Symfony\Bundle\TwigBundle\Loader\NativeFilesystemLoader" public="false">
       <argument type="collection"/>
       <argument>/var/www/asso</argument>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
+      </call>
       <call method="addPath">
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
@@ -5016,6 +5085,14 @@
       <call method="addPath">
         <argument>/var/www/asso/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>!FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
+        <argument>KnpMenu</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
+        <argument>!KnpMenu</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/asso/templates</argument>
@@ -5134,6 +5211,9 @@
       <argument type="service" id="templating.name_parser"/>
       <argument>/var/www/asso</argument>
       <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
+      </call>
+      <call method="addPath">
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
@@ -5212,6 +5292,14 @@
       <call method="addPath">
         <argument>/var/www/asso/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>!FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
+        <argument>KnpMenu</argument>
+      </call>
+      <call method="addPath">
+        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
+        <argument>!KnpMenu</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/asso/templates</argument>
@@ -6296,6 +6384,71 @@
         <argument type="service" id="service_container"/>
       </call>
     </service>
+    <service id="knp_menu.factory" class="Knp\Menu\MenuFactory" public="true">
+      <call method="addExtension">
+        <argument type="service" id="knp_menu.factory_extension.routing"/>
+        <argument>0</argument>
+      </call>
+    </service>
+    <service id="knp_menu.factory_extension.routing" class="Knp\Menu\Integration\Symfony\RoutingExtension" public="false">
+      <tag name="knp_menu.factory_extension"/>
+      <argument type="service" id="router.default"/>
+    </service>
+    <service id="knp_menu.helper" class="Knp\Menu\Twig\Helper" public="false">
+      <argument type="service" id="knp_menu.renderer_provider"/>
+      <argument type="service" id="knp_menu.menu_provider.chain"/>
+      <argument type="service" id="knp_menu.manipulator"/>
+      <argument type="service" id="knp_menu.matcher"/>
+    </service>
+    <service id="knp_menu.matcher" class="Knp\Menu\Matcher\Matcher" public="true">
+      <argument type="iterator">
+        <argument type="service" id="knp_menu.voter.router"/>
+      </argument>
+    </service>
+    <service id="knp_menu.menu_provider.chain" class="Knp\Menu\Provider\ChainProvider" public="false">
+      <argument type="iterator">
+        <argument type="service" id="knp_menu.menu_provider.lazy"/>
+        <argument type="service" id="knp_menu.menu_provider.builder_alias"/>
+      </argument>
+    </service>
+    <service id="knp_menu.menu_provider.lazy" class="Knp\Menu\Provider\LazyProvider" public="false">
+      <tag name="knp_menu.provider"/>
+      <argument type="collection"/>
+    </service>
+    <service id="knp_menu.menu_provider.builder_alias" class="Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider" public="false">
+      <tag name="knp_menu.provider"/>
+      <argument type="service" id="kernel"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="knp_menu.factory"/>
+    </service>
+    <service id="knp_menu.renderer_provider" class="Knp\Menu\Renderer\PsrProvider">
+      <argument type="service" id=".service_locator.JkeoGUI"/>
+      <argument>twig</argument>
+    </service>
+    <service id="knp_menu.renderer.list" class="Knp\Menu\Renderer\ListRenderer">
+      <tag name="knp_menu.renderer" alias="list"/>
+      <argument type="service" id="knp_menu.matcher"/>
+      <argument type="collection"/>
+      <argument>UTF-8</argument>
+    </service>
+    <service id="knp_menu.voter.router" class="Knp\Menu\Matcher\Voter\RouteVoter">
+      <tag name="knp_menu.voter"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="knp_menu.manipulator" class="Knp\Menu\Util\MenuManipulator" public="false"/>
+    <service id="knp_menu.twig.extension" class="Knp\Menu\Twig\MenuExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_menu.helper"/>
+      <argument type="service" id="knp_menu.matcher"/>
+      <argument type="service" id="knp_menu.manipulator"/>
+    </service>
+    <service id="knp_menu.renderer.twig" class="Knp\Menu\Renderer\TwigRenderer">
+      <tag name="knp_menu.renderer" alias="twig"/>
+      <argument type="service" id="twig"/>
+      <argument>@KnpMenu/menu.html.twig</argument>
+      <argument type="service" id="knp_menu.matcher"/>
+      <argument type="collection"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ActivitesController" class="App\Controller\ActivitesController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6877,6 +7030,13 @@
       </call>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
+    <service id=".service_locator.JkeoGUI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="list" type="service" id="knp_menu.renderer.list"/>
+        <argument key="twig" type="service" id="knp_menu.renderer.twig"/>
+      </argument>
+    </service>
     <service id=".service_locator.WPZmidW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7487,10 +7647,14 @@
     <service id="fos_user.user_manager" alias="fos_user.user_manager.default" public="true"/>
     <service id="fos_user.mailer" alias="fos_user.mailer.default"/>
     <service id="fos_user.session" alias="session" public="false"/>
+    <service id="Knp\Menu\FactoryInterface" alias="knp_menu.factory" public="false"/>
+    <service id="Knp\Menu\Matcher\MatcherInterface" alias="knp_menu.matcher" public="false"/>
+    <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
     <service id="argument_resolver.controller_locator" alias=".service_locator.rRaTL9p"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
+    <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>
     <service id=".service_locator.Lg2InRH" alias="templating.engine.php.helpers_locator" public="false"/>
     <service id=".service_locator.4zihvow" alias=".1_ServiceLocator~zv1ozqR" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>

@@ -3,11 +3,15 @@
 {% block title %}Users{% endblock %}
 
 {% block body %}
-{% dump(user) %}
     <h1 class="text-center">Licencier</h1>
     <div class="container">
     <table class="table">
         <tbody>
+            <tr>
+                <th>Association</th>
+                {% for association in user.association %}
+                <td>{{ association }}</td>
+                {% endfor %}
             <tr>
                 <th>Numero de Licence</th>
                 <td>{{ user.numLicence }}</td>

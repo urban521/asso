@@ -1,26 +1,28 @@
 <?php
-
-
 namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Entity\Activites;
+use App\Entity\Association;
 use App\Controller\UsersController;
 use App\Repository\UsersRepository;
+use Doctrine\ORM\Mapping\Annotation;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/users")
- */
-class UsersController extends AbstractController
+
+    /**
+     * @Route("/users")
+     */
+    class UsersController extends AbstractController
+
 {
     /**
-     * @Route("/", name="users_index", methods={"GET"})
+     * @\Symfony\Component\Routing\Annotation\Route("/", name="users_index", methods={"GET"})
      */
     public function index(UsersRepository $usersRepository): Response
     {
@@ -60,7 +62,7 @@ class UsersController extends AbstractController
     {
         return $this->render('users/show.html.twig', [
             'user' => $user,
-            'activite' => $user->getActiviteUser(),
+            'activite' => $user->getActiviteUser(),         
         ]);
     }
     

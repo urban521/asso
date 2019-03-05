@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Association</th>
                 <th>Numero de licence</th>
                 <th>choisir votre civilité</th>
                 <th>Nom</th>
@@ -23,18 +24,22 @@
                 <th>code postal</th>
                 <th>Ville</th>
                 <th>actions</th>
+                
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
+                {% for association in user.association %}
+                <td>{{ association }}</td>
+                {% endfor %}
                 <td>{{ user.numLicence }}</td>
                 <td>{{ user.civilite }}</td>
                 <td>{{ user.nomUser }}</td>
                 <td>{{ user.nomFille }}</td>
                 <td>{{ user.prenomUser }}</td>
-                <td>{{ user.dateNaissance ? user.dateNaissance|date('d-m-y') : '' }}</td>
+                <td>{{ user.dateNaissance ? user.dateNaissance|date('d-m-Y') : '' }}</td>
                 <td>{{ user.role }}</td>
                 <td>{{ user.tel1 }}</td>
                 <td>{{ user.tel2 }}</td>

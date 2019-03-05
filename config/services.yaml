@@ -9,6 +9,18 @@ parameters:
             monsieur: monsieur
             madame: madame
 
+    roles:
+            Pratiquant: pratiquant
+            Président: president
+            Vis-président: vis-president
+            Secrétaire: secretaire
+            Vis-Secrétaire: vis-secretaire
+            Trésorier: trésorier
+            Vis-Trésorier: vis-trésorier
+            Cadre Technique Principale: cadre technique principal
+            Cadre Technique Secondaire: cadre technique secondaire
+            Membre du Bureau: membre du bureau
+
 services:
     # default configuration for services in *this* file
     _defaults:
