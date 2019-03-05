@@ -15,17 +15,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/"), name="Homepage"
-     * 
-     * il n'y a aucune condition d'accès à cette page
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you nedd
-        return $this->render('homepage.html.twig');
-    }
-
-    /**
      * @Route("/admin/", name="admin_page")
      */
     public function adminPageAction()

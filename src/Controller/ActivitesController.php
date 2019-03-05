@@ -37,22 +37,19 @@ class ActivitesController extends AbstractController
      * 
      * @Security("has_role('ROLE_SUPER_ADMIN')")
      * 
-     *  on peux supprimer cette fonction
+     *  on peux supprimer cette fonction 
      */
     public function form(Activites $activites = null, Request $request, ObjectManager $manager){
         if(!$activites){
             $activites = new Activites();
         }
-
         $formActivites = $this->createForm(ActivitesType::class, $activites);
 
         $formActivites->handleRequest($request);
 
         if($formActivites->isSubmitted() && $formActivites->isValid()){
-
             $manager->persist($activites);
             $manager->flush();
-
             return $this->redirectToRoute('activites_show', ['id' => $activites->getId()]);
         }
 

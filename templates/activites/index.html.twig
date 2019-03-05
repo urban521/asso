@@ -5,29 +5,17 @@
 
 {% block body %}
 
-<!--<section class="activites">
 
-    {% for activites in activites %} 
-        <activite>
-            <h2>{{ activites.titleActivite }}</h2>
-            <div class="content">
-                <img src="{{ activites.picActivite1 }}" alt="">
-                <p>{{ activites.decriptActivite | raw }}</p>
-                <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">lire la suite</a>
-            </div>
-        </activite>
-    {% endfor %}
-</section>-->
 
 <section class="activites">
     {% for activites in activites %}
         <div class="container">
             <h4 class="card-title">{{ activites.titleActivite }}</h4>
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="{{ activites.picActivite1 }}" alt="" style="width:100%">
+                <img class="card-img-top" src="{{ activites.imageName1 }}" alt="" style="width:100%">
                 <div class="card-body">
+                    <p class="card-text">{{ activites.decriptActivite | raw }}</p>
                 </div>
-                <p class="card-text"><p>{{ activites.decriptActivite | raw }}</p></p>
                 <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a>
             </div>
             <br>
@@ -36,4 +24,4 @@
     {% endfor %}
 </section>
 
-{% endblock %}
+{% endblock %} 

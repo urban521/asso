@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Events;
+use Knp\Component\Pager\PaginatorInterface;
 use App\Controller\EventsController;
 use App\Repository\EventsRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ class EventsController extends AbstractController
     /**
      * @Route("/events", name="events")
      */
-    public function index(EventsRepository $repo) {
+    public function index(EventsRepository $repo) { 
        
         $events=$repo->findAll();
         return $this->render('events/index.html.twig', [
@@ -59,11 +60,8 @@ class EventsController extends AbstractController
 	    if ($form->isSubmitted() && $form->isValid()) {
 	        
 	        $events = $form->getData();
-
-	       
-	         $entityManager = $this->getDoctrine()->getManager();
-	         
-	         $entityManager->flush();
+	        $entityManager = $this->getDoctrine()->getManager();
+	        $entityManager->flush();
 
 	        return $this->redirectToRoute('events');
 	    }
@@ -115,7 +113,8 @@ class EventsController extends AbstractController
         $events=$repo->find($id);
         
         return $this->render('events/show.html.twig',[
-            'events'=>$events
+            'events'=>$events,
+            'id'=>$id,
         ]);
     }
 }

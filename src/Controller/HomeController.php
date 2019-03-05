@@ -3,11 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Events;
+use App\Controller\EventsController;
+use App\Repository\EventsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -16,7 +22,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request, \Swift_Mailer $mailer)
+    public function contact(Request $request, \Swift_Mailer $mailer, EventsRepository $repo)
     {
         $contact = new Contact();
         $form = $this->createFormBuilder($contact)
@@ -51,7 +57,8 @@ class HomeController extends AbstractController
                 
     	}
         return $this->render('home/index.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
+			'controller_name' => 'HomeController',
+            'form' => $form->createView(), 
+		]);
+	}
 }

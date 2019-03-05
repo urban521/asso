@@ -106,21 +106,17 @@
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
     <parameter key="env(DATABASE_URL)"></parameter>
-<<<<<<< HEAD
     <parameter key="locale">en</parameter>
     <parameter key="gender" type="collection">
       <parameter key="monsieur">monsieur</parameter>
       <parameter key="madame">madame</parameter>
     </parameter>
-=======
-    <parameter key="locale">fr</parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <parameter key="fragment.renderer.hinclude.global_template">null</parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
-    <parameter key="kernel.default_locale">fr</parameter>
+    <parameter key="kernel.default_locale">en</parameter>
     <parameter key="templating.helper.code.file_link_format">null</parameter>
     <parameter key="debug.file_link_format">null</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
@@ -353,32 +349,12 @@
         <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
       </parameter>
       <parameter key="entities" type="collection">
-<<<<<<< HEAD
-=======
-        <parameter key="Asso" type="collection">
-          <parameter key="label">Association</parameter>
-          <parameter key="list" type="collection">
-            <parameter key="title">Association</parameter>
-          </parameter>
-          <parameter key="class">App\Entity\Association</parameter>
-          <parameter key="name">Asso</parameter>
-        </parameter>
-        <parameter key="User" type="collection">
-          <parameter key="label">Utilisateur</parameter>
-          <parameter key="list" type="collection">
-            <parameter key="title">Liste des utilisateurs</parameter>
-          </parameter>
-          <parameter key="class">App\Entity\User</parameter>
-          <parameter key="name">User</parameter>
-        </parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <parameter key="Users" type="collection">
           <parameter key="label">Licenciers</parameter>
           <parameter key="list" type="collection">
             <parameter key="title">Liste des licenciers</parameter>
           </parameter>
           <parameter key="class">App\Entity\Users</parameter>
-<<<<<<< HEAD
           <parameter key="form" type="collection">
             <parameter key="fields" type="collection">
               <parameter type="collection">
@@ -456,18 +432,11 @@
           </parameter>
           <parameter key="class">App\Entity\User</parameter>
           <parameter key="name">User</parameter>
-=======
-          <parameter key="name">Users</parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         </parameter>
         <parameter key="Activite" type="collection">
           <parameter key="label">Activites</parameter>
           <parameter key="list" type="collection">
-<<<<<<< HEAD
             <parameter key="title">Gerer les Activités</parameter>
-=======
-            <parameter key="title">Activites</parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
           </parameter>
           <parameter key="class">App\Entity\Activites</parameter>
           <parameter key="form" type="collection">
@@ -500,7 +469,6 @@
           <parameter key="name">Activite</parameter>
         </parameter>
         <parameter key="Events" type="collection">
-<<<<<<< HEAD
           <parameter key="label">Evenements</parameter>
           <parameter key="list" type="collection">
             <parameter key="title">Gerer les evenements</parameter>
@@ -626,15 +594,6 @@
           </parameter>
           <parameter key="name">Association</parameter>
         </parameter>
-=======
-          <parameter key="class">App\Entity\Events</parameter>
-          <parameter key="label">Evenements</parameter>
-          <parameter key="list" type="collection">
-            <parameter key="title">Evenements</parameter>
-          </parameter>
-          <parameter key="name">Events</parameter>
-        </parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       </parameter>
       <parameter key="site_name">EasyAdmin</parameter>
       <parameter key="disabled_actions" type="collection"/>
@@ -708,11 +667,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.from_email" type="collection">
-<<<<<<< HEAD
       <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
-=======
-      <parameter key="contact@asso.fr">contact@asso.fr</parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
     <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
@@ -728,11 +683,7 @@
       <parameter>Default</parameter>
     </parameter>
     <parameter key="fos_user.resetting.email.from_email" type="collection">
-<<<<<<< HEAD
       <parameter key="samy.aformac2018@gmail.com">contactasso@aformac.com</parameter>
-=======
-      <parameter key="contact@asso.fr">contact@asso.fr</parameter>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     </parameter>
     <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
@@ -881,6 +832,13 @@
         <argument type="service" id=".service_locator.KTVqfp6.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\InscriptionEventController"/>
+      </call>
+    </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -908,6 +866,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
@@ -940,13 +901,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-<<<<<<< HEAD
     <service id="App\Repository\PubliqueRepository" class="App\Repository\PubliqueRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <service id="App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -974,7 +932,7 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="request_stack"/>
-      <argument>fr</argument>
+      <argument>en</argument>
       <argument type="service" id="router.default" on-invalid="ignore"/>
     </service>
     <service id="http_exception_listener" class="Symfony\Component\HttpKernel\EventListener\ExceptionListener" public="false">
@@ -1184,7 +1142,7 @@
       <argument type="service" id="translation.writer"/>
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
-      <argument>fr</argument>
+      <argument>en</argument>
       <argument>/var/www/asso/translations</argument>
       <argument>/var/www/asso/templates</argument>
       <call method="setName">
@@ -1217,6 +1175,7 @@
       <argument type="collection">
         <argument>App\Form\ActivitesType</argument>
         <argument>App\Form\EventsType</argument>
+        <argument>App\Form\InscriptionEventType</argument>
         <argument>App\Form\RegistrationType</argument>
         <argument>App\Form\UsersType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1477,7 +1436,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.wpTPtFe"/>
+      <argument type="service" id=".service_locator.BZftuZw"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1798,7 +1757,7 @@
     <service id="translator.default" class="Symfony\Bundle\FrameworkBundle\Translation\Translator" public="false">
       <argument type="service" id=".service_locator.yQVjGlt"/>
       <argument type="service" id="translator.formatter.default"/>
-      <argument>fr</argument>
+      <argument>en</argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -2261,8 +2220,8 @@
       </call>
       <call method="setFallbackLocales">
         <argument type="collection">
-          <argument>fr</argument>
-          <argument>fr</argument>
+          <argument>en</argument>
+          <argument>en</argument>
         </argument>
       </call>
     </service>
@@ -3712,7 +3671,6 @@
     <service id="doctrine.dbal.default_connection.event_manager" class="Symfony\Bridge\Doctrine\ContainerAwareEventManager" public="false">
       <argument type="service" id=".service_locator.Otd28_S"/>
       <call method="addEventSubscriber">
-<<<<<<< HEAD
         <argument type="service" id="vich_uploader.listener.clean.uploads"/>
       </call>
       <call method="addEventSubscriber">
@@ -3722,8 +3680,6 @@
         <argument type="service" id="vich_uploader.listener.upload.uploads"/>
       </call>
       <call method="addEventSubscriber">
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <argument type="service" id="fos_user.user_listener"/>
       </call>
       <call method="addEventListener">
@@ -3772,11 +3728,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-<<<<<<< HEAD
-      <argument type="service" id=".service_locator.SgV09N3"/>
-=======
-      <argument type="service" id=".service_locator.Ep_tWnk"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
+      <argument type="service" id=".service_locator.4h414I3"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4215,8 +4167,6 @@
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.O7Tsk.w"/>
-<<<<<<< HEAD
-=======
         <argument type="collection">
           <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
         </argument>
@@ -4238,23 +4188,8 @@
       </call>
       <call method="add">
         <argument type="service" id=".security.request_matcher.TL5r4R7"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.0uhYzab"/>
-        <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher._pRcrzc"/>
-        <argument type="collection">
-          <argument>ROLE_ADMIN</argument>
+          <argument>ROLE_USER</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -4263,11 +4198,7 @@
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
-<<<<<<< HEAD
         <argument type="service" id="fos_user.user_provider.username"/>
-=======
-        <argument type="service" id="fos_user.user_provider.username_email"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       </argument>
       <argument></argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -4598,11 +4529,7 @@
       <argument>.security.request_matcher.3UEFixr</argument>
       <argument>true</argument>
       <argument>false</argument>
-<<<<<<< HEAD
       <argument>fos_user.user_provider.username</argument>
-=======
-      <argument>fos_user.user_provider.username_email</argument>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       <argument>main</argument>
       <argument>security.authentication.form_entry_point.main</argument>
       <argument>null</argument>
@@ -4619,11 +4546,7 @@
     <service id="security.context_listener.0" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
-<<<<<<< HEAD
         <argument type="service" id="fos_user.user_provider.username"/>
-=======
-        <argument type="service" id="fos_user.user_provider.username_email"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       </argument>
       <argument>main</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -4651,11 +4574,7 @@
       <argument>/</argument>
     </service>
     <service id="security.authentication.provider.dao.main" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
-<<<<<<< HEAD
       <argument type="service" id="fos_user.user_provider.username"/>
-=======
-      <argument type="service" id="fos_user.user_provider.username_email"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       <argument type="service" id="security.user_checker"/>
       <argument>main</argument>
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -4692,11 +4611,7 @@
       </call>
     </service>
     <service id="security.authentication.listener.form.main" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
-<<<<<<< HEAD
       <tag name="security.remember_me_aware" id="main" provider="fos_user.user_provider.username"/>
-=======
-      <tag name="security.remember_me_aware" id="main" provider="fos_user.user_provider.username_email"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="security.authentication.manager"/>
       <argument type="service" id="security.authentication.session_strategy"/>
@@ -4774,12 +4689,9 @@
     </service>
     <service id=".security.request_matcher._pRcrzc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin/</argument>
-<<<<<<< HEAD
-=======
     </service>
     <service id=".security.request_matcher.TL5r4R7" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/client/</argument>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -5222,12 +5134,6 @@
       <argument type="service" id="templating.name_parser"/>
       <argument>/var/www/asso</argument>
       <call method="addPath">
-<<<<<<< HEAD
-        <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
-      </call>
-      <call method="addPath">
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
@@ -5284,17 +5190,6 @@
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
-<<<<<<< HEAD
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>KnpMenu</argument>
-      </call>
-      <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>!KnpMenu</argument>
-      </call>
-      <call method="addPath">
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <argument>/var/www/asso/vendor/easycorp/easyadmin-bundle/src/Resources/views</argument>
         <argument>EasyAdmin</argument>
       </call>
@@ -5821,7 +5716,7 @@
     </service>
     <service id="easyadmin.configuration.design_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\DesignConfigPass" public="false">
       <tag name="easyadmin.config_pass" priority="80"/>
-      <argument>fr</argument>
+      <argument>en</argument>
     </service>
     <service id="easyadmin.configuration.menu_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\MenuConfigPass" public="false">
       <tag name="easyadmin.config_pass" priority="70"/>
@@ -6153,7 +6048,6 @@
       <tag name="twig.extension"/>
       <argument type="service" id="vich_uploader.templating.helper.uploader_helper"/>
     </service>
-<<<<<<< HEAD
     <service id="vich_uploader.listener.clean.uploads" class="Vich\UploaderBundle\EventListener\Doctrine\CleanListener" public="false">
       <tag name="doctrine.event_subscriber" priority="50"/>
       <argument>uploads</argument>
@@ -6175,8 +6069,6 @@
       <argument type="service" id="vich_uploader.metadata_reader"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
     </service>
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <service id="fos_user.user_manager.default" class="FOS\UserBundle\Doctrine\UserManager" public="false">
       <argument type="service" id="fos_user.util.password_updater"/>
       <argument type="service" id="fos_user.util.canonical_fields_updater"/>
@@ -6421,6 +6313,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6437,6 +6332,8 @@
     <service id=".abstract.instanceof.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventsType" class="App\Form\EventsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UsersType" class="App\Form\UsersType" autowire="true" abstract="true"/>
@@ -6453,11 +6350,8 @@
     <service id=".abstract.instanceof.App\Repository\EventsRepository" class="App\Repository\EventsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\InscriptionRepository" class="App\Repository\InscriptionRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\InscriptionRepository" class="App\Repository\InscriptionRepository" autowire="true" autoconfigure="true" abstract="true"/>
-<<<<<<< HEAD
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PubliqueRepository" class="App\Repository\PubliqueRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PubliqueRepository" class="App\Repository\PubliqueRepository" autowire="true" autoconfigure="true" abstract="true"/>
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UtilisateurRepository" class="App\Repository\UtilisateurRepository" autowire="true" abstract="true"/>
@@ -6660,10 +6554,17 @@
         <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Z_.o95M" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Gr.ZW0q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+        <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.SxwvHq3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.czKK4py" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6679,19 +6580,13 @@
         <argument key="usersRepository" type="service" id="App\Repository\UsersRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.SxwvHq3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
     <service id=".service_locator.CLREBB2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="user" type="service" id=".errored..service_locator.CLREBB2.App\Entity\Users"/>
       </argument>
     </service>
-    <service id=".service_locator.JRoEnnt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.rRaTL9p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActivitesController::form" type="service" id=".service_locator.Rj4akvv"/>
@@ -6702,7 +6597,8 @@
         <argument key="App\Controller\AssosController::index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController::index" type="service" id=".service_locator.Z_.o95M"/>
+        <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\InscriptionEventController::newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController::delete" type="service" id=".service_locator.CLREBB2"/>
         <argument key="App\Controller\UsersController::edit" type="service" id=".service_locator.CLREBB2"/>
@@ -6717,7 +6613,8 @@
         <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController:index" type="service" id=".service_locator.Z_.o95M"/>
+        <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\InscriptionEventController:newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController:delete" type="service" id=".service_locator.CLREBB2"/>
         <argument key="App\Controller\UsersController:edit" type="service" id=".service_locator.CLREBB2"/>
@@ -6783,11 +6680,12 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.wpTPtFe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.BZftuZw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ActivitesType" type="service" id="App\Form\ActivitesType"/>
         <argument key="App\Form\EventsType" type="service" id="App\Form\EventsType"/>
+        <argument key="App\Form\InscriptionEventType" type="service" id="App\Form\InscriptionEventType"/>
         <argument key="App\Form\RegistrationType" type="service" id="App\Form\RegistrationType"/>
         <argument key="App\Form\UsersType" type="service" id="App\Form\UsersType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType" type="service" id="easyadmin.form.type.autocomplete"/>
@@ -6814,11 +6712,7 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-<<<<<<< HEAD
-    <service id=".service_locator.SgV09N3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-=======
-    <service id=".service_locator.Ep_tWnk" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
+    <service id=".service_locator.4h414I3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActivitesRepository" type="service" id="App\Repository\ActivitesRepository"/>
@@ -6827,10 +6721,7 @@
         <argument key="App\Repository\ContactRepository" type="service" id="App\Repository\ContactRepository"/>
         <argument key="App\Repository\EventsRepository" type="service" id="App\Repository\EventsRepository"/>
         <argument key="App\Repository\InscriptionRepository" type="service" id="App\Repository\InscriptionRepository"/>
-<<<<<<< HEAD
         <argument key="App\Repository\PubliqueRepository" type="service" id="App\Repository\PubliqueRepository"/>
-=======
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
         <argument key="App\Repository\UsersRepository" type="service" id="App\Repository\UsersRepository"/>
         <argument key="App\Repository\UtilisateurRepository" type="service" id="App\Repository\UtilisateurRepository"/>
       </argument>
@@ -7050,6 +6941,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\InscriptionEventController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\InscriptionEventController"/>
+      <argument>App\Controller\InscriptionEventController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator.KTVqfp6.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
       <argument>App\Controller\SecurityController</argument>
@@ -7184,7 +7081,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.JRoEnnt"/>
+      <argument type="service" id=".service_locator.rRaTL9p"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -7532,13 +7429,8 @@
     <service id="Symfony\Component\Security\Http\HttpUtils" alias="security.http_utils" public="false"/>
     <service id="Symfony\Component\Security\Guard\GuardAuthenticatorHandler" alias="security.authentication.guard_handler" public="false"/>
     <service id="security.firewall" alias="debug.security.firewall" public="false"/>
-<<<<<<< HEAD
     <service id="security.user.provider.concrete.fos_userbundle" alias="fos_user.user_provider.username" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="fos_user.user_provider.username"/>
-=======
-    <service id="security.user.provider.concrete.fos_userbundle" alias="fos_user.user_provider.username_email" public="false"/>
-    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="fos_user.user_provider.username_email"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
@@ -7595,18 +7487,10 @@
     <service id="fos_user.user_manager" alias="fos_user.user_manager.default" public="true"/>
     <service id="fos_user.mailer" alias="fos_user.mailer.default"/>
     <service id="fos_user.session" alias="session" public="false"/>
-<<<<<<< HEAD
-    <service id="argument_resolver.controller_locator" alias=".service_locator.JRoEnnt"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.rRaTL9p"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
-    <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>
-=======
-    <service id="argument_resolver.controller_locator" alias=".service_locator.XcmJZZo"/>
-    <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
-    <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
-    <service id="twig.loader" alias="twig.loader.filesystem"/>
->>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     <service id=".service_locator.Lg2InRH" alias="templating.engine.php.helpers_locator" public="false"/>
     <service id=".service_locator.4zihvow" alias=".1_ServiceLocator~zv1ozqR" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>

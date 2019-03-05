@@ -16,9 +16,9 @@ class ActivitesType extends AbstractType
         $builder
             ->add('titleActivite')
             ->add('decriptActivite')
-            ->add('picActivite1')
-            ->add('pic_activite2')
-            ->add('pic_activite3')
+            ->add('imageFile1')
+            ->add('imageFile2')
+            ->add('imageFile3')
             ->add('users')
             ->add('associations')
         ;

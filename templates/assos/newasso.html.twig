@@ -23,8 +23,12 @@
         {{ form_widget(form.publique,{'attr':{'placeholder':'type de publique'}}) }}
         {{ form_widget(form.imageFile5,{'attr':{'placeholder':'diplome cadre'}}) }}
         {{ form_widget(form.adressCorrespondant,{'attr':{'placeholder':'adresse de correspendant'}}) }}
-        <button type="submit">
-            Nouvelle Asso
+       <button type="submit">
+            {% if editMode %}
+                Modifier asso
+            {% else %}
+                Nouvelle asso
+            {% endif %}
         </button>
         {{ form_end(form) }}
         

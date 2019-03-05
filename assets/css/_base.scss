@@ -4,6 +4,10 @@ header {
     background: #fff;
 }
 
+.menu ul li a {
+    color: red;
+}
+
 .logo {
     position: fixed;
     float: left;
@@ -32,6 +36,7 @@ nav ul {
 
 nav.darkblue ul {
     background: darkblue;
+     opacity: 0.8;
 }
 
 nav ul li {
@@ -47,7 +52,7 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: none;
-    color: red;
+    color: rgb(0, 255, 242);
 }
 
 .menu-icon {
@@ -75,6 +80,7 @@ nav ul li a:hover {
 
     nav.darkblue ul {
         background: darkblue;
+        opacity: 0.8;
     }
 
     .showing {

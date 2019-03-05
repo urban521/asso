@@ -14,6 +14,18 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class EventsRepository extends ServiceEntityRepository
 {
+    public function findAllVisibleQuery(): Query {
+
+        return $this->findVisibleQuery()
+            ->getQuery();
+    }
+
+    public function findLatest(): array {
+        return $this->findVisibleQuery()
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Events::class);
