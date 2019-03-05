@@ -109,7 +109,7 @@
     },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
-    },
+    }]
 =======>>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
     },
     "jdorn/sql-formatter": {
