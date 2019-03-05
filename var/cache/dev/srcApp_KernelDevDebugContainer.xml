@@ -891,6 +891,13 @@
         <argument type="service" id=".service_locator.KTVqfp6.App\Controller\HomeController"/>
       </call>
     </service>
+    <service id="App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.KTVqfp6.App\Controller\InscriptionEventController"/>
+      </call>
+    </service>
     <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -918,6 +925,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
@@ -1224,6 +1234,7 @@
       <argument type="collection">
         <argument>App\Form\ActivitesType</argument>
         <argument>App\Form\EventsType</argument>
+        <argument>App\Form\InscriptionEventType</argument>
         <argument>App\Form\RegistrationType</argument>
         <argument>App\Form\UsersType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
@@ -1484,7 +1495,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.wpTPtFe"/>
+      <argument type="service" id=".service_locator.BZftuZw"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6463,6 +6474,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\InscriptionEventController" class="App\Controller\InscriptionEventController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6479,6 +6493,8 @@
     <service id=".abstract.instanceof.App\Form\ActivitesType" class="App\Form\ActivitesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\EventsType" class="App\Form\EventsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\EventsType" class="App\Form\EventsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\InscriptionEventType" class="App\Form\InscriptionEventType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UsersType" class="App\Form\UsersType" autowire="true" abstract="true"/>
@@ -6699,10 +6715,17 @@
         <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Z_.o95M" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.Gr.ZW0q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+        <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.SxwvHq3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
     <service id=".service_locator.czKK4py" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -6718,19 +6741,13 @@
         <argument key="usersRepository" type="service" id="App\Repository\UsersRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.SxwvHq3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service" id="doctrine.orm.default_entity_manager"/>
-      </argument>
-    </service>
     <service id=".service_locator.CLREBB2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="user" type="service" id=".errored..service_locator.CLREBB2.App\Entity\Users"/>
       </argument>
     </service>
-    <service id=".service_locator.JRoEnnt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.rRaTL9p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActivitesController::form" type="service" id=".service_locator.Rj4akvv"/>
@@ -6741,7 +6758,8 @@
         <argument key="App\Controller\AssosController::index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController::index" type="service" id=".service_locator.Z_.o95M"/>
+        <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\InscriptionEventController::newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController::delete" type="service" id=".service_locator.CLREBB2"/>
         <argument key="App\Controller\UsersController::edit" type="service" id=".service_locator.CLREBB2"/>
@@ -6756,7 +6774,8 @@
         <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController:index" type="service" id=".service_locator.Z_.o95M"/>
+        <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\InscriptionEventController:newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController:delete" type="service" id=".service_locator.CLREBB2"/>
         <argument key="App\Controller\UsersController:edit" type="service" id=".service_locator.CLREBB2"/>
@@ -6822,11 +6841,12 @@
       <argument type="service" id="debug.argument_resolver.variadic.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.wpTPtFe" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.BZftuZw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ActivitesType" type="service" id="App\Form\ActivitesType"/>
         <argument key="App\Form\EventsType" type="service" id="App\Form\EventsType"/>
+        <argument key="App\Form\InscriptionEventType" type="service" id="App\Form\InscriptionEventType"/>
         <argument key="App\Form\RegistrationType" type="service" id="App\Form\RegistrationType"/>
         <argument key="App\Form\UsersType" type="service" id="App\Form\UsersType"/>
         <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType" type="service" id="easyadmin.form.type.autocomplete"/>
@@ -7089,6 +7109,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.KTVqfp6" method="withContext"/>
     </service>
+    <service id=".service_locator.KTVqfp6.App\Controller\InscriptionEventController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\InscriptionEventController"/>
+      <argument>App\Controller\InscriptionEventController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.KTVqfp6" method="withContext"/>
+    </service>
     <service id=".service_locator.KTVqfp6.App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
       <argument>App\Controller\SecurityController</argument>
@@ -7223,7 +7249,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.JRoEnnt"/>
+      <argument type="service" id=".service_locator.rRaTL9p"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>

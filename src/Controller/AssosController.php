@@ -30,7 +30,63 @@ class AssosController extends AbstractController
             'asso'=>$asso,
 
         ]);
-    }  
+    }
+        /**
+     * @Route("/assos/{id}/edit", name="modif_asso")
+     */
+    public function aditAsso($id,Request $request) {
+    	$asso = $this->getDoctrine()
+    	                ->getRepository(Association::class)
+                        ->find($id);
+        $form = $this->createFormBuilder($asso)
+            ->add('imageFile',VichImageType::class,[
+                'label' => 'logo',
+            ])
+            ->add('numAsso',IntegerType::class)
+            ->add('nomAsso',TextType::class)
+            ->add('adresseAsso',TextType::class)
+            ->add('cpAsso',IntegerType::class)
+            ->add('villeAsso',TextType::class)
+            ->add('tel1Asso',TextType::class)
+            ->add('tel2Asso',TextType::class)
+            ->add('dateCreation',DateType::class)
+            ->add('imageFile1',VichImageType::class,[
+                'label' => 'status Asso',
+            ])
+            ->add('imageFile2',VichImageType::class,[
+                'label' => 'journal Asso',
+            ])
+            ->add('imageFile3',VichImageType::class,[
+                'label' => 'siret Asso',
+            ])
+            ->add('imageFile4',VichImageType::class,[
+                'label' => 'reglement interieur',
+            ])      
+            ->add('publique', EntityType::class,[
+                'class' => Publique::class,
+                'multiple' => true,
+                //'choices' => $activites->getTitleActivite(),
+            ])
+            ->add('imageFile5',VichImageType::class,[
+                'label' => 'diplome cadre',
+            ])
+            ->add('adressCorrespondant',TextType::class)
+            ->getForm();
+            
+            $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+        
+            $asso = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+
+            return $this->redirectToRoute('assos');
+        }
+        return $this->render('assos/newasso.html.twig', [
+            'form' => $form->createView(),
+            'editMode' => $asso->getId() !== null
+         ]);
+        }
     /**
      * @Route("/assos/new", name="new_assos")
      */
@@ -78,7 +134,7 @@ class AssosController extends AbstractController
             $asso = $form->getData();
 
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($asso);
+            $entityManager->persist($asso); 
             $entityManager->flush();
 
             return $this->redirectToRoute('assos');

@@ -29,7 +29,6 @@ class Users
      */
     private $civilite;
 
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -81,6 +80,11 @@ class Users
     private $ville_user;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $role;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Activites", inversedBy="users")
      */
     private $activite_user;
@@ -89,7 +93,6 @@ class Users
      * @ORM\ManyToMany(targetEntity="App\Entity\Events", inversedBy="users")
      */
     private $events;
-
     
 
     public function __construct()
@@ -99,10 +102,7 @@ class Users
         $this->association = new ArrayCollection();
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $role;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Association", inversedBy="users")

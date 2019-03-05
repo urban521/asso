@@ -23,7 +23,7 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             '/user' => [[['_route' => 'user_info', '_controller' => 'App\\Controller\\DefaultController::showUserAction'], null, null, null, false, false, null]],
             '/events' => [[['_route' => 'events', '_controller' => 'App\\Controller\\EventsController::index'], null, null, null, false, false, null]],
             '/events/new' => [[['_route' => 'new_event', '_controller' => 'App\\Controller\\EventsController::newEvent'], null, null, null, false, false, null]],
-            '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
+            '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::contact'], null, null, null, false, false, null]],
             '/security' => [[['_route' => 'security_registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
             '/connexion' => [[['_route' => 'security_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
             '/deconnexion' => [[['_route' => 'security_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
@@ -57,10 +57,9 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                     .'|/([^/]++)/agasso(*:65)'
                     .'|/agasso/([^/]++)/edit(*:93)'
                     .'|/([^/]++)/agasso/new(*:120)'
-                    .'|/agasso/([^/]++)(*:144)'
-                    .'|/events/([^/]++)(?'
-                        .'|/edit(*:176)'
-                        .'|(*:184)'
+                    .'|/a(?'
+                        .'|gasso/([^/]++)(*:147)'
+                        .'|ssos/([^/]++)/edit(*:173)'
                     .')'
                     .'|/users/([^/]++)(?'
                         .'|(*:211)'
@@ -83,8 +82,8 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                         .')'
                     .')'
                     .'|/re(?'
-                        .'|gister/confirm/([^/]++)(*:434)'
-                        .'|setting/reset/([^/]++)(*:464)'
+                        .'|gister/confirm/([^/]++)(*:515)'
+                        .'|setting/reset/([^/]++)(*:545)'
                     .')'
                 .')/?$}sDu',
         ];

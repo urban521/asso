@@ -8,7 +8,7 @@
         {% for agasso in agasso %}
             <img class="img-fluid" src="../images/uploads/{{ agasso.imageName }}">
             <h5>{{ agasso.dateAg|date('d-m-Y') }}</h5>
-
+            <div>{{ agasso.association }}</div>
             <a href="{{ path('agassos', {'id': agasso.id}) }}">decouvrir</a>
         {% endfor %}
     </div>

@@ -145,6 +145,11 @@ class Events
     private $updatedAt4;
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Inscription", mappedBy="events")
+     */
+    private $inscriptions;
+
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -257,6 +262,7 @@ class Events
         $this->updatedAt2 = new \Datetime();
         $this->updatedAt3 = new \Datetime();
         $this->updatedAt4 = new \Datetime();
+        $this->inscriptions = new ArrayCollection();
     }
 
 
@@ -465,6 +471,34 @@ class Events
     public function setUpdatedAt3(\DateTime $updatedAt3)
     {
         $this->updatedAt3 = $updatedAt3;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Inscription[]
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): self
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->addEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): self
+    {
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            $inscription->removeEvent($this);
+        }
 
         return $this;
     } 

@@ -6,11 +6,17 @@
 {% block body %}
 
 
-<section class="gallery-block cards-gallery">
+
+<section class="activites">
     {% for activites in activites %}
         <div class="container">
-            <div class="heading">
-                <p class="card-title">{{ activites.titleActivite }}</p>
+            <h4 class="card-title">{{ activites.titleActivite }}</h4>
+            <div class="card" style="width:400px">
+                <img class="card-img-top" src="{{ activites.imageName1 }}" alt="" style="width:100%">
+                <div class="card-body">
+                    <p class="card-text">{{ activites.decriptActivite | raw }}</p>
+                </div>
+                <a href="{{ path('activites_show', {'id': activites.id}) }}" class="btn btn-primary">Lire la suite</a>
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
@@ -29,4 +35,4 @@
 </section>
 <script> baguetteBox.run('.card-gallery', {animation: 'slideIn'})</script>
 
-{% endblock %}
+{% endblock %} 

@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  
 class DefaultController extends Controller
 {
-
     /**
      * @Route("/admin/", name="admin_page")
      */

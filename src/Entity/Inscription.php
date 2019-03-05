@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,130 +19,55 @@ class Inscription
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $civi_mr;
+    private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $civi_mme;
+    private $prenom;
 
     /**
-     * @ORM\Column(type="date")
-     */
-    private $birthday;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $adress;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $cp;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $ville;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tel;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $email;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\events", inversedBy="inscriptions")
+     */
+    private $events;
+
+    public function __construct()
+    {
+        $this->events = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCiviMr(): ?string
+    public function getNom(): ?string
     {
-        return $this->civi_mr;
+        return $this->nom;
     }
 
-    public function setCiviMr(string $civi_mr): self
+    public function setNom(?string $nom): self
     {
-        $this->civi_mr = $civi_mr;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getCiviMme(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->civi_mme;
+        return $this->prenom;
     }
 
-    public function setCiviMme(string $civi_mme): self
+    public function setPrenom(?string $prenom): self
     {
-        $this->civi_mme = $civi_mme;
-
-        return $this;
-    }
-
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
-    public function getAdress(): ?string
-    {
-        return $this->adress;
-    }
-
-    public function setAdress(string $adress): self
-    {
-        $this->adress = $adress;
-
-        return $this;
-    }
-
-    public function getCp(): ?int
-    {
-        return $this->cp;
-    }
-
-    public function setCp(int $cp): self
-    {
-        $this->cp = $cp;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getTel(): ?string
-    {
-        return $this->tel;
-    }
-
-    public function setTel(string $tel): self
-    {
-        $this->tel = $tel;
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -150,9 +77,35 @@ class Inscription
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|events[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(events $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(events $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+        }
 
         return $this;
     }
