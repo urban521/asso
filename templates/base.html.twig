@@ -13,10 +13,29 @@
     </head>
 
     <body>
-    
+        <div class="manav">
+            <header>
+                <nav>
+                    <div class="menu-icon">
+                        <i class="fa fa-bars fa-2x"></i>
+                    </div>
+                    <div class="logo">
+                        LOGO
+                    </div>
+                    <div class="menu">
+                        <ul>
+                            <li><a href="/">home</a></li>
+                            <li><a href="/events">events</a></li>
+                            <li><a href="/assos">Associations</a></li>
+                            <li><a href="/login">connexion</a></li>
+                            <li><a href="#">home</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            
+        </div>
         {% block body %}{% endblock %}
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}
-        
-        {% endblock %}
+        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
     </body>
 </html>

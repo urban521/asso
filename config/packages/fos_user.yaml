@@ -3,8 +3,13 @@ fos_user:
     firewall_name: main
     user_class: App\Entity\User
     from_email:
+<<<<<<< HEAD
         address: "cd87@sportspourtous.org"
         sender_name: "cd87 Sports pour tous"
     registration: 
         form:
             type: App\Form\RegistrationType
+=======
+        address: "samy.aformac2018@gmail.com"
+        sender_name: "contactasso@aformac.com"
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0

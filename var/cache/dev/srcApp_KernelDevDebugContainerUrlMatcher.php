@@ -69,6 +69,7 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                         .'|(*:286)'
                         .'|/new(*:298)'
                     .')'
+<<<<<<< HEAD
                     .'|/admin/(?'
                         .'|([^/]++)/users(?'
                             .'|(*:334)'
@@ -93,6 +94,34 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
                                 .')'
                             .')'
                             .'|(*:569)'
+=======
+                    .'|/events/([^/]++)(?'
+                        .'|/edit(*:206)'
+                        .'|(*:214)'
+                    .')'
+                    .'|/([^/]++)/inscription/event(?'
+                        .'|(*:253)'
+                        .'|/new(*:265)'
+                    .')'
+                    .'|/users/([^/]++)(?'
+                        .'|(*:292)'
+                        .'|/edit(*:305)'
+                        .'|(*:313)'
+                    .')'
+                    .'|/_(?'
+                        .'|error/(\\d+)(?:\\.([^/]++))?(*:353)'
+                        .'|wdt/([^/]++)(*:373)'
+                        .'|profiler/([^/]++)(?'
+                            .'|/(?'
+                                .'|search/results(*:419)'
+                                .'|router(*:433)'
+                                .'|exception(?'
+                                    .'|(*:453)'
+                                    .'|\\.css(*:466)'
+                                .')'
+                            .')'
+                            .'|(*:476)'
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0
                         .')'
                     .')'
                     .'|/re(?'
@@ -108,6 +137,7 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             93 => [[['_route' => 'edit_agasso', '_controller' => 'App\\Controller\\AgassoController::modifierAgasso'], ['id'], null, null, false, false, null]],
             120 => [[['_route' => 'new_agasso', '_controller' => 'App\\Controller\\AgassoController::newAgasso'], ['id'], null, null, false, false, null]],
             147 => [[['_route' => 'agassos', '_controller' => 'App\\Controller\\AgassoController::show'], ['id'], null, null, false, true, null]],
+<<<<<<< HEAD
             180 => [[['_route' => 'assos', '_controller' => 'App\\Controller\\AssosController::show'], ['id'], null, null, false, true, null]],
             193 => [[['_route' => 'modif_asso', '_controller' => 'App\\Controller\\AssosController::aditAsso'], ['id'], null, null, false, false, null]],
             222 => [[['_route' => 'modif_event', '_controller' => 'App\\Controller\\EventsController::modifierProduit'], ['id'], null, null, false, false, null]],
@@ -128,6 +158,25 @@ class srcApp_KernelDevDebugContainerUrlMatcher extends Symfony\Bundle\FrameworkB
             569 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
             608 => [[['_route' => 'fos_user_registration_confirm', '_controller' => 'fos_user.registration.controller:confirmAction'], ['token'], ['GET' => 0], null, false, true, null]],
             638 => [[['_route' => 'fos_user_resetting_reset', '_controller' => 'fos_user.resetting.controller:resetAction'], ['token'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+=======
+            173 => [[['_route' => 'modif_asso', '_controller' => 'App\\Controller\\AssosController::aditAsso'], ['id'], null, null, false, false, null]],
+            206 => [[['_route' => 'modif_event', '_controller' => 'App\\Controller\\EventsController::modifierProduit'], ['id'], null, null, false, false, null]],
+            214 => [[['_route' => 'event', '_controller' => 'App\\Controller\\EventsController::show'], ['id'], null, null, false, true, null]],
+            253 => [[['_route' => 'inscription_event', '_controller' => 'App\\Controller\\InscriptionEventController::index'], ['id'], null, null, false, false, null]],
+            265 => [[['_route' => 'new_inscription', '_controller' => 'App\\Controller\\InscriptionEventController::newInscription'], ['id'], null, null, false, false, null]],
+            292 => [[['_route' => 'users_show', '_controller' => 'App\\Controller\\UsersController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+            305 => [[['_route' => 'users_edit', '_controller' => 'App\\Controller\\UsersController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+            313 => [[['_route' => 'users_delete', '_controller' => 'App\\Controller\\UsersController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
+            353 => [[['_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+            373 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+            419 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+            433 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+            453 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
+            466 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
+            476 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+            515 => [[['_route' => 'fos_user_registration_confirm', '_controller' => 'fos_user.registration.controller:confirmAction'], ['token'], ['GET' => 0], null, false, true, null]],
+            545 => [[['_route' => 'fos_user_resetting_reset', '_controller' => 'fos_user.resetting.controller:resetAction'], ['token'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0
         ];
     }
 }
