@@ -113,24 +113,14 @@
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
-<<<<<<< HEAD
     "fzaninotto/faker": {
         "version": "v1.8.0"
-=======
-=======>>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
->>>>>>> 587d87446077d6b0ebf39c4583973824a5112cf7
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "jms/metadata": {
         "version": "2.0.0"
-    "knplabs/knp-menu": {
-        "version": "2.3.0"
-    },
-    "knplabs/knp-menu-bundle": {
-        "version": "v2.2.1"
-    },
     },
     "knplabs/knp-menu": {
         "version": "2.3.0"

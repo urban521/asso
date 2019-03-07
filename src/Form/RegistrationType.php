@@ -2,10 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Utilisateur;
+use App\Entity\User;
 use App\Form\RegistrationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -14,17 +15,20 @@ class RegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', ChoiceType::class, [ 'label' => 'Email'])
-            ->add('utilisateurname', ChoiceType::class, [ 'label' => 'Nom'])
-            ->add('password', PasswordType::class)
-            ->add('confirm_password', PasswordType::class)
+            
+            ->add('association')
         ;
+    }
+
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Utilisateur::class,
+            'data_class' => User::class,
         ]);
     }
 }

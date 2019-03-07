@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Users;
+use App\Entity\Association;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -102,13 +103,10 @@ class Users
         $this->association = new ArrayCollection();
     }
 
-
-
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Association", inversedBy="users")
      */
     private $association;
-    
 
     public function getId(): ?int
     {
@@ -335,7 +333,7 @@ class Users
     }
 
     /**
-     * @return Collection|association[]
+     * @return Collection|Association[]
      */
     public function getAssociation(): Collection
     {
@@ -359,6 +357,15 @@ class Users
 
         return $this;
     }
+
+    public function setAssociation(association $association)
+    {
+        if (!$this->association->contains($association)) {
+            $this->association[] = $association;
+        }
+
+        return $this;
+    } 
 
 
 }

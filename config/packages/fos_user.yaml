@@ -5,3 +5,6 @@ fos_user:
     from_email:
         address: "cd87@sportspourtous.org"
         sender_name: "cd87 Sports pour tous"
+    registration: 
+        form:
+            type: App\Form\RegistrationType

@@ -20,23 +20,26 @@
             <p><a href="{{ path('fos_user_security_login') }}">Se connecter</a></p>
         </a>
         {% endif %}
+        <a class="nav-item nav-link">
+            <p><a href="/">Page Home</a></p>
     </div>
   </div>
 </nav>
 <body>
     <div class="container">
         <h2 class="ryan1">LA PAGE DE GESTION DE VOTRE ASSOCIATION SPORTIVE</h2>
+        <h3 class="ryan1">{{ app.user.association }}</h3>
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="card text-center">
                 <div class="card-block">
-                    <img src="/images/Nos-activits.jpg" alt="" class="img-fluid">
+                    <img src="/images/ballzen(2).jpg" alt="" class="img-fluid">
                     <div class="card-title">
                         <h4>ASSOCIATION</h4>
                     </div>
                     <div class="card-text">
-                        <a href="/assos/new"><p>Modifier votre ASSOCIATION</p></a></button>
-                        <a href="/assos"><p>Voir votre ASSOCIATION</p></a>
+                        <a href="/admin/assos/{{ app.user.getAssociationId() }}/edit"><p>Modifier votre ASSOCIATION</p></a></button>
+                        <a href="/admin/assos/{{ app.user.getAssociationID() }}"><p>Voir votre ASSOCIATION</p></a>
                     </div>
                 </div>
             </div>
@@ -45,30 +48,45 @@
         <div class="col-md-3 col-sm-6">
             <div class="card text-center">
                 <div class="card-block">
-                    <img src="/images/Nos-activits.jpg" alt="" class="img-fluid">
+                    <img src="/images/AerobicTraining1.png" alt="" class="img-fluid">
                     <div class="card-title">
                         <h4>LICENCIERS</h4>
                     </div>
                     <div class="card-text">
-                        <a href="/users/new"><p>Creer Vos LICENCIERS</p></a>
-                        <a href="#"><p>Voir la liste de vos LICENCIERS</p></a>
-                        <a href="/users"><p>Modifier vos LICENCIERS</p></a>
+                        <a href="{{ app.user.getAssociationId() }}/users/new"><p>Creer Vos LICENCIERS</p></a>
+                        <a href="{{ app.user.getAssociationId() }}/users"><p>Gérer vos LICENCIERS</p></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-3">
-            <h4>EVENEMENTS</h4>
-            <a href="#"><p>Créer Vos EVENEMENTS</p></a>
-            <a href="#"><p>Voir la liste de vos EVENEMENTS</p></a>
-            <a href="/events"><p>Modifier vos EVENEMENTS</p></a>
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-center">
+                <div class="card-block">
+                    <img src="/images/abdos_fessier(2).jpg" alt="" class="img-fluid">
+                    <div class="card-title">
+                        <h4>EVENEMENTS</h4>
+                    </div>
+                    <div class="card-text">
+                        <a href="events/new"><p>Créer Vos EVENEMENTS</p></a>
+                        <a href="/events"><p>Gérer vos EVENEMENTS</p></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-3">
-            <h4>COMPTABILITE</h4>
-            <a href="#"><p>Aller sur votre COMPTABILITE</p></a>
-            <a href="#"><p>TUTO explication de la mise en route de votre COMPTABILITE</p></a>
+        <div class="col-md-3 col-sm-6">
+            <div class="card text-center">
+                <div class="card-block">
+                    <img src="/images/BodyBalance.png" alt="" class="img-fluid">
+                    <div class="card-title">
+                        <h4>COMPTABILITE</h4>
+                    </div>
+                    <div class="card-text">
+                        <a href="https://www.youtube.com/watch?v=7iwIb7H2jT8"><p>TUTO explication de la mise en route de votre COMPTABILITE</p></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>

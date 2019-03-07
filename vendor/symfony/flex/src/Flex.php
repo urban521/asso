@@ -11,40 +11,40 @@
 
 namespace Symfony\Flex;
 
-use Composer\Composer;
-use Composer\Console\Application;
-use Composer\DependencyResolver\Operation\InstallOperation;
-use Composer\DependencyResolver\Operation\UninstallOperation;
-use Composer\DependencyResolver\Operation\UpdateOperation;
-use Composer\DependencyResolver\Pool;
-use Composer\Downloader\FileDownloader;
-use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Factory;
+use Composer\Composer;
 use Composer\Installer;
-use Composer\Installer\InstallerEvent;
-use Composer\Installer\InstallerEvents;
-use Composer\Installer\PackageEvent;
-use Composer\Installer\PackageEvents;
-use Composer\Installer\SuggestedPackagesReporter;
-use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
+use Composer\Script\Event;
+use Symfony\Thanks\Thanks;
 use Composer\Json\JsonFile;
-use Composer\Json\JsonManipulator;
-use Composer\Package\BasePackage;
-use Composer\Package\Comparer\Comparer;
+use Composer\IO\IOInterface;
 use Composer\Package\Locker;
-use Composer\Package\PackageInterface;
+use Composer\Console\Application;
+use Composer\Package\BasePackage;
 use Composer\Plugin\PluginEvents;
+use Composer\Script\ScriptEvents;
+use Composer\Json\JsonManipulator;
+use Symfony\Flex\Event\UpdateEvent;
+use Composer\Installer\PackageEvent;
 use Composer\Plugin\PluginInterface;
+use Composer\DependencyResolver\Pool;
+use Composer\Installer\PackageEvents;
+use Composer\Installer\InstallerEvent;
+use Composer\Package\PackageInterface;
+use Composer\Downloader\FileDownloader;
+use Composer\Installer\InstallerEvents;
+use Composer\Package\Comparer\Comparer;
 use Composer\Plugin\PreFileDownloadEvent;
-use Composer\Repository\ComposerRepository as BaseComposerRepository;
 use Composer\Repository\RepositoryFactory;
 use Composer\Repository\RepositoryManager;
-use Composer\Script\Event;
-use Composer\Script\ScriptEvents;
 use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Flex\Event\UpdateEvent;
-use Symfony\Thanks\Thanks;
+use Composer\Installer\SuggestedPackagesReporter;
+use Composer\EventDispatcher\EventSubscriberInterface;
+use Composer\DependencyResolver\Operation\UpdateOperation;
+use Composer\DependencyResolver\Operation\InstallOperation;
+use Composer\DependencyResolver\Operation\UninstallOperation;
+use Composer\Repository\ComposerRepository as BaseComposerRepository;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>

@@ -712,7 +712,7 @@
       <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
-    <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
+    <parameter key="fos_user.registration.form.type">App\Form\RegistrationType</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
       <parameter>Registration</parameter>
@@ -4218,35 +4218,21 @@
     </service>
     <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
       <call method="add">
-        <argument type="service" id=".security.request_matcher.eKXDm4f"/>
-        <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.O7Tsk.w"/>
-        <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher.0uhYzab"/>
-        <argument type="collection">
-          <argument>IS_AUTHENTICATED_ANONYMOUSLY</argument>
-        </argument>
-        <argument>null</argument>
-      </call>
-      <call method="add">
-        <argument type="service" id=".security.request_matcher._pRcrzc"/>
+        <argument type="service" id=".security.request_matcher.5dJADCx"/>
         <argument type="collection">
           <argument>ROLE_ADMIN</argument>
         </argument>
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.GScMNJa"/>
+        <argument type="service" id=".security.request_matcher..Hgh7Or"/>
+        <argument type="collection">
+          <argument>ROLE_SUPER_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
+        <argument type="service" id=".security.request_matcher._56.wIK"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
         </argument>
@@ -4737,20 +4723,14 @@
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
     </service>
-    <service id=".security.request_matcher.eKXDm4f" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/login$</argument>
+    <service id=".security.request_matcher.5dJADCx" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/admin</argument>
     </service>
-    <service id=".security.request_matcher.O7Tsk.w" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/register</argument>
+    <service id=".security.request_matcher..Hgh7Or" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/administration</argument>
     </service>
-    <service id=".security.request_matcher.0uhYzab" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/resetting</argument>
-    </service>
-    <service id=".security.request_matcher._pRcrzc" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/admin/</argument>
-    </service>
-    <service id=".security.request_matcher.GScMNJa" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
-      <argument>^/licencier/</argument>
+    <service id=".security.request_matcher._56.wIK" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/licencier</argument>
     </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
@@ -6324,7 +6304,7 @@
     <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
       <argument>fos_user_registration_form</argument>
-      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+      <argument>App\Form\RegistrationType</argument>
       <argument>%fos_user.registration.form.validation_groups%</argument>
     </service>
     <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
@@ -6739,7 +6719,7 @@
         <argument key="user" type="service" id=".errored..service_locator.CLREBB2.App\Entity\Users"/>
       </argument>
     </service>
-    <service id=".service_locator.rRaTL9p" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.W_wcTAb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActivitesController::form" type="service" id=".service_locator.Rj4akvv"/>
@@ -6747,7 +6727,7 @@
         <argument key="App\Controller\ActivitesController::show" type="service" id=".service_locator._jnw_mF"/>
         <argument key="App\Controller\AgassoController::index" type="service" id=".service_locator.wZ.qUNB"/>
         <argument key="App\Controller\AgassoController::show" type="service" id=".service_locator.wZ.qUNB"/>
-        <argument key="App\Controller\AssosController::index" type="service" id=".service_locator.Ty.OUX2"/>
+        <argument key="App\Controller\AssosController::show" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.Gr.ZW0q"/>
@@ -6763,7 +6743,7 @@
         <argument key="App\Controller\ActivitesController:show" type="service" id=".service_locator._jnw_mF"/>
         <argument key="App\Controller\AgassoController:index" type="service" id=".service_locator.wZ.qUNB"/>
         <argument key="App\Controller\AgassoController:show" type="service" id=".service_locator.wZ.qUNB"/>
-        <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
+        <argument key="App\Controller\AssosController:show" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.Gr.ZW0q"/>
@@ -7241,7 +7221,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.rRaTL9p"/>
+      <argument type="service" id=".service_locator.W_wcTAb"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -7650,7 +7630,7 @@
     <service id="Knp\Menu\FactoryInterface" alias="knp_menu.factory" public="false"/>
     <service id="Knp\Menu\Matcher\MatcherInterface" alias="knp_menu.matcher" public="false"/>
     <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.rRaTL9p"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.W_wcTAb"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>

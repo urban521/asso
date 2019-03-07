@@ -48,8 +48,8 @@
                 <td>{{ user.cpUser }}</td>
                 <td>{{ user.villeUser }}</td>
                 <td>
-                    <a href="{{ path('users_show', {'id': user.id}) }}">Voir</a>
-                    <a href="{{ path('users_edit', {'id': user.id}) }}">editer</a>
+                    <a href="/admin/user/{{ user.id }}">Voir</a>
+                    <a href="/admin/user/{{ user.id }}/edit">editer</a>
                 </td>
             </tr>
         {% else %}
@@ -60,6 +60,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('users_new') }}">Créer un nouveau licencier</a>
+    <a href="{{ path('users_new',{'id': app.user.getAssociationId()} ) }}">Créer un nouveau licencier</a>
 
 {% endblock %}
