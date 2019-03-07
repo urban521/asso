@@ -21,6 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     class UsersController extends AbstractController
 
 {
+
     /**
      * @\Symfony\Component\Routing\Annotation\Route("/", name="users_index", methods={"GET"})
      */
@@ -32,10 +33,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     }
 
     /**
-     * @Route("/new", name="users_new", methods={"GET","POST"})
+     * @Route("/{id}/users/new", name="users_new", methods={"GET","POST"})
      */
-    public function new(Request $request, ObjectManager $entityManager): Response
+    public function new(Request $request, ObjectManager $entityManager, $id): Response
     {
+        $asso = $this->getDoctrine()->getRepository(Association::class)->find($id);
         $user = new Users();
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request); 
@@ -51,6 +53,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
         return $this->render('users/new.html.twig', [
             'user' => $user,
+            'id' => $asso->getId(),
             'form' => $form->createView(),
         ]);
     }
@@ -99,7 +102,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     }
 
     /**
-     * @Route("/{id}", name="users_delete", methods={"DELETE"})
+     * @Route("/{id}/users", name="users_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Users $user): Response
     {

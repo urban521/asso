@@ -29,10 +29,12 @@ class InscriptionEventController extends AbstractController
      * @Route("/{id}/inscription/event/new", name="new_inscription")
      */
     public function newInscription(Request $request, $id, ObjectManager $entityManager) {
-        $event = $this->getDoctrine()->getRepository(Events::class)->find($id);
+        $event = $this->getDoctrine()->getRepository(Events::class)->find($id); 
+        dump($event);
         $ins = new Inscription();
+        $ins->addEvent($event);
     	$form = $this->createForm(InscriptionEventType::class, $ins);
-
+        
             $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,7 +52,7 @@ class InscriptionEventController extends AbstractController
         }
         return $this->render('inscription_event/new.html.twig', [
             'form' => $form->createView(),
-            'id' => $event->getId(),
+            'event' => $event
         ]);
     }
 } 

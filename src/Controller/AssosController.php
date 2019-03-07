@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Entity\Publique;
 use App\Entity\Association;
 use App\Repository\AssociationRepository;
@@ -31,7 +32,7 @@ class AssosController extends AbstractController
 
         ]);
     }
-        /**
+    /**
      * @Route("/assos/{id}/edit", name="modif_asso")
      */
     public function aditAsso($id,Request $request) {

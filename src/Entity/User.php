@@ -18,9 +18,32 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Association", inversedBy="User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $association;
+
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
+
+    public function getAssociation(): ?Association
+    {
+        return $this->association;
+    }
+
+    public function setAssociation(?Association $association): self
+    {
+        $this->association = $association;
+
+        return $this;
+    }
+
+    public function getAssociationId()
+   {
+       return $this->association->getId();
+   }
 }

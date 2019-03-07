@@ -1,5 +1,6 @@
 .card {
 	margin: 3%;
+	margin-left: 5vh;
 	height: 50vh;
 	//background:#444 url("{{ events.picEvent1 }}") no-repeat center;
 	background-size: cover;
@@ -50,7 +51,8 @@
 	text-decoration: none;
 }
 .card-info .links a:hover {
-	color: white;
+	color: red;
+	transition: 0.4s;
 }
 .card-info:hover {
 	opacity: 1;

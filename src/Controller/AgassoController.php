@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Users;
 use App\Entity\Agasso;
 use App\Entity\Association;
 use App\Controller\AgassoController;

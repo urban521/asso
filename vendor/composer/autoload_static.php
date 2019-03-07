@@ -58,7 +58,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Symfony\\Component\\Security\\Guard\\' => 33,
             'Symfony\\Component\\Security\\Csrf\\' => 32,
             'Symfony\\Component\\Security\\Core\\' => 32,
-            'Symfony\\Component\\Security\\Acl\\' => 31,
             'Symfony\\Component\\Routing\\' => 26,
             'Symfony\\Component\\PropertyInfo\\' => 31,
             'Symfony\\Component\\PropertyAccess\\' => 33,
@@ -116,13 +115,11 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         ),
         'K' => 
         array (
-            'Knp\\Menu\\' => 9,
-            'Knp\\Bundle\\MenuBundle\\' => 22,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'F' => 
         array (
             'Fig\\Link\\' => 9,
-            'Faker\\' => 6,
             'Facebook\\WebDriver\\' => 19,
             'FOS\\UserBundle\\' => 15,
         ),
@@ -147,10 +144,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Doctrine\\Bundle\\FixturesBundle\\' => 31,
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
-        ),
-        'C' => 
-        array (
-            'Cocur\\Slugify\\' => 14,
         ),
         'A' => 
         array (
@@ -261,10 +254,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'Symfony\\Component\\Security\\Core\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/security-core',
-        ),
-        'Symfony\\Component\\Security\\Acl\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/security-acl',
         ),
         'Symfony\\Component\\Routing\\' => 
         array (
@@ -458,21 +447,13 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             0 => __DIR__ . '/..' . '/jms/metadata/src',
         ),
-        'Knp\\Menu\\' => 
+        'Knp\\Bundle\\PaginatorBundle\\' => 
         array (
-            0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
-        ),
-        'Knp\\Bundle\\MenuBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/knplabs/knp-menu-bundle/src',
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
         ),
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
-        ),
-        'Faker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Facebook\\WebDriver\\' => 
         array (
@@ -549,10 +530,6 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
         ),
-        'Cocur\\Slugify\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/cocur/slugify/src',
-        ),
         'App\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -584,6 +561,13 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Pagerfanta\\' => 
             array (
                 0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
         'D' => 

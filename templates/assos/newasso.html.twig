@@ -24,11 +24,7 @@
         {{ form_widget(form.imageFile5,{'attr':{'placeholder':'diplome cadre'}}) }}
         {{ form_widget(form.adressCorrespondant,{'attr':{'placeholder':'adresse de correspendant'}}) }}
        <button type="submit">
-            {% if editMode %}
                 Modifier asso
-            {% else %}
-                Nouvelle asso
-            {% endif %}
         </button>
         {{ form_end(form) }}
         
