@@ -27,7 +27,10 @@
       <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
       <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+<<<<<<< HEAD
       <parameter key="KnpMenuBundle">Knp\Bundle\MenuBundle\KnpMenuBundle</parameter>
+=======
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
@@ -103,9 +106,9 @@
         <parameter key="path">/var/www/asso/vendor/friendsofsymfony/user-bundle</parameter>
         <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
-      <parameter key="KnpMenuBundle" type="collection">
-        <parameter key="path">/var/www/asso/vendor/knplabs/knp-menu-bundle/src</parameter>
-        <parameter key="namespace">Knp\Bundle\MenuBundle</parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">/var/www/asso/vendor/knplabs/knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
       </parameter>
       <parameter key="KnpPaginatorBundle" type="collection">
         <parameter key="path">/var/www/asso/vendor/knplabs/knp-paginator-bundle</parameter>
@@ -740,6 +743,7 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+<<<<<<< HEAD
     <parameter key="knp_menu.factory.class">Knp\Menu\MenuFactory</parameter>
     <parameter key="knp_menu.factory_extension.routing.class">Knp\Menu\Integration\Symfony\RoutingExtension</parameter>
     <parameter key="knp_menu.helper.class">Knp\Menu\Twig\Helper</parameter>
@@ -764,6 +768,15 @@
     <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
     <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
     <parameter key="knp_paginator.page_range">5</parameter>
+=======
+    <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
+    <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
+    <parameter key="knp_paginator.templating.helper.pagination.class">Knp\Bundle\PaginatorBundle\Templating\PaginationHelper</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">1</parameter>
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -1419,6 +1432,7 @@
         <argument key="cache.serializer" type="service" id="cache.serializer" on-invalid="ignore_uninitialized"/>
         <argument key="cache.annotations" type="service" id="cache.annotations" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.webpack_encore" type="service" id="cache.webpack_encore" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="cache.global_clearer" class="Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer" public="true">
@@ -1430,6 +1444,7 @@
         <argument key="cache.serializer" type="service" id="cache.serializer" on-invalid="ignore_uninitialized"/>
         <argument key="cache.annotations" type="service" id="cache.annotations" on-invalid="ignore_uninitialized"/>
         <argument key="cache.security_expression_language" type="service" id="cache.security_expression_language" on-invalid="ignore_uninitialized"/>
+        <argument key="cache.webpack_encore" type="service" id="cache.webpack_encore" on-invalid="ignore_uninitialized"/>
       </argument>
     </service>
     <service id="identity_translator" class="Symfony\Component\Translation\IdentityTranslator" public="false"/>
@@ -1818,7 +1833,7 @@
       <argument type="service" id=".1_PhpArrayAdapter~p1Ecuth"/>
     </service>
     <service id="validator.validator_factory" class="Symfony\Component\Validator\ContainerConstraintValidatorFactory" public="false">
-      <argument type="service" id=".service_locator.HKoUR8q"/>
+      <argument type="service" id=".service_locator.37xBtZ2"/>
     </service>
     <service id="validator.expression" class="Symfony\Component\Validator\Constraints\ExpressionValidator" public="false">
       <tag name="validator.constraint_validator" alias="validator.expression"/>
@@ -2019,6 +2034,10 @@
             <argument>/var/www/asso/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
             <argument>/var/www/asso/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
             <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
+<<<<<<< HEAD
+=======
+            <argument>/var/www/asso/translations/knpPaginatorBundle.fr.yml</argument>
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
           </argument>
           <argument key="gl" type="collection">
             <argument>/var/www/asso/vendor/symfony/validator/Resources/translations/validators.gl.xlf</argument>
@@ -2670,6 +2689,10 @@
         <argument>cache.security_expression_language</argument>
         <argument type="service" id="cache.security_expression_language"/>
       </call>
+      <call method="addInstance">
+        <argument>cache.webpack_encore</argument>
+        <argument type="service" id="cache.webpack_encore"/>
+      </call>
     </service>
     <service id=".1_ResolvedFormTypeFactory~7qZUe9h" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
     <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension" public="false">
@@ -2928,6 +2951,14 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
+        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4938,9 +4969,6 @@
     <service id="twig" class="Twig\Environment" public="true">
       <argument type="service" id="twig.loader.filesystem"/>
       <argument type="collection">
-        <argument key="paths" type="collection">
-          <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
-        </argument>
         <argument key="default_path">/var/www/asso/templates</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
@@ -4952,6 +4980,7 @@
         <argument key="autoescape">name</argument>
         <argument key="cache">/var/www/asso/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
+        <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
           <argument key="format">F j, Y H:i</argument>
           <argument key="interval_format">%d days</argument>
@@ -5027,7 +5056,7 @@
         <argument type="service" id="vich_uploader.twig.extension.uploader"/>
       </call>
       <call method="addExtension">
-        <argument type="service" id="knp_menu.twig.extension"/>
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
       <call method="addExtension">
         <argument type="service" id="knp_paginator.twig.extension.pagination"/>
@@ -5061,7 +5090,6 @@
       <argument type="service" id=".service_locator.lSIKWsr.twig.cache_warmer"/>
       <argument type="service" id="templating.finder" on-invalid="ignore"/>
       <argument type="collection">
-        <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
     </service>
@@ -5069,7 +5097,6 @@
       <argument type="service" id="kernel"/>
       <argument>/var/www/asso/src</argument>
       <argument type="collection">
-        <argument key="/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views">null</argument>
         <argument key="/var/www/asso/vendor/symfony/twig-bridge/Resources/views/Form">null</argument>
       </argument>
       <argument>/var/www/asso/templates</argument>
@@ -5083,9 +5110,6 @@
     <service id="twig.loader.native_filesystem" class="Symfony\Bundle\TwigBundle\Loader\NativeFilesystemLoader" public="false">
       <argument type="collection"/>
       <argument>/var/www/asso</argument>
-      <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
-      </call>
       <call method="addPath">
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
@@ -5167,12 +5191,12 @@
         <argument>!FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>KnpMenu</argument>
+        <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>!KnpMenu</argument>
+        <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
@@ -5299,9 +5323,6 @@
       <argument type="service" id="templating.name_parser"/>
       <argument>/var/www/asso</argument>
       <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu/src/Knp/Menu/Resources/views</argument>
-      </call>
-      <call method="addPath">
         <argument>/var/www/asso/vendor/symfony/framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
@@ -5382,12 +5403,12 @@
         <argument>!FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>KnpMenu</argument>
+        <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/asso/vendor/knplabs/knp-menu-bundle/src/Resources/views</argument>
-        <argument>!KnpMenu</argument>
+        <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/asso/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
@@ -5764,13 +5785,9 @@
     <service id=".1_ServiceLocator~zv1ozqR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="webpack_encore.entrypoint_lookup" type="service" id="webpack_encore.entrypoint_lookup"/>
         <argument key="webpack_encore.entrypoint_lookup_collection" type="service" id="webpack_encore.entrypoint_lookup_collection"/>
         <argument key="webpack_encore.tag_renderer" type="service" id="webpack_encore.tag_renderer"/>
       </argument>
-    </service>
-    <service id="webpack_encore.entrypoint_lookup" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookup" public="false">
-      <argument type="service" id="webpack_encore.entrypoint_lookup[_default]"/>
     </service>
     <service id="webpack_encore.entrypoint_lookup_collection" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollection" public="false">
       <argument type="service" id=".service_locator._faFGeI"/>
@@ -5783,8 +5800,27 @@
       <tag name="twig.extension"/>
       <argument type="service" id=".1_ServiceLocator~zv1ozqR"/>
     </service>
+    <service id="webpack_encore.entrypoint_lookup.cache_warmer" class="Symfony\WebpackEncoreBundle\CacheWarmer\EntrypointCacheWarmer" public="false">
+      <tag name="kernel.cache_warmer"/>
+      <argument type="collection">
+        <argument key="_default">/var/www/asso/public/build/entrypoints.json</argument>
+      </argument>
+      <argument>/var/www/asso/var/cache/dev/webpack_encore.cache.php</argument>
+      <argument type="service" id="cache.webpack_encore"/>
+    </service>
+    <service id="webpack_encore.cache" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>/var/www/asso/var/cache/dev/webpack_encore.cache.php</argument>
+      <argument type="service" id="cache.webpack_encore"/>
+      <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+    </service>
+    <service id="cache.webpack_encore" class="Symfony\Component\Cache\Adapter\TraceableAdapter" public="false">
+      <tag name="cache.pool"/>
+      <argument type="service" id="cache.webpack_encore.recorder_inner"/>
+    </service>
     <service id="webpack_encore.entrypoint_lookup[_default]" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookup">
       <argument>/var/www/asso/public/build/entrypoints.json</argument>
+      <argument>null</argument>
+      <argument>_default</argument>
     </service>
     <service id=".service_locator._faFGeI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -6480,70 +6516,51 @@
         <argument type="service" id="service_container"/>
       </call>
     </service>
-    <service id="knp_menu.factory" class="Knp\Menu\MenuFactory" public="true">
-      <call method="addExtension">
-        <argument type="service" id="knp_menu.factory_extension.routing"/>
-        <argument>0</argument>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+        </argument>
       </call>
     </service>
-    <service id="knp_menu.factory_extension.routing" class="Knp\Menu\Integration\Symfony\RoutingExtension" public="false">
-      <tag name="knp_menu.factory_extension"/>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">1</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
       <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
     </service>
-    <service id="knp_menu.helper" class="Knp\Menu\Twig\Helper" public="false">
-      <argument type="service" id="knp_menu.renderer_provider"/>
-      <argument type="service" id="knp_menu.menu_provider.chain"/>
-      <argument type="service" id="knp_menu.manipulator"/>
-      <argument type="service" id="knp_menu.matcher"/>
-    </service>
-    <service id="knp_menu.matcher" class="Knp\Menu\Matcher\Matcher" public="true">
-      <argument type="iterator">
-        <argument type="service" id="knp_menu.voter.router"/>
-      </argument>
-    </service>
-    <service id="knp_menu.menu_provider.chain" class="Knp\Menu\Provider\ChainProvider" public="false">
-      <argument type="iterator">
-        <argument type="service" id="knp_menu.menu_provider.lazy"/>
-        <argument type="service" id="knp_menu.menu_provider.builder_alias"/>
-      </argument>
-    </service>
-    <service id="knp_menu.menu_provider.lazy" class="Knp\Menu\Provider\LazyProvider" public="false">
-      <tag name="knp_menu.provider"/>
-      <argument type="collection"/>
-    </service>
-    <service id="knp_menu.menu_provider.builder_alias" class="Knp\Bundle\MenuBundle\Provider\BuilderAliasProvider" public="false">
-      <tag name="knp_menu.provider"/>
-      <argument type="service" id="kernel"/>
-      <argument type="service" id="service_container"/>
-      <argument type="service" id="knp_menu.factory"/>
-    </service>
-    <service id="knp_menu.renderer_provider" class="Knp\Menu\Renderer\PsrProvider">
-      <argument type="service" id=".service_locator.JkeoGUI"/>
-      <argument>twig</argument>
-    </service>
-    <service id="knp_menu.renderer.list" class="Knp\Menu\Renderer\ListRenderer">
-      <tag name="knp_menu.renderer" alias="list"/>
-      <argument type="service" id="knp_menu.matcher"/>
-      <argument type="collection"/>
-      <argument>UTF-8</argument>
-    </service>
-    <service id="knp_menu.voter.router" class="Knp\Menu\Matcher\Voter\RouteVoter">
-      <tag name="knp_menu.voter"/>
-      <argument type="service" id="request_stack"/>
-    </service>
-    <service id="knp_menu.manipulator" class="Knp\Menu\Util\MenuManipulator" public="false"/>
-    <service id="knp_menu.twig.extension" class="Knp\Menu\Twig\MenuExtension" public="false">
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
       <tag name="twig.extension"/>
-      <argument type="service" id="knp_menu.helper"/>
-      <argument type="service" id="knp_menu.matcher"/>
-      <argument type="service" id="knp_menu.manipulator"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
-    <service id="knp_menu.renderer.twig" class="Knp\Menu\Renderer\TwigRenderer">
-      <tag name="knp_menu.renderer" alias="twig"/>
-      <argument type="service" id="twig"/>
-      <argument>@KnpMenu/menu.html.twig</argument>
-      <argument type="service" id="knp_menu.matcher"/>
-      <argument type="collection"/>
+    <service id="knp_paginator.templating.helper.pagination" class="Knp\Bundle\PaginatorBundle\Templating\PaginationHelper">
+      <tag name="templating.helper" alias="knp_pagination"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+      <argument type="service" id="templating.engine.php"/>
     </service>
     <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
       <argument type="service" id="debug.event_dispatcher"/>
@@ -6843,16 +6860,24 @@
         <argument key="repo" type="service" id="App\Repository\AssociationRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.2lyqA5x" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="paginator" type="service" id="knp_paginator"/>
+        <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.NIoOI3Y" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Gr.ZW0q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.JKNCwmi" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+        <argument key="paginator" type="service" id="knp_paginator"/>
         <argument key="repo" type="service" id="App\Repository\EventsRepository"/>
       </argument>
     </service>
@@ -6881,7 +6906,7 @@
         <argument key="user" type="service" id=".errored..service_locator.CLREBB2.App\Entity\Users"/>
       </argument>
     </service>
-    <service id=".service_locator.W_wcTAb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.9AUvlCR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActivitesController::form" type="service" id=".service_locator.Rj4akvv"/>
@@ -6892,7 +6917,7 @@
         <argument key="App\Controller\AssosController::show" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.JKNCwmi"/>
         <argument key="App\Controller\InscriptionEventController::newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController::delete" type="service" id=".service_locator.CLREBB2"/>
@@ -6908,7 +6933,7 @@
         <argument key="App\Controller\AssosController:show" type="service" id=".service_locator.Ty.OUX2"/>
         <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
-        <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.Gr.ZW0q"/>
+        <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.JKNCwmi"/>
         <argument key="App\Controller\InscriptionEventController:newInscription" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.czKK4py"/>
         <argument key="App\Controller\UsersController:delete" type="service" id=".service_locator.CLREBB2"/>
@@ -6916,6 +6941,18 @@
         <argument key="App\Controller\UsersController:index" type="service" id=".service_locator.LVd5Q4X"/>
         <argument key="App\Controller\UsersController:new" type="service" id=".service_locator.SxwvHq3"/>
         <argument key="App\Controller\UsersController:show" type="service" id=".service_locator.CLREBB2"/>
+      </argument>
+    </service>
+    <service id=".service_locator.37xBtZ2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service" id="doctrine.orm.validator.unique"/>
+        <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service" id="security.validator.user_password"/>
+        <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service" id="validator.email"/>
+        <argument key="Symfony\Component\Validator\Constraints\ExpressionValidator" type="service" id="validator.expression"/>
+        <argument key="doctrine.orm.validator.unique" type="service" id="doctrine.orm.validator.unique"/>
+        <argument key="security.validator.user_password" type="service" id="security.validator.user_password"/>
+        <argument key="validator.expression" type="service" id="validator.expression"/>
       </argument>
     </service>
     <service id=".service_locator.yQVjGlt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -7172,13 +7209,6 @@
       </call>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
-    <service id=".service_locator.JkeoGUI" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="list" type="service" id="knp_menu.renderer.list"/>
-        <argument key="twig" type="service" id="knp_menu.renderer.twig"/>
-      </argument>
-    </service>
     <service id=".service_locator.WPZmidW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7383,24 +7413,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.W_wcTAb"/>
+      <argument type="service" id=".service_locator.9AUvlCR"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id=".errored..service_locator._jnw_mF.App\Entity\Activites" class="App\Entity\Activites"/>
     <service id=".errored..service_locator.CLREBB2.App\Entity\Users" class="App\Entity\Users"/>
-    <service id=".service_locator.HKoUR8q" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator" type="service" id="doctrine.orm.validator.unique"/>
-        <argument key="Symfony\Component\Security\Core\Validator\Constraints\UserPasswordValidator" type="service" id="security.validator.user_password"/>
-        <argument key="Symfony\Component\Validator\Constraints\EmailValidator" type="service" id="validator.email"/>
-        <argument key="Symfony\Component\Validator\Constraints\ExpressionValidator" type="service" id="validator.expression"/>
-        <argument key="doctrine.orm.validator.unique" type="service" id="doctrine.orm.validator.unique"/>
-        <argument key="security.validator.user_password" type="service" id="security.validator.user_password"/>
-        <argument key="validator.expression" type="service" id="validator.expression"/>
-      </argument>
-    </service>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator..3zCQ38"/>
       <argument type="collection">
@@ -7618,6 +7636,14 @@
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
+    <service id="cache.webpack_encore.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
+      <argument>BfTw8+n5sO</argument>
+      <argument>0</argument>
+      <argument>%container.build_id%</argument>
+      <argument>/var/www/asso/var/cache/dev/pools</argument>
+      <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+      <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+    </service>
     <service id=".service_locator.uxa.tru" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7789,17 +7815,33 @@
     <service id="fos_user.user_manager" alias="fos_user.user_manager.default" public="true"/>
     <service id="fos_user.mailer" alias="fos_user.mailer.default"/>
     <service id="fos_user.session" alias="session" public="false"/>
+<<<<<<< HEAD
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.9AUvlCR"/>
+=======
     <service id="Knp\Menu\FactoryInterface" alias="knp_menu.factory" public="false"/>
     <service id="Knp\Menu\Matcher\MatcherInterface" alias="knp_menu.matcher" public="false"/>
     <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="argument_resolver.controller_locator" alias=".service_locator.W_wcTAb"/>
+<<<<<<< HEAD
+=======
+=======
+    <service id="argument_resolver.controller_locator" alias=".service_locator.rRaTL9p"/>
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0
+>>>>>>> 5586cb28ce3bd49a84be1f90e15c84802876a75b
+>>>>>>> d9e5a614b6de3af67064fd2f5f6c9b2b1bed7e30
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>
+<<<<<<< HEAD
     <service id="knp_menu.menu_provider" alias="knp_menu.menu_provider.chain"/>
     <service id=".service_locator.gYUKmk4" alias="templating.engine.php.helpers_locator" public="false"/>
     <service id=".service_locator.4zihvow" alias=".1_ServiceLocator~zv1ozqR" public="false"/>
+=======
+    <service id=".service_locator.gYUKmk4" alias="templating.engine.php.helpers_locator" public="false"/>
+    <service id=".service_locator.tSKDlY7" alias=".1_ServiceLocator~zv1ozqR" public="false"/>
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="translator.data_collector.inner" alias="translator.default" public="false"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

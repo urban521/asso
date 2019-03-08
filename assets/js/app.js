@@ -21,9 +21,10 @@ $(document).ready(function(){
     $(window).on("scroll",function(){
         if ($(window).scrollTop()) {
             $('nav').addClass('darkblue');
-            //$('a').addClass('white');
+            $('a').removeClass('blueman');
         } else {
             $('nav').removeClass('darkblue');
+            $('a').addClass('blueman');
         }
     });
 });

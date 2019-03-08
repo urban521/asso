@@ -2,9 +2,6 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
-    "cocur/slugify": {
-        "version": "v3.2"
-    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -112,9 +109,22 @@
     },
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    }]
+=======
     },
     "fzaninotto/faker": {
         "version": "v1.8.0"
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> a348b34c26fca935f439ec4a3fc6539bebe06ea4
+=======>>>>>>> 03776e972c3ce3b44c5f861c12bb0bdde7d83863
+>>>>>>> 587d87446077d6b0ebf39c4583973824a5112cf7
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0
+>>>>>>> 5586cb28ce3bd49a84be1f90e15c84802876a75b
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -122,14 +132,25 @@
     "jms/metadata": {
         "version": "2.0.0"
     },
+<<<<<<< HEAD
     "knplabs/knp-components": {
         "version": "v1.3.10"
     },
+=======
+<<<<<<< HEAD
+    "knplabs/knp-components": {
+        "version": "v1.3.10"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v3.0.0"
+=======
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
     "knplabs/knp-menu": {
         "version": "2.3.0"
     },
     "knplabs/knp-menu-bundle": {
         "version": "v2.2.1"
+>>>>>>> 5586cb28ce3bd49a84be1f90e15c84802876a75b
     },
     "knplabs/knp-paginator-bundle": {
         "version": "v3.0.0"
@@ -361,9 +382,6 @@
             "version": "4.2",
             "ref": "5374e24d508ba8fd6ba9eb15170255fdb778316a"
         }
-    },
-    "symfony/security-acl": {
-        "version": "v3.0.1"
     },
     "symfony/security-bundle": {
         "version": "3.3",

@@ -19,6 +19,9 @@ return [
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     FOS\UserBundle\FOSUserBundle::class => ['all' => true],
+<<<<<<< HEAD
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['dev' => true, 'test' => true],
+=======
+>>>>>>> 32314418b43a292ae8b2373f2decafd177e047f2
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
 ];

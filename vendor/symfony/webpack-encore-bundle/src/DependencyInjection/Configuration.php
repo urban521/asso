@@ -28,8 +28,13 @@ final class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->info('The path where Encore is building the assets - i.e. Encore.setOutputPath()')
                 ->end()
+                ->booleanNode('cache')
+                    ->info('Enable caching of the entry point file(s)')
+                    ->defaultFalse()
+                ->end()
                 ->arrayNode('builds')
                     ->useAttributeAsKey('name')
+                    ->normalizeKeys(false)
                     ->scalarPrototype()
                     ->validate()
                         ->always(function ($values) {

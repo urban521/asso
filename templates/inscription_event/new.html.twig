@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1 class="text-center">
-       
+        inscrivez vous a l'evenement {{ event.title }}
     </h1>
 
     <div class="containerr">
@@ -10,9 +10,8 @@
         {{ form_widget(form.nom,{'attr':{'placeholder':'nom'}}) }}
         {{ form_widget(form.prenom,{'attr':{'placeholder':'prenom'}}) }}
         {{ form_widget(form.email,{'attr':{'placeholder':'email'}}) }}
-        {{ form_widget(form.events,{'attr':{'placeholder':'evenement'}}) }}
+        <div class="hide"> {{ form_widget(form.events,{'attr':{'value': event.title }}) }} </div>
         <button type="submit">inscription</button> 
-        {{ form_end(form) }}
-        
+        {{ form_end(form) }} 
     </div>
 {% endblock %}

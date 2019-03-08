@@ -20,9 +20,14 @@ class EventsController extends AbstractController
     /**
      * @Route("/events", name="events")
      */
-    public function index(EventsRepository $repo) { 
+    public function index(Request $request, EventsRepository $repo, PaginatorInterface $paginator) { 
        
-        $events=$repo->findAll();
+        $events = $paginator->paginate( $this->getDoctrine()
+                      ->getRepository(Events::class)
+                      ->findAll(),
+                      $request->query->getInt('page', 1),
+                      6
+                  );
         return $this->render('events/index.html.twig', [
             'controller_name' => 'EventsController',
             'events'=>$events
@@ -106,7 +111,6 @@ class EventsController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('events');
-
         }
         return $this->render('events/newevent.html.twig', [
             'form' => $form->createView(),
