@@ -117,6 +117,7 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         'K' => 
         array (
             'Knp\\Menu\\' => 9,
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
             'Knp\\Bundle\\MenuBundle\\' => 22,
         ),
         'F' => 
@@ -462,6 +463,10 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
         ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
+        ),
         'Knp\\Bundle\\MenuBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu-bundle/src',
@@ -584,6 +589,13 @@ class ComposerStaticInitd52f8e92eef5a89e53ac696c8d671fd9
             'Pagerfanta\\' => 
             array (
                 0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
         'D' => 

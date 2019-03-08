@@ -28,5 +28,6 @@ security:
     access_control:
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/administration, role: ROLE_SUPER_ADMIN }
+        - { path: ^/register, role: ROLE_SUPER_ADMIN }
         - { path: ^/licencier, role: ROLE_USER }
 

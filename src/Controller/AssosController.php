@@ -26,7 +26,6 @@ class AssosController extends AbstractController
     public function show(AssociationRepository $repo, $id) {
         
         $asso=$repo->find($id);
-        dump($asso);
         return $this->render('assos/index.html.twig', [
             'controller_name' => 'AssosController',
             'asso'=>$asso,
@@ -37,6 +36,7 @@ class AssosController extends AbstractController
      * @Route("admin/assos/{id}/edit", name="modif_asso")
      */
     public function aditAsso($id,Request $request) {
+        $utilisateur = $this->getUser()->getAssociationId();
     	$asso = $this->getDoctrine()
     	                ->getRepository(Association::class)
                         ->find($id);

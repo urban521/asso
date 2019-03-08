@@ -3,9 +3,13 @@
 {% block title %}Nouveau licencié{% endblock %}
 
 {% block body %}
-    <h1>Creer un nouveau licencier</h1>
-
+<div class="container">
+    <div class="text-center" style="background: rgb(0,153,220)";>
+        <h1>Creer un nouveau licencier</h1>
+    </div>
     {{ include('users/_form.html.twig') }}
-
-    <a href="/users/new">retour à la liste</a>
+    <div>
+        <a class="btn btn-primary" href="/users/new">retour à la liste</a>
+    </div>
+</div>
 {% endblock %}
