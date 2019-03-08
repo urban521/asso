@@ -2,6 +2,8 @@
 
 namespace Symfony\WebpackEncoreBundle\Tests;
 
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\WebpackEncoreBundle\CacheWarmer\EntrypointCacheWarmer;
 use Symfony\WebpackEncoreBundle\WebpackEncoreBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -77,6 +79,23 @@ class IntegrationTest extends TestCase
             $html2
         );
     }
+
+    public function testCacheWarmer()
+    {
+        $kernel = new WebpackEncoreIntegrationTestKernel(true);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $cacheWarmer = $container->get(WebpackEncoreCacheWarmerTester::class);
+
+        $cacheWarmer->warmCache($kernel->getCacheDir());
+
+        $cachePath = $kernel->getCacheDir().'/webpack_encore.cache.php';
+        $this->assertFileExists($cachePath);
+        $data = require $cachePath;
+        // check for both build keys
+        $this->assertEquals(['_default' => 0, 'different_build' => 1], $data[0]);
+    }
 }
 
 class WebpackEncoreIntegrationTestKernel extends Kernel
@@ -117,10 +136,15 @@ class WebpackEncoreIntegrationTestKernel extends Kernel
 
             $container->loadFromExtension('webpack_encore', [
                 'output_path' => __DIR__.'/fixtures/build',
+                'cache' => true,
                 'builds' => [
                     'different_build' =>  __DIR__.'/fixtures/different_build'
                 ]
             ]);
+
+            $container->register(WebpackEncoreCacheWarmerTester::class)
+                ->addArgument(new Reference('webpack_encore.entrypoint_lookup.cache_warmer'))
+                ->setPublic(true);
         });
     }
 
@@ -132,5 +156,20 @@ class WebpackEncoreIntegrationTestKernel extends Kernel
     public function getLogDir()
     {
         return sys_get_temp_dir().'/logs'.spl_object_hash($this);
+    }
+}
+
+class WebpackEncoreCacheWarmerTester
+{
+    private $entrypointCacheWarmer;
+
+    public function __construct(EntrypointCacheWarmer $entrypointCacheWarmer)
+    {
+        $this->entrypointCacheWarmer = $entrypointCacheWarmer;
+    }
+
+    public function warmCache(string $cacheDir)
+    {
+        $this->entrypointCacheWarmer->warmUp($cacheDir);
     }
 }

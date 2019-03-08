@@ -12,22 +12,23 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('association')
-        ;
-    }
+   public function buildForm(FormBuilderInterface $builder, array $options)
+   {
+       $builder
 
-    public function getParent()
-    {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-    }
+           ->add('association')
+       ;
+   }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            'data_class' => User::class,
-        ]);
-    }
+   public function getParent()
+   {
+       return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+   }
+
+   public function configureOptions(OptionsResolver $resolver)
+   {
+       $resolver->setDefaults([
+           'data_class' => User::class,
+       ]);
+   }
 }

@@ -14,13 +14,16 @@
                         <div class="links">
                             <a href="#">Repost</a>
                             <a href="#">Like</a>
-                            <a href="#">woohoo</a>
-                            <a href="{{ path('event', {'id': event.id}) }}">decouvrir</a>
+                            <a href="../{{event.id}}/inscription/event/new">participer</a>
+                            <a href="{{ path('event', {'id': event.id}) }}">plus</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
     </div>
-    <a class="btn btn-primary" href="admin/events/new">nouvel evenement</a>
+    <div class="pagination">
+        {{ knp_pagination_render(events)}}
+    </div>
+    <a class="btn btn-primary" href="/events/new">nouvel evenement</a>
 </section>
 {% endblock %}
