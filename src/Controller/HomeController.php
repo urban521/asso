@@ -51,7 +51,7 @@ class HomeController extends AbstractController
 
 			    $message = (new \Swift_Message('Hello Email'))
 					        ->setFrom('send@example.com')
-					        ->setTo('cd87@sportspourtous.org')
+					        ->setTo('samy.aformac2018@gmail.com')
 					        ->setBody(
 		            $this->render(
 		                // templates/emails/registration.html.twig

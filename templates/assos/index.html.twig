@@ -3,7 +3,6 @@
 {% block body %}
 
 <div class="container">
-    <a class="btn btn-primary" href="/assos/new">New Asso</a>
     <div class="row">
         
             {% for asso in asso %}
@@ -21,9 +20,12 @@
                         <a href="{{path('agasso', {'id': asso.id})}}" class="btn btn-primary">agasso</a>
                     </div>
                 </div>
-            
-            {% endfor %}
-        
+                <div class="text-center">{{ asso.adresseAsso }} {{ asso.villeAsso }} {{ asso.cpAsso }}</div>
+                <div class="text-center">{{ asso.tel1Asso }}</div>
+                <div class="text-center">{{ asso.tel2Asso }}</div>
+                <a href="{{path('agasso', {'id': asso.id})}}" class="btn btn-primary">agasso</a>
+            </div>
+        </div>        
     </div>
 </div>
 {% endblock %}

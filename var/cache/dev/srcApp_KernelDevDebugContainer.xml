@@ -712,7 +712,7 @@
       <parameter key="cd87@sportspourtous.org">cd87 Sports pour tous</parameter>
     </parameter>
     <parameter key="fos_user.registration.confirmation.enabled">false</parameter>
-    <parameter key="fos_user.registration.form.type">FOS\UserBundle\Form\Type\RegistrationFormType</parameter>
+    <parameter key="fos_user.registration.form.type">App\Form\RegistrationType</parameter>
     <parameter key="fos_user.registration.form.name">fos_user_registration_form</parameter>
     <parameter key="fos_user.registration.form.validation_groups" type="collection">
       <parameter>Registration</parameter>
@@ -4305,6 +4305,13 @@
         <argument>null</argument>
       </call>
       <call method="add">
+        <argument type="service" id=".security.request_matcher..Hgh7Or"/>
+        <argument type="collection">
+          <argument>ROLE_SUPER_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+      <call method="add">
         <argument type="service" id=".security.request_matcher._56.wIK"/>
         <argument type="collection">
           <argument>ROLE_USER</argument>
@@ -4798,6 +4805,9 @@
     </service>
     <service id=".security.request_matcher.5dJADCx" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/admin</argument>
+    </service>
+    <service id=".security.request_matcher..Hgh7Or" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/administration</argument>
     </service>
     <service id=".security.request_matcher._56.wIK" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
       <argument>^/licencier</argument>
@@ -6379,7 +6389,7 @@
     <service id="fos_user.registration.form.factory" class="FOS\UserBundle\Form\Factory\FormFactory">
       <argument type="service" id="form.factory"/>
       <argument>fos_user_registration_form</argument>
-      <argument>FOS\UserBundle\Form\Type\RegistrationFormType</argument>
+      <argument>App\Form\RegistrationType</argument>
       <argument>%fos_user.registration.form.validation_groups%</argument>
     </service>
     <service id="fos_user.registration.form.type" class="FOS\UserBundle\Form\Type\RegistrationFormType">
@@ -6791,8 +6801,8 @@
         <argument key="App\Controller\ActivitesController::show" type="service" id=".service_locator._jnw_mF"/>
         <argument key="App\Controller\AgassoController::index" type="service" id=".service_locator.wZ.qUNB"/>
         <argument key="App\Controller\AgassoController::show" type="service" id=".service_locator.wZ.qUNB"/>
-        <argument key="App\Controller\AssosController::index" type="service" id=".service_locator.Ty.OUX2"/>
-        <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.2lyqA5x"/>
+        <argument key="App\Controller\AssosController::show" type="service" id=".service_locator.Ty.OUX2"/>
+        <argument key="App\Controller\EventsController::index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController::show" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.JKNCwmi"/>
         <argument key="App\Controller\InscriptionEventController::newInscription" type="service" id=".service_locator.SxwvHq3"/>
@@ -6807,8 +6817,8 @@
         <argument key="App\Controller\ActivitesController:show" type="service" id=".service_locator._jnw_mF"/>
         <argument key="App\Controller\AgassoController:index" type="service" id=".service_locator.wZ.qUNB"/>
         <argument key="App\Controller\AgassoController:show" type="service" id=".service_locator.wZ.qUNB"/>
-        <argument key="App\Controller\AssosController:index" type="service" id=".service_locator.Ty.OUX2"/>
-        <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.2lyqA5x"/>
+        <argument key="App\Controller\AssosController:show" type="service" id=".service_locator.Ty.OUX2"/>
+        <argument key="App\Controller\EventsController:index" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\EventsController:show" type="service" id=".service_locator.NIoOI3Y"/>
         <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.JKNCwmi"/>
         <argument key="App\Controller\InscriptionEventController:newInscription" type="service" id=".service_locator.SxwvHq3"/>
@@ -7692,8 +7702,19 @@
     <service id="fos_user.user_manager" alias="fos_user.user_manager.default" public="true"/>
     <service id="fos_user.mailer" alias="fos_user.mailer.default"/>
     <service id="fos_user.session" alias="session" public="false"/>
+<<<<<<< HEAD
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="argument_resolver.controller_locator" alias=".service_locator.9AUvlCR"/>
+=======
+    <service id="Knp\Menu\FactoryInterface" alias="knp_menu.factory" public="false"/>
+    <service id="Knp\Menu\Matcher\MatcherInterface" alias="knp_menu.matcher" public="false"/>
+    <service id="Knp\Menu\Util\MenuManipulator" alias="knp_menu.manipulator" public="false"/>
+<<<<<<< HEAD
+    <service id="argument_resolver.controller_locator" alias=".service_locator.W_wcTAb"/>
+=======
+    <service id="argument_resolver.controller_locator" alias=".service_locator.rRaTL9p"/>
+>>>>>>> f5f42dfad3e595f1b6960abf655d62da308fb8e0
+>>>>>>> 5586cb28ce3bd49a84be1f90e15c84802876a75b
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.delegating" public="false"/>
     <service id="twig.loader" alias="twig.loader.filesystem"/>

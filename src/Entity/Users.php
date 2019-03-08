@@ -358,5 +358,14 @@ class Users
         return $this;
     }
 
+    public function setAssociation(association $association)
+    {
+        if (!$this->association->contains($association)) {
+            $this->association[] = $association;
+        }
+
+        return $this;
+    } 
+
 
 }

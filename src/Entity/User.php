@@ -19,7 +19,7 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Association", inversedBy="User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Association", inversedBy="user")
      * @ORM\JoinColumn(nullable=false)
      */
     private $association;
@@ -43,7 +43,7 @@ class User extends BaseUser
     }
 
     public function getAssociationId()
-   {
-       return $this->association->getId();
-   }
+    {
+        return $this->association->getId();
+    }
 }

@@ -235,7 +235,7 @@ class Association
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="association")
      */
-    private $User; 
+    private $user; 
 
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -407,7 +407,7 @@ class Association
         $this->publique = new ArrayCollection();
         $this->Publique = new ArrayCollection();
         $this->users = new ArrayCollection();
-        $this->User = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -676,7 +676,7 @@ class Association
      */
     public function getUser(): Collection
     {
-        return $this->User;
+        return $this->user;
     }
 
 }

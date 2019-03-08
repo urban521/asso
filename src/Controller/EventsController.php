@@ -34,7 +34,7 @@ class EventsController extends AbstractController
         ]);
     }
     /**
-     * @Route("/events/{id}/edit", name="modif_event")
+     * @Route("admin/events/{id}/edit", name="modif_event")
      */
     public function modifierProduit($id,Request $request) {
     	$events = $this->getDoctrine()
@@ -77,7 +77,7 @@ class EventsController extends AbstractController
         ]);
     }
     /**
-     * @Route("/events/new", name="new_event")
+     * @Route("admin/events/new", name="new_event")
      */
     public function newEvent(Request $request) {
         $events = new Events();
@@ -85,10 +85,18 @@ class EventsController extends AbstractController
     		->add('title',TextType::class)
     		->add('lieu',TextType::class)
             ->add('dateEvent',DateType::class)
-            ->add('imageFile1',VichImageType::class)
-            ->add('imageFile2',VichImageType::class)
-            ->add('imageFile3',VichImageType::class)
-            ->add('imageFile4',VichImageType::class)
+            ->add('imageFile1',VichImageType::class, [
+                'required' => false,
+            ])
+            ->add('imageFile2',VichImageType::class, [
+                'required' => false,
+            ])
+            ->add('imageFile3',VichImageType::class, [
+                'required' => false,
+            ])
+            ->add('imageFile4',VichImageType::class, [
+                'required' => false,
+            ])
             ->add('descriptEvent',TextareaType::class)
             ->getForm();
             

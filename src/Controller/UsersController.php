@@ -15,28 +15,29 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-    /**
-     * @Route("/users")
-     */
+
     class UsersController extends AbstractController
 
 {
 
     /**
-     * @\Symfony\Component\Routing\Annotation\Route("/", name="users_index", methods={"GET"})
+     * @Route("/admin/{id}/users", name="users_index")
      */
-    public function index(UsersRepository $usersRepository): Response
+    public function index(UsersRepository $usersRepository, $id): Response
     {
+        $asso = $this->getDoctrine()->getRepository(Association::class)->find($id);
+        $users = $asso->getUsers();
         return $this->render('users/index.html.twig', [
-            'users' => $usersRepository->findAll(),
+            'users' => $users,
         ]);
     }
 
     /**
-     * @Route("/{id}/users/new", name="users_new", methods={"GET","POST"})
+     * @Route("/admin/{id}/users/new", name="users_new", methods={"GET","POST"})
      */
     public function new(Request $request, ObjectManager $entityManager, $id): Response
     {
+        $utilisateur = $this->getUser()->getAssociationId();
         $asso = $this->getDoctrine()->getRepository(Association::class)->find($id);
         $user = new Users();
         $form = $this->createForm(UsersType::class, $user);
@@ -44,11 +45,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('users_index');
+            return $this->redirectToRoute('users_index', [
+                'id' => $utilisateur
+            ]);
         }
 
         return $this->render('users/new.html.twig', [
@@ -59,7 +63,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     }
 
     /**
-     * @Route("/{id}", name="users_show", methods={"GET"})
+     * @Route("/admin/user/{id}", name="users_show", methods={"GET"})
      */
     public function show(Users $user): Response
     {
@@ -71,18 +75,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     
 
     /**
-     * @Route("/{id}/edit", name="users_edit", methods={"GET","POST"})
+     * @Route("/admin/user/{id}/edit", name="users_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Users $user): Response
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
+        $utilisateur = $this->getUser()->getAssociationId();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('users_index', [
-                'id' => $user->getId(),
+                'id' => $utilisateur
             ]);
         }
 
@@ -102,16 +107,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     }
 
     /**
-     * @Route("/{id}/users", name="users_delete", methods={"DELETE"})
+     * @Route("/admin/{id}/user", name="users_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Users $user): Response
     {
+        $utilisateur = $this->getUser()->getAssociationId();
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('users_index');
+        return $this->redirectToRoute('users_index', [
+            'id' => $utilisateur
+        ]);
     }
 }

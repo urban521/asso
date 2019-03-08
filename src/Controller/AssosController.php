@@ -21,11 +21,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AssosController extends AbstractController
 {
     /**
-     * @Route("/assos", name="assos")
+     * @Route("admin/assos/{id}", name="assos")
      */
-    public function index(AssociationRepository $repo) {
+    public function show(AssociationRepository $repo, $id) {
         
-        $asso=$repo->findAll();
+        $asso=$repo->find($id);
         return $this->render('assos/index.html.twig', [
             'controller_name' => 'AssosController',
             'asso'=>$asso,
@@ -33,9 +33,10 @@ class AssosController extends AbstractController
         ]);
     }
     /**
-     * @Route("/assos/{id}/edit", name="modif_asso")
+     * @Route("admin/assos/{id}/edit", name="modif_asso")
      */
     public function aditAsso($id,Request $request) {
+        $utilisateur = $this->getUser()->getAssociationId();
     	$asso = $this->getDoctrine()
     	                ->getRepository(Association::class)
                         ->find($id);
@@ -43,8 +44,12 @@ class AssosController extends AbstractController
             ->add('imageFile',VichImageType::class,[
                 'label' => 'logo',
             ])
-            ->add('numAsso',IntegerType::class)
-            ->add('nomAsso',TextType::class)
+            ->add('numAsso',IntegerType::class, [
+                'disabled' => true
+            ])
+            ->add('nomAsso',TextType::class, [
+                'disabled' => true
+            ])
             ->add('adresseAsso',TextType::class)
             ->add('cpAsso',IntegerType::class)
             ->add('villeAsso',TextType::class)
